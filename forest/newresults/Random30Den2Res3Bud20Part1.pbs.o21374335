@@ -1,0 +1,35 @@
+----------------------------------------
+Begin PBS Prologue Thu Sep  1 14:09:08 PDT 2016
+Job ID:            21374335.hpc-pbs2.hpcc.usc.edu
+Username:          saramarm
+Group:             csci-ar
+Project:           default
+Name:              Random30Den2Res3Bud20Part1.pbs
+Queue:             main
+Shared Access:     no
+All Cores:         no
+Has MIC:           no
+GPUS(hpc3830)     GPU 0: Tesla K40m (UUID: GPU-2b1e1767-76f1-b3d2-0186-8336dc949403)
+GPUS(hpc3830)     GPU 1: Tesla K40m (UUID: GPU-961fa5ba-8851-8db4-86d2-eddb846aa7b3)
+Nodes:             hpc3830 
+TMPDIR:            /tmp/21374335.hpc-pbs2.hpcc.usc.edu
+End PBS Prologue Thu Sep  1 14:09:09 PDT 2016
+----------------------------------------
+javac -d . -classpath ./Jars/jgrapht-jdk1.6.jar:./Jars/mxgraph-all.jar:/home/rcf-40/saramarm/AAAI16/Jars/cplex.jar:./Jars/ILOG.CP.jar:./Jars/cpjar.jar: ./Random30Den2Res3Bud20Part1.java
+LD_LIBRARY_PATH=/home/rcf-40/saramarm/AAAI16/lib:/home/rcf-40/saramarm/AAAI16/lib::$LD_LIBRARY_PATH java  -classpath ./Jars/jgrapht-jdk1.6.jar:./Jars/mxgraph-all.jar:/home/rcf-40/saramarm/AAAI16/Jars/cplex.jar:./Jars/ILOG.CP.jar:./Jars/cpjar.jar::. Random30Den2Res3Bud20Part1 
+Components: 7
+1----------------------------------------
+Begin PBS Epilogue Fri Sep  2 14:09:15 PDT 2016
+Job ID:           21374335.hpc-pbs2.hpcc.usc.edu
+Username:         saramarm
+Group:            csci-ar
+Job Name:         Random30Den2Res3Bud20Part1.pbs
+Session:          560
+Limits:           neednodes=1:ppn=8,nodes=1:ppn=8,walltime=24:00:00
+Resources:        cput=147:18:11,energy_used=0,mem=631320kb,vmem=20291688kb,walltime=24:00:07
+Queue:            main
+Shared Access:    no
+Has MIC:          no
+removed `/scratch'
+End PBS Epilogue Fri Sep  2 14:09:15 PDT 2016
+----------------------------------------

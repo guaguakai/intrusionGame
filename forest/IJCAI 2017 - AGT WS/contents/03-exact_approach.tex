@@ -1,0 +1,114 @@
+\section{(Not) Extending FORTIFY}\label{sec:exact_app}
+The Defender's payoffs are always non-positive in our domain since \Def~gets a payoff of $-\tau(t_i)$ when the Attacker successfully attacks target $t_i$, and $0$ otherwise. To facilitate our analysis, as done in~\cite{jain2013security}, we define a non-negative normalized utility function $f_d$ for the Defender. Given a team $\lambda$,
+
+\begin{align*}
+U_d(X_i(\lambda),\textbf{a}) &= -\sum_j a_j(1-P(X_i(\lambda),A_j))\tau(t_j)\\
+f_d(X_i(\lambda)) &= U_d(X_i(\lambda),\textbf{a}) - U_d(\emptyset,\textbf{a})
+\end{align*}
+
+More specifically, $f_d$ gives the added benefit of the Defender allocation $X_i(\lambda)$ over the Defender not protecting any edges. We observe that $f_d$ is submodular in the resources, i.e., $f_d(X^*(\lambda)) + f(X^*(r)) \geq f(X^*(\lambda \cup r))$, where $\lambda$ is some team, $r$ some resource and $X^*(\cdot)$ the best allocation for some team. In the following, to simplify the notation, we will just write $f_d(\lambda)$, assuming we are considering the value of $\lambda$ when its resources are allocated at best.
+
+
+%then establish a bound on the solution quality of our greedy better response solution. This bound suggests that our greedy approach generates good solutions.
+
+\subsection{The hardness of team/resource domination}
+The first step of FORTIFY is the enumeration of all the teams that saturate the budget: the main weakness here is the high number of teams that reach the last layer before the best one is found. Thus, if we could safely exclude some teams from the candidate list \textit{before} evaluating them, then we could also reduce the total time required by FORTIFY. Thus, given the list of teams, we investigate dominance relations among similar teams. For our purposes, two teams $\lambda, \lambda'$ are called \textit{similar} if they differ for at most $d(\lambda, \lambda')$ resources. Unfortunately, even with $d(\lambda, \lambda') = 1$, we obtain the following negative results.
+
+\begin{theorem}\label{thm:on_half_lb}
+Let $r_1, r_2$ be two resources of type $1,2 \in K$, respectively. If $f_d(\{r_1\}) \geq f_d(\{r_2\})$, then, for any team $\lambda$, $f_d(\lambda \cup \{r_1\}) \geq \frac{1}{2}f_d(\lambda \cup \{r_2\})$.
+\end{theorem}
+
+\noindent
+\textit{Proof.} By the submodularity of $f_d$, we know that:
+\begin{equation*}
+f_d(\lambda) + f_d(\{r_i\}) \geq f_d(\lambda \cup \{r_i\}), i=1,2
+\end{equation*}
+
+Moreover, the following inequalities hold:
+\begin{enumerate}
+\item $f(\lambda \cup \{r_1\}) \geq f(\lambda)$
+\item $f(\lambda \cup \{r_1\}) \geq f(\{r_1\})$
+\item $f(\lambda) + f(\{r_1\}) \geq f(\lambda) + f(\{r_2\})$
+\item $f(\lambda) + f(\{r_2\}) \geq f(\lambda \cup \{r_2\})$
+\end{enumerate}
+
+\noindent
+From 1. and 2. we get:
+\begin{align*}
+f(\lambda \cup \{r_1\}) + f(\lambda \cup \{r_1\}) \geq f(\lambda) + f(\{r_1\})
+\end{align*}
+
+\noindent
+Combining the above result with 3. and 4., we can write:
+
+\begin{equation*}
+f(T \cup \{r_1\}) + f(\lambda \cup \{r_1\}) \geq f(\lambda \cup \{r_2\})
+\end{equation*}
+
+\noindent
+and, finally:
+\begin{equation*}
+f(\lambda \cup \{r_1\}) \geq \frac{1}{2}f(\lambda \cup \{r_2\})
+\end{equation*}
+\hfill $\Box$
+
+The following theorem also holds.
+
+\begin{theorem}\label{thm:no_bigger}
+Let $r_1, r_2$ be two resources of types $1,2 \in K$, respectively. If $f(\{r_1\}) \geq f(\{r_2\})$, then we cannot say if for any team $\lambda$, $f(\lambda \cup \{r_1\}) \geq f(\lambda \cup \{r_2\})$.
+\end{theorem}
+
+\noindent
+\textit{Proof sketch.} We prove this theorem providing the following counterexample. Let us consider a $4\times4$ grid graph, with 4 sources on one side and 4 targets, on the opposite side, with $\tau(t_i) = 20$ for all $t_i$. Let $r_1, r_2$ be two resources of types $1,2 \in K$ with the following features:
+\begin{center}
+\begin{tabular}{ | c | c | c |}
+\hline
+ & $L_i$ & $P_i$\\ \hline
+$r_1$ & 2 & 0.9\\ \hline
+$r_2$ & 4 & 0.45\\ \hline
+\end{tabular}\label{table:example_features}
+\end{center}
+
+\noindent
+and let $\lambda = \{r_1\}$.
+
+\noindent
+Solving exactly the problem for $\{r_1\}$, $\{r_2\}$, $\lambda \cup \{r_1\}$, $\lambda \cup \{r_2\}$, we obtain the following values:
+\begin{itemize}
+\item $f(\{r_1\}) = 4.95$;
+\item $f(\{r_2\}) = 4.17$;
+\item $f(\lambda \cup \{r_1\}) = 9.9$;
+\item $f(\lambda \cup \{r_2\}) = 10.1$.
+\end{itemize}
+
+\noindent
+We observe that even though $f(\{r_1\}) \geq f(\{r_2\})$, we have $f(\lambda \cup \{r_1\}) \leq f(\lambda \cup \{r_2\})$. This concludes the proof.
+\hfill $\Box$
+
+Theorem~\ref{thm:on_half_lb} and Theorem~\ref{thm:no_bigger} tell us that we cannot exclude from the candidate list some team $\lambda$ knowing the exact value of another team $\lambda'$, even if $d(\lambda,\lambda') = 1$. Actually, the implications of such theorems are deeper: we express them in the following corollaries (we omit their proofs since they easily follow from the proof of Theorem~\ref{thm:no_bigger}).
+
+\begin{corollary}\label{cor:features_single_team}
+Given a team $\lambda$, we cannot infer any information about its value taking into account only the features $L_k, P_k, c_k$ of the resources that constitute the team.
+\end{corollary}
+
+\begin{corollary}\label{cor:features_two_teams}
+Given two teams $\lambda, \lambda'$, we cannot say whether or not $f(\lambda) \geq f(\lambda')$  taking into account only the features $L_k, P_k, c_k$ of the resources that constitute the team.
+\end{corollary}
+
+\begin{corollary}\label{cor:resource_difference}
+Given two teams $\lambda, \lambda'$, let $C$ be the set of common resources, i.e., $\lambda \cap \lambda' = C$. Let $f(\lambda \setminus C) \geq f(\lambda' \setminus C)$. Then, we cannot say whether or not $f(\lambda) \geq f(\lambda')$.
+\end{corollary}
+
+\begin{corollary}
+Let $r_1, r_2$ be two resources of types $1,2 \in K$, and $r_1 \in \lambda$. Then, we cannot say whether or not $f(\lambda) - f(\{r_1\}) + f(\{r_2\}) \geq f(\lambda \{r_1\} \cup \{r_2\})$.
+\end{corollary}
+
+\begin{corollary}
+Let $\lambda^*, r^*$ be, respectively, the team ad the single resource that maximize $f_d$. Then, we cannot say whether or not $r^* \in \lambda^*$.
+\end{corollary}
+
+As can be seen from the results stated above, improving the current exact approach is a hard task. This is why we have to turn our attention to new techniques. In general, when there is a problem of team formation, two main approaches can be adopted. The first, employed also by FORTIFY, consists in listing a set of possible candidates among the whole space of solutions and reduce their number until the best team is found. The second approach is incremental: given the set of elements of which the team can be composed of, at each iteration we add one element according to some rules, until the budget constraint is violated. The results listed above give us important directions for both methods.
+
+Let us say that we want to follow the first approach. Then, we know that we cannot exclude any team \emph{a priori} just taking into account the resources it is composed of. Moreover, we cannot discard any team even if we know the real value of another team which differs from it for just one single resource. Similarly, if we remove the common resources from two teams and evaluate just the remaining ones, we cannot state anything about the exact values of the original teams. Although listing all the team and discarding the some of them until the best is found offers a safe way to determine the best team, namely the exact value of the best team has to be better than the upper bounds on the values of the other teams, all these negative results suggest that this approach is computationally very expensive since we cannot remove any team from the list, unless the condition on the upper bound is met. For similar reasons, given $r_1, r_2$ of types $1,2 \in K$, we cannot say whether $r_1 (r_2)$ is better than $r_2 (r_1)$ in any team $\lambda$ (except for very trivial cases, e.g., if $c_1 = c_2, L_1=L_2, P_1 \geq L_2$, $r_2$ can be safely discarded).
+
+On the other side, let us say that we opt for an incremental approach. Here, we cannot guarantee that some resources will belong to the best team and, besides adopting an expensive complete approach, e.g., the exact algorithm for the Knapsack problem~\cite{andonov2000unbounded}, it is difficult to determine a safe way to state that the best team has been found. 

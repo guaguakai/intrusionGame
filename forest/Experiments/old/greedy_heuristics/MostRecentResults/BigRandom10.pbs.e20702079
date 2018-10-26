@@ -1,0 +1,3 @@
+Note: ./BigRandom10.java uses unchecked or unsafe operations.
+Note: Recompile with -Xlint:unchecked for details.
+=>> PBS: job killed: walltime 86421 exceeded limit 86400

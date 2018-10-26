@@ -1,0 +1,56 @@
+Note: ./exp_madagascar_i_vs_ni_nres_40.java uses unchecked or unsafe operations.
+Note: Recompile with -Xlint:unchecked for details.
+ilog.cplex.CpxException: CPLEX Error  1234: Failed to create parallel thread.
+
+	at ilog.cplex.CplexI.CALL(CplexI.java:4714)
+	at ilog.cplex.CplexI.setStatus(CplexI.java:5979)
+	at ilog.cplex.CplexI.access$500(CplexI.java:120)
+	at ilog.cplex.CplexI$SolveHandle.stop(CplexI.java:2625)
+	at ilog.cplex.CplexI.solve(CplexI.java:2648)
+	at ilog.cplex.IloCplex.solve(IloCplex.java:10294)
+	at lpWrapper.MIProblemCplex.solve(MIProblemCplex.java:581)
+	at teamBuildingSolvers.CompactProblem.run_nocut(CompactProblem.java:278)
+	at teamBuildingSolvers.CompactProblem.solve(CompactProblem.java:71)
+	at search.teamNode.setCompactEvaluation(teamNode.java:303)
+	at search.Search.getTeams(Search.java:367)
+	at search.Search.PQSearch(Search.java:303)
+	at exp_madagascar_i_vs_ni_nres_40.PQSearch(exp_madagascar_i_vs_ni_nres_40.java:1845)
+	at exp_madagascar_i_vs_ni_nres_40.main(exp_madagascar_i_vs_ni_nres_40.java:1985)
+Exception in thread "main" lpWrapper.LPSolverException
+	at lpWrapper.MIProblemCplex.solve(MIProblemCplex.java:602)
+	at teamBuildingSolvers.CompactProblem.run_nocut(CompactProblem.java:278)
+	at teamBuildingSolvers.CompactProblem.solve(CompactProblem.java:71)
+	at search.teamNode.setCompactEvaluation(teamNode.java:303)
+	at search.Search.getTeams(Search.java:367)
+	at search.Search.PQSearch(Search.java:303)
+	at exp_madagascar_i_vs_ni_nres_40.PQSearch(exp_madagascar_i_vs_ni_nres_40.java:1845)
+	at exp_madagascar_i_vs_ni_nres_40.main(exp_madagascar_i_vs_ni_nres_40.java:1985)
+make: *** [Experiment.run] Error 1
+Note: ./exp_madagascar_i_vs_ni_nres_40.java uses unchecked or unsafe operations.
+Note: Recompile with -Xlint:unchecked for details.
+ilog.cplex.CpxException: CPLEX Error  1001: Out of memory.
+
+	at ilog.cplex.CplexI.CALL(CplexI.java:4714)
+	at ilog.cplex.CplexI.setStatus(CplexI.java:5979)
+	at ilog.cplex.CplexI.access$500(CplexI.java:120)
+	at ilog.cplex.CplexI$SolveHandle.stop(CplexI.java:2625)
+	at ilog.cplex.CplexI.solve(CplexI.java:2648)
+	at ilog.cplex.IloCplex.solve(IloCplex.java:10294)
+	at lpWrapper.MIProblemCplex.solve(MIProblemCplex.java:581)
+	at teamBuildingSolvers.CompactProblem.run_nocut(CompactProblem.java:278)
+	at teamBuildingSolvers.CompactProblem.solve(CompactProblem.java:71)
+	at search.teamNode.setCompactEvaluation(teamNode.java:303)
+	at search.Search.getTeams(Search.java:367)
+	at search.Search.PQSearch(Search.java:303)
+	at exp_madagascar_i_vs_ni_nres_40.PQSearch(exp_madagascar_i_vs_ni_nres_40.java:1845)
+	at exp_madagascar_i_vs_ni_nres_40.main(exp_madagascar_i_vs_ni_nres_40.java:1985)
+Exception in thread "main" lpWrapper.LPSolverException
+	at lpWrapper.MIProblemCplex.solve(MIProblemCplex.java:602)
+	at teamBuildingSolvers.CompactProblem.run_nocut(CompactProblem.java:278)
+	at teamBuildingSolvers.CompactProblem.solve(CompactProblem.java:71)
+	at search.teamNode.setCompactEvaluation(teamNode.java:303)
+	at search.Search.getTeams(Search.java:367)
+	at search.Search.PQSearch(Search.java:303)
+	at exp_madagascar_i_vs_ni_nres_40.PQSearch(exp_madagascar_i_vs_ni_nres_40.java:1845)
+	at exp_madagascar_i_vs_ni_nres_40.main(exp_madagascar_i_vs_ni_nres_40.java:1985)
+make: *** [Experiment.run] Error 1

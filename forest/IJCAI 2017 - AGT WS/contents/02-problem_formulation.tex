@@ -1,0 +1,49 @@
+\section{Starting point}\label{sec:problem_formulation}
+%Illegal logging is a very serious issue in Madagascar, where valuable trees such as rosewood and ebony are illegally cut down and harvested every day, at a growing rate.
+We borrow the description of the model from~\cite{mc2016preventing}, where the interactions among the different groups of resources are represented both at strategic and tactical levels. After describing the model, we also sketch the current exact approach to solve the problem.
+
+\subsection{Simultaneous Optimization of Resource Teams and Tactics (SORT)}
+As customary in the literature, this is a 2-player game, where a Defender $\mathcal{D}$ faces an Attacker $\mathcal{A}$. The environment is modeled as a graph $G=(V,E)$, where the nodes correspond to different areas and the edges represent the connections among them. There are three types of nodes: source nodes $s \in S \subset V$, target nodes $t \in T \subset V$ and intermediate nodes. Source nodes $s_i$ are the starting points for the illegal loggers, e.g., villages, while target nodes $t_j$ are areas with valuable trees, each characterized by a value $\tau(t_j)$ that depends on the real domain. The goal of the Attacker \Att~is traversing the graph from a source to a target without being detected by the Defender \Def. Thus, the pure strategies $A_i$ of \Att~are all the possible paths from any source $s_i$ to any target $t_j$. On the other side, the \Def~wants to intercept \Att~while it is moving along the edges. The Defender has a budget $B$ she can spend to build a team of resources that can be chosen from a pool. There are $K = \{1,2,\ldots,k\}$ types of resources, each characterized by a cost $c_k$, a number of edges $L_k$ it can cover and a detection probability $P_k$ of identifying \Att. Indeed, as often happens in reality, the resources may not be able to perfectly detect \Att. Thus, given that some team $\lambda$ has been built by \Def, her the pure strategies $X_j(\lambda)$ are all the possible allocations of the resources of team $\lambda$ to the edges of the graph.
+
+The probability of intecepting \Att~on edge $e$ is equal to:
+
+\begin{equation*}
+P(e,X_i(\lambda)) = 1 - \prod_1^{K}(1-P_k)^{m_{k,e}}
+\end{equation*}
+
+where $m_{k,e}$ is the number of resources of type $k$ (a.k.a. its multiplicity) that are covering $e$. The protection that $X_i(\lambda)$ can ensure against $A_j$ is equal to the following probability:
+
+\begin{equation*}
+P(X_i(\lambda),A_j) = 1 - \prod_{e \in A_j}(1-P(e,X_i(\lambda)))
+\end{equation*}
+
+The game is zero-sum: if \Def~can detect \Att, both players get a utility equal to $0$, while if the Attacker can complete its attack, it will get the value $\tau(t_i)$ of target $t_i$ she attacked and the Defender will lose the same amount, getting a utility equal to $-\tau(t_i)$. Being the game value a function of some team $\lambda$, we denote it as $V(\lambda)$. In Table~\ref{tab:symbols}, we report all the symbols we adopt throughout the paper.
+
+\begin{table}[htbp]
+    \centering
+\begin{tabular}{|l|l|}
+	\hline
+    Symbol & Meaning \\ \hline
+    $\mathcal{D}$ & Defender \\ \hline
+    $\mathcal{A}$ & Attacker \\ \hline
+    $G = (V,E)$ & Graph modeling the environment\\ \hline
+    $t_i$ & $i$-th target \\ \hline
+    $\tau(t_i)$ & Value of target $t_i$ \\ \hline \hline
+    $B$ & Budget available to $\mathcal{D}$ to build a team \\ \hline
+    $r_i$ & $i$-th resource \\ \hline
+    $L_i$ & Number of edges covered by $r_i$ \\ \hline
+    $P_i$ & Detection probability of $r_i$ \\ \hline
+    $c_i$ & Cost of $r_i$ \\ \hline \hline
+    $K$ & Set of types of possible resources \\ \hline
+    $A_j$ & $\mathcal{A}$'s $j$-th pure strategy \\ \hline
+    $\textbf{a}$ & $\mathcal{A}$'s mixed strategy \\ \hline
+    $\lambda$ & Generic team of resources \\ \hline
+    $X_i(\lambda)$ & $i$-th $\mathcal{D}$'s pure strategy given team $\lambda$\\ \hline
+    $\textbf{x}$ & $\mathcal{D}$'s mixed strategy \\ \hline  
+\end{tabular}
+\caption{Symbols table.}
+ \label{tab:symbols}
+\end{table}
+
+\subsection{FORTIFY}
+Solving SORT requires to build a candidate team and then computing its value, obtained by best allocating its resources on the edges of the graph. Such value corresponds to the utility for the Defender. Unfortunately, solving exactly this problem requires exponential time, being it \textsf{NP}-hard. Nevertheless, an exact algorithm, FORTIFY (Forming Optimal Response Teams for Forest safetY), has been proposed in~\cite{mc2016preventing}: such algorithm integrates the analysis of the strategic and tactical aspects of the problem to search the space of teams efficiently. First, it enumerates all teams $\lambda$ that maximally saturate the budget $B$. Then, it uses a three-layers hierarchical representation NSG to evaluate the performance of teams at different levels of detail. Starting from the full representation of the game, each layer abstracts away additional details to approximate the game value $V(\lambda)$. Finally, a team is discarded if its value is lower than some bound. In other words, FORTIFY adopts fast methods to quickly evaluate upper bounds on the utilities for specific teams and exploits such bounds to select the most promising team to evaluate more in detail, iteratively tightening the bounds as the search progresses, until the optimal team is identified. The main drawback of this approach is the limited scalability. In fact, either when the numbers of resources or the budget increase, on one side the number of teams to evaluate increase dramatically, on the other side the bounds are not tighten enough, meaning that a lot of teams will reach the last layer, the one that solves the actual game, which is the most expensive in terms of computational cost.

@@ -1,0 +1,15 @@
+Note: ./Random25Den1Res2Part1.java uses unchecked or unsafe operations.
+Note: Recompile with -Xlint:unchecked for details.
+Exception in thread "main" ilog.concert.IloException: IloCP::getValue - variable is not fixed
+	at ilog.cp.cppimpl.cp_wrapJNI.IloCP_getValue__SWIG_3(Native Method)
+	at ilog.cp.cppimpl.IloCP.getValue(IloCP.java:365)
+	at ilog.cp.IloCP.getValue(IloCP.java:7589)
+	at ilog.cp.IloCP.getValue(IloCP.java:7572)
+	at teamBuildingSolvers.DefenderOracle.BRDefenderP.getDefenderAllocation(BRDefenderP.java:93)
+	at teamBuildingSolvers.DefenderOracle.DefenderOracle.getDefenderAllocation(DefenderOracle.java:60)
+	at teamBuildingSolvers.RuggedBetterResponsesCutoff.run(RuggedBetterResponsesCutoff.java:2420)
+	at search.teamNode.setFullBetterRuggedEvaluation(teamNode.java:223)
+	at search.Search.PQSearch(Search.java:431)
+	at Random25Den1Res2Part1.PQSearch(Random25Den1Res2Part1.java:2265)
+	at Random25Den1Res2Part1.main(Random25Den1Res2Part1.java:2349)
+make: *** [Experiment.run] Error 1

@@ -1,0 +1,152 @@
+\begin{thebibliography}{10}
+
+\bibitem{afpa16illegal}
+AF\&PA.
+\newblock \url{www.afandpa.org/issues/issues-group/illegal-logging}, 2016.
+
+\bibitem{allnutt2013mapping}
+T.~F. Allnutt, G.~P. Asner, C.~D. Golden, and G.~V.~N. Powell.
+\newblock Mapping recent deforestation and forest disturbance in northeastern
+  madagascar.
+\newblock {\em TROP CONSERV SCI}, 6(1):1--15, 2013.
+
+\bibitem{andonov2000unbounded}
+R.~Andonov, V.~Poirriez, and S.~Rajopadhye.
+\newblock Unbounded knapsack problem: Dynamic programming revisited.
+\newblock {\em EUR J OPER RES}, 123(2):394--407, 2000.
+
+\bibitem{bdg2015advpatr}
+N.~Basilico, G.~De~Nittis, and N.~Gatti.
+\newblock Adversarial patrolling with spatially uncertain alarm signals.
+\newblock {\em arXiv:1506.02850}, 2015.
+
+\bibitem{basilico2016multi}
+N.~Basilico, G.~De~Nittis, and N.~Gatti.
+\newblock Multi-resource defensive strategies for patrolling games with alarm
+  systems.
+\newblock {\em arXiv:1606.02221}, 2016.
+
+\bibitem{debenignis2016}
+N.~Basilico, G.~De~Nittis, and N.~Gatti.
+\newblock A security game combining patrolling and alarm-triggered responses
+  under spatial and detection uncertainties.
+\newblock In {\em {AAAI}}, 2016.
+
+\bibitem{conitzer2006computing}
+V.~Conitzer and T.~Sandholm.
+\newblock Computing the optimal strategy to commit to.
+\newblock In {\em {EC}}, pages 82--90, 2006.
+
+\bibitem{dhital2015issues}
+N.~Dhital, R.~R. Vololomboahangy, and D.~P. Khasa.
+\newblock Issues and challenges of forest governance in madagascar.
+\newblock {\em {CAN J DEV STUD}}, 36(1):38--56, 2015.
+
+\bibitem{eppstein2008studying}
+D.~Eppstein and M.~T. Goodrich.
+\newblock Studying (non-planar) road networks through an algorithmic lens.
+\newblock In {\em {SIGSPATIAL}}, page~16, 2008.
+
+\bibitem{fang2015security}
+F.~Fang, P.~Stone, and M.~Tambe.
+\newblock When security games go green: Designing defender strategies to
+  prevent poaching and illegal fishing.
+\newblock In {\em {IJCAI}}, 2015.
+
+\bibitem{feige1998threshold}
+U.~Feige.
+\newblock A threshold of ln n for approximating set cover.
+\newblock {\em {JACM}}, 45(4):634--652, 1998.
+
+\bibitem{jain2012overview}
+M.~Jain, B.~An, and M.~Tambe.
+\newblock An overview of recent application trends at the {AAMAS} conference:
+  Security, sustainability, and safety.
+\newblock {\em {AI MAG}}, 33(3):14--28, 2012.
+
+\bibitem{jain2013security}
+M.~Jain, V.~Conitzer, and M.~Tambe.
+\newblock Security scheduling for real-world networks.
+\newblock In {\em {AAMAS}}, pages 215--222, 2013.
+
+\bibitem{jain2011double}
+M.~Jain, D.~Korzhyk, O.~Van{\v{e}}k, V.~Conitzer, M.~P{\v{e}}chou{\v{c}}ek, and
+  M.~Tambe.
+\newblock A double oracle algorithm for zero-sum security games on graphs.
+\newblock In {\em {AAMAS}}, pages 327--334, 2011.
+
+\bibitem{johnson2012patrol}
+M.~P. Johnson, F.~Fang, and M.~Tambe.
+\newblock Patrol strategies to maximize pristine forest area.
+\newblock In {\em {AAAI}}, 2012.
+
+\bibitem{khuller1999budgeted}
+S.~Khuller, A.~Moss, and J.~S. Naor.
+\newblock The budgeted maximum coverage problem.
+\newblock {\em {INFORM PROCESS LETT}}, 70(1):39--45, 1999.
+
+\bibitem{korzhyk2010complexity}
+D.~Korzhyk, V.~Conitzer, and R.~Parr.
+\newblock Complexity of computing optimal stackelberg strategies in security
+  resource allocation games.
+\newblock In {\em {AAAI}}, 2010.
+
+\bibitem{mc2016preventing}
+S.~Mc~Carthy, M.~Tambe, C.~Kiekintveld, M.~L. Gore, and A.~Killion.
+\newblock Preventing illegal logging: Simultaneous optimization of resource
+  teams and tactics for security.
+\newblock In {\em {AAAI}}, 2016.
+
+\bibitem{nellemann2012green}
+C.~Nellemann et~al.
+\newblock {\em Green carbon, black trade: illegal logging, tax fraud and
+  laundering in the world's tropical forests}.
+\newblock United Nations Environment Programme, GRID-Arendal, 2012.
+
+\bibitem{nguyen2015making}
+T.~H. Nguyen, F.~M. Delle~Fave, D.~Kar, A.~S. Lakshminarayanan, A.~Yadav,
+  M.~Tambe, N.~Agmon, A.~J. Plumptre, M.~Driciru, F.~Wanyama, et~al.
+\newblock Making the most of our regrets: Regret-based solutions to handle
+  payoff uncertainty and elicitation in green security games.
+\newblock In {\em {GameSec}}, pages 170--191, 2015.
+
+\bibitem{okamoto2012solving}
+S.~Okamoto, N.~Hazon, and K.~Sycara.
+\newblock Solving non-zero sum multiagent network flow security games with
+  attack costs.
+\newblock In {\em AAMAS}, pages 879--888, 2012.
+
+\bibitem{papadaki2016patrolling}
+K.~Papadaki, S.~Alpern, T.~Lidbetter, and A.~Morton.
+\newblock Patrolling a border.
+\newblock {\em OPER RES}, 64(6):1256--1269, 2016.
+
+\bibitem{tacconi2012illegal}
+L.~Tacconi.
+\newblock {\em Illegal logging: law enforcement, livelihoods and the timber
+  trade}.
+\newblock Earthscan, 2012.
+
+\bibitem{tambe2011security}
+M.~Tambe.
+\newblock {\em Security and game theory: algorithms, deployed systems, lessons
+  learned}.
+\newblock Cambridge University Press, 2011.
+
+\bibitem{toyne2002timber}
+P.~Toyne, C.~O’Brien, and R.~Nelson.
+\newblock The timber footprint of the g8 and china: Making the case for green
+  procurement by government.
+\newblock {\em WWF International, Version}, 2, 2002.
+
+\bibitem{von2004leadership}
+B.~Von~Stengel and S.~Zamir.
+\newblock Leadership with commitment to mixed strategies.
+\newblock 2004.
+
+\bibitem{wwf15illegal}
+WWF.
+\newblock \url{www.worldwildlife.org/initiatives/stopping-illegal-logging},
+  2016.
+
+\end{thebibliography}

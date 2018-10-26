@@ -1,0 +1,33 @@
+----------------------------------------
+Begin PBS Prologue Wed Jul 20 15:05:47 PDT 2016
+Job ID:            20702083.hpc-pbs2.hpcc.usc.edu
+Username:          saramarm
+Group:             csci-ar
+Project:           default
+Name:              BigRandom20.pbs
+Queue:             tambe
+Shared Access:     no
+All Cores:         no
+Has MIC:           no
+Nodes:             hpc3444 
+TMPDIR:            /tmp/20702083.hpc-pbs2.hpcc.usc.edu
+End PBS Prologue Wed Jul 20 15:05:48 PDT 2016
+----------------------------------------
+javac -d . -classpath ./Jars/jgrapht-jdk1.6.jar:./Jars/mxgraph-all.jar:/home/rcf-40/saramarm/AAAI16/Jars/cplex.jar:./Jars/ILOG.CP.jar:./Jars/cpjar.jar: ./BigRandom20.java
+LD_LIBRARY_PATH=/home/rcf-40/saramarm/AAAI16/lib:/home/rcf-40/saramarm/AAAI16/lib::$LD_LIBRARY_PATH java  -classpath ./Jars/jgrapht-jdk1.6.jar:./Jars/mxgraph-all.jar:/home/rcf-40/saramarm/AAAI16/Jars/cplex.jar:./Jars/ILOG.CP.jar:./Jars/cpjar.jar::. BigRandom20 
+Components: 19
+1----------------------------------------
+Begin PBS Epilogue Thu Jul 21 15:05:52 PDT 2016
+Job ID:           20702083.hpc-pbs2.hpcc.usc.edu
+Username:         saramarm
+Group:            csci-ar
+Job Name:         BigRandom20.pbs
+Session:          36214
+Limits:           neednodes=1:ppn=4,nodes=1:ppn=4,walltime=24:00:00
+Resources:        cput=84:04:00,energy_used=0,mem=902044kb,vmem=36182608kb,walltime=24:00:05
+Queue:            tambe
+Shared Access:    no
+Has MIC:          no
+removed `/scratch'
+End PBS Epilogue Thu Jul 21 15:05:52 PDT 2016
+----------------------------------------

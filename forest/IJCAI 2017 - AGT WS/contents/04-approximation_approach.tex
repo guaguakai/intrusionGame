@@ -1,0 +1,77 @@
+\section{Towards an approximation approach}
+
+For the reasons stated in the previous section, we are naturally driven to study approximation algorithms for our problem, looking for efficient algorithms, along with theoretical guarantees w.r.t. the quality of the solution they provide.
+
+\subsection{The hardness of approximating SORT}
+Before proposing any algorithm, we tackle the approximation problem studying its complexity.
+
+%Unfortunately, also in this case, the results are negative.
+
+\begin{theorem}\label{thm:apx_hardness}
+The problem of computing the optimal team, SORT, is \textsf{APX}-complete.
+\end{theorem}
+
+\noindent
+\textit{Proof skecth}. In order to prove the \textsf{APX}-completeness, we have to show the \textsf{APX}-hardness and the membership of SORT to \textsf{APX}.
+
+\noindent
+\textit{\textsf{APX}-hardness}. We observe that approximating our problem corresponds to approximating the value of a submodular function, namely $f_d$, subject to a budgetary constraint. But this problem is actually a special case of the Maxmimum Coverage Problem with cardinality constraints, which is known to be \textsf{APX}-hard~\cite{feige1998threshold}. Thus, also our problem results being \textsf{APX}-hard. \hfill $\Box$
+
+\noindent
+\textit{Membership to \textsf{APX}}. As we have seen, approximating our problem corresponds to approximating the value of a submodular function subject to a budgetary constraint. To solve this problem, \cite{khuller1999budgeted} provides a greedy algorithm with an approximation factor of $1-\frac{1}{e} \approx 0.63$.
+
+This concludes the proof. \hfill $\Box$
+
+
+Starting from these results, we design some heuristics to approximate our solution. Due to the efficiency and the effectiveness shown by the greedy approach in solving several problems close to ours, we resort to it to build our approximation algorithms. 
+
+
+\subsection{A Polynomial Algorithm for Team formation guided by Heuristics (PATH)}
+Given that~\cite{khuller1999budgeted} provides an algorithm with the best approximation factor, the first step would be adopting it. However, we cannot employ such algorithm to solve our problem since it computes the value for all the singletons, couples and triplets and then follows a greedy approach to maximize the submodular function until the budget is violated. But in SORT evaluating all the singletons, couples and triplets requires too much computational effort (remember that computing $V(\lambda)$ is hard) and so we have to look for another method. In the same paper, i.e.,~\cite{khuller1999budgeted}, another algorithm is proposed: it solves the problems for the singletons (in our case, finding the best allocation for the single resources) and then follows a greedy approach. Such algorithm provides a $1-\frac{1}{\sqrt{e}} \approx 0.39$\footnote{Even though the algorithm corresponds to the well-known greedy algorithm for the Knapsack problem, we observe we cannot state the $\frac{1}{2}$ approximation because of the submodularity of function $f_d$.}.
+
+%We report the pseudo-code in Algorithm~\ref{alg:approximation}. 
+
+
+%Being scalability our goal, we would like to design an exact algorithm as fast as possible. The fastest algorithm should be able to select the best team in polynomial time and then evaluate it exactly to compute the value of the game. Unfortunately, as discussed in the previous section, this is not feasible. However, we can design some approximation algorithms that, although not providing theoretical guarantees, are indeed fast. To do this, we resort to an incremental approach. Moreover, being our problem close to the Knapsack problem (see the reduction in~\cite{mc2016preventing}), we do it in a greedy fashion. The pseudo--code is reported in Algorithm~\ref{alg:approximation}.
+
+PATH takes as input the graph $G$, the set of the features of the resources $L,P,c$ and the budget $B$ the Defender can use to build the team. First, it sets team $\lambda = \emptyset$ and initialize to $0$ an array of size $|L|$ (Lines~\ref{alg:init_1}--\ref{alg:init_2}). Then, it assigns a value to each resource $r_i$ according to some heuristic $h(r_i)$ and sort the resources in descending order according to such values, invoking the function \texttt{Sort}. This way, we obtain an ordered sequence of resources $ R' = \langle r_1', \ldots, r_k'\rangle$ (Lines~\ref{alg:give_values}--\ref{alg:sort}).  Starting from $i=1$, PATH adds to $\lambda$ as many units as possible of $r_i'$ until the budget constraint is violated. If so, it repeats this procedure for $r_{i+1}'$. The algorithm continues adding resources to $\lambda$ this way until $i=|K|$ (Lines~\ref{alg:insert_init}--\ref{alg:insert_end}). Finally, PATH evaluates $\lambda$ calling the \texttt{ComputeExactValue} (Line~\ref{alg:evaluate}).
+
+\begin{algorithm}\caption{\texttt{PATH}($G,L,P,c,B$)}\label{alg:approximation}
+\begin{algorithmic}[1]
+\State $\lambda = \emptyset$\label{alg:init_1}
+\State $\omega_i \leftarrow 0, i=1,\ldots,|K|$\label{alg:init_2}
+
+\ForAll{$i \in K$}\label{alg:give_values}
+	\State $\omega(r_i) = h(\{r_i\})$
+\EndFor
+\State $R' \leftarrow $\texttt{Sort}$(R,\omega)$\label{alg:sort}
+
+\ForAll{$r_i \in R'$}\label{alg:insert_init}
+	\While{$B - c_i \geq 0$}
+		\State $\lambda \leftarrow \lambda \cup \{r_i\}$
+		\State $B \leftarrow B - c_i$
+	\EndWhile
+\EndFor\label{alg:insert_end}
+
+\State $V = $\texttt{ComputeExactValue}$(\lambda)$\label{alg:evaluate}
+\State \Return $V$
+\end{algorithmic}
+\end{algorithm}
+
+Now, we turn to the core of PATH, namely the heuristic we should employ to sort the resources. If we adopt $h_{v,c}(r_i) = \frac{f(\{r_i\})}{c_i}$ (where $_v, _c$ denote \textit{value} and \textit{cost}, respectively), then PATH completely resembles the algorithm provided in~\cite{khuller1999budgeted}. Thus, adopting $h_{v,c}$ we know we have a guaranteed lower bound of 0.39 w.r.t. the optimal solution. From this incremental greedy approach, we can define other simple but very fast heuristics that can be inserted in PATH. In particular, we provide three additional heuristics, designed according to two criteria. First, we take into account either the \textit{features} of the resource ($h_f(\cdot)$) or the \textit{value} obtained solving exactly the game with a team composed only of that resource ($h_v(\cdot)$). Moreover, we can also include the cost of the resource ($h_c(\cdot)$). Adopting such criteria, we design the following heuristics:
+\begin{itemize}
+\item $h_{f}(r_i) = L_i \cdot P_i$;
+\item $h_{f,c}(r_i) = \frac{L_i \cdot P_i}{c_i}$;
+\item $h_{v}(r_i) = f(\{r_i\})$;
+\item $h_{v,c}(r_i) = \frac{f(\{r_i\})}{c_i}$\footnote{Even though we have already introduced and analyzed such heuristic, we report it here for the sake of completness.}.
+\end{itemize}
+
+The main drawback in employing such heuristics is that we do not have guarantees on the quality of the solution computed by PATH when adopting them w.r.t. the optimal solution computed by FORTIFY (except for $h_{v,c}$). However, in the next section we show that, despite the lack of explicit theoretical guarantees, the quality of the solution and time required by such heuristics are very good w.r.t. FORTIFY.
+
+%Even though adopting either $h_{f,c}(r_i)$ or $h_{v,c}(r_i)$ makes Algorithm~\ref{alg:approximation} resembling the well-known Knapsack greedy approximation algorithm~\cite{dantzig1957discrete}, unfortunately the $\frac{1}{2}$ lower bound guaranteed in that case does not hold for our problem because of the submodularity of $f_d$. On the other side, thanks to the submodularity of $f_d$, we observe that $h_{v,c}(r_i)$ maps directly to the approximation algorithm proposed in~\cite{khuller1999budgeted} to compute the value of a submodular function with budgetary constraints. Thus, the following result holds.
+%
+%\begin{proposition}
+%Let $APX$ be the value obtained applying Algorithm~\ref{alg:approximation} with $h(r_i) = h_{v,c}(\{r_i\})$ and $OPT$ be the exact value obtained applying FORTIFY. Then: $\frac{APX}{OPT} \geq \left(1-\frac{1}{\sqrt{e}} \right) \approx 0.39$.
+%\end{proposition}
+%
+%In~\cite{khuller1999budgeted}, another greedy algorithm is presented. Such algorithm works as follow: it computes the value for all the singletons, couples and triplets and then follows the usual greedy approach until the budget is violated. The approximation ratio is $1-\frac{1}{e} \approx 0.63$. Unfortunately, we cannot adopt this algorithm because evaluating all the singletons, couples and triplets requires too much computational effort (remember that computing $V(\lambda)$ is hard). By the way, since there is a polynomial algorithm with a constant-factor approximation ratio, we can state the following theorem.

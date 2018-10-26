@@ -1,0 +1,57 @@
+----------------------------------------
+Begin PBS Prologue Wed Jul 20 15:05:47 PDT 2016
+Job ID:            20702081.hpc-pbs2.hpcc.usc.edu
+Username:          saramarm
+Group:             csci-ar
+Project:           default
+Name:              BigRandom15.pbs
+Queue:             tambe
+Shared Access:     no
+All Cores:         no
+Has MIC:           no
+Nodes:             hpc3443 
+TMPDIR:            /tmp/20702081.hpc-pbs2.hpcc.usc.edu
+End PBS Prologue Wed Jul 20 15:05:47 PDT 2016
+----------------------------------------
+javac -d . -classpath ./Jars/jgrapht-jdk1.6.jar:./Jars/mxgraph-all.jar:/home/rcf-40/saramarm/AAAI16/Jars/cplex.jar:./Jars/ILOG.CP.jar:./Jars/cpjar.jar: ./BigRandom15.java
+LD_LIBRARY_PATH=/home/rcf-40/saramarm/AAAI16/lib:/home/rcf-40/saramarm/AAAI16/lib::$LD_LIBRARY_PATH java  -classpath ./Jars/jgrapht-jdk1.6.jar:./Jars/mxgraph-all.jar:/home/rcf-40/saramarm/AAAI16/Jars/cplex.jar:./Jars/ILOG.CP.jar:./Jars/cpjar.jar::. BigRandom15 
+Components: 21
+12[1.0, 1.0, 0.0, 0.0, 0.0, 0.0],c: 13,gv: 0.0 0.0
+[1.0, 0.0, 1.0, 0.0, 0.0, 0.0],c: 15,gv: 0.0 0.0
+[1.0, 0.0, 0.0, 0.0, 1.0, 0.0],c: 13,gv: 0.0 0.0
+[1.0, 0.0, 0.0, 0.0, 0.0, 1.0],c: 15,gv: 0.0 0.0
+[0.0, 1.0, 0.0, 1.0, 0.0, 0.0],c: 13,gv: 0.0 0.0
+[0.0, 0.0, 1.0, 1.0, 0.0, 0.0],c: 15,gv: 0.0 0.0
+[0.0, 0.0, 0.0, 1.0, 1.0, 0.0],c: 13,gv: 0.0 0.0
+[0.0, 0.0, 0.0, 1.0, 0.0, 1.0],c: 15,gv: 0.0 0.0
+[3.0, 0.0, 0.0, 0.0, 0.0, 0.0],c: 15,gv: 0.0 0.0
+[2.0, 0.0, 0.0, 1.0, 0.0, 0.0],c: 15,gv: 0.0 0.0
+[1.0, 0.0, 0.0, 2.0, 0.0, 0.0],c: 15,gv: 0.0 0.0
+[0.0, 0.0, 0.0, 3.0, 0.0, 0.0],c: 15,gv: 0.0 0.0
+1[1.0, 1.0, 0.0, 0.0, 0.0, 0.0],c: 13,gv: 0.0 0.0
+[1.0, 0.0, 1.0, 0.0, 0.0, 0.0],c: 15,gv: 0.0 0.0
+[1.0, 0.0, 0.0, 0.0, 1.0, 0.0],c: 13,gv: 0.0 0.0
+[1.0, 0.0, 0.0, 0.0, 0.0, 1.0],c: 15,gv: 0.0 0.0
+[0.0, 1.0, 0.0, 1.0, 0.0, 0.0],c: 13,gv: 0.0 0.0
+[0.0, 0.0, 1.0, 1.0, 0.0, 0.0],c: 15,gv: 0.0 0.0
+[0.0, 0.0, 0.0, 1.0, 1.0, 0.0],c: 13,gv: 0.0 0.0
+[0.0, 0.0, 0.0, 1.0, 0.0, 1.0],c: 15,gv: 0.0 0.0
+[3.0, 0.0, 0.0, 0.0, 0.0, 0.0],c: 15,gv: 0.0 0.0
+[2.0, 0.0, 0.0, 1.0, 0.0, 0.0],c: 15,gv: 0.0 0.0
+[1.0, 0.0, 0.0, 2.0, 0.0, 0.0],c: 15,gv: 0.0 0.0
+[0.0, 0.0, 0.0, 3.0, 0.0, 0.0],c: 15,gv: 0.0 0.0
+11----------------------------------------
+Begin PBS Epilogue Thu Jul 21 15:06:14 PDT 2016
+Job ID:           20702081.hpc-pbs2.hpcc.usc.edu
+Username:         saramarm
+Group:            csci-ar
+Job Name:         BigRandom15.pbs
+Session:          26806
+Limits:           neednodes=1:ppn=4,nodes=1:ppn=4,walltime=24:00:00
+Resources:        cput=84:39:39,energy_used=0,mem=5656996kb,vmem=40639056kb,walltime=24:00:27
+Queue:            tambe
+Shared Access:    no
+Has MIC:          no
+removed `/scratch'
+End PBS Epilogue Thu Jul 21 15:06:14 PDT 2016
+----------------------------------------
