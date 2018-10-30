@@ -1,0 +1,42 @@
+package model.graphutils;
+
+public interface INode extends Comparable<INode>{	
+	public enum NODE_TYPE {SOURCE, INTERMEDIATE, TARGET, VIRTUAL_TARGET;
+		
+	public String toString(){
+		switch(this){
+		case SOURCE: return "S";
+		case INTERMEDIATE: return "I";
+		case TARGET: return "T";
+		case VIRTUAL_TARGET: return "V";
+		default: return "";
+		}	
+	}
+	};
+	
+	public NODE_TYPE getType();
+	
+	public void setType(NODE_TYPE t);
+	
+	public int getPayoff();
+	
+	public void setPayoff(int payoff);
+	
+	public int getId() ;
+	
+	public int hashCode();
+	
+	public boolean equals(Object obj);
+	
+	public String toString();
+	
+	public void setLatLon(double lat, double lon);
+
+	public double getLat();
+	
+	public void setOsmId(long id);
+
+	public long getOsmId();
+	
+	public double getLon();
+}

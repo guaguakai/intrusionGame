@@ -1,0 +1,101 @@
+<!-- Generator: GNU source-highlight 2.2
+by Lorenzo Bettini
+http://www.lorenzobettini.it
+http://www.gnu.org/software/src-highlite -->
+<pre><tt>01: <b><font color="#007D00">// --------------------------------------------------------------------------</font></b>
+02: <b><font color="#007D00">// Licensed Materials - Property of IBM</font></b>
+03: <b><font color="#007D00">//</font></b>
+04: <b><font color="#007D00">// 5725-A06 5725-A29 5724-Y48 5724-Y49 5724-Y54 5724-Y55</font></b>
+05: <b><font color="#007D00">// Copyright IBM Corporation 1998, 2013. All Rights Reserved.</font></b>
+06: <b><font color="#007D00">//</font></b>
+07: <b><font color="#007D00">// Note to U.S. Government Users Restricted Rights:</font></b>
+08: <b><font color="#007D00">// Use, duplication or disclosure restricted by GSA ADP Schedule</font></b>
+09: <b><font color="#007D00">// Contract with IBM Corp.</font></b>
+10: <b><font color="#007D00">// --------------------------------------------------------------------------</font></b>
+11: 
+12: <b><font color="#007D00">// From Bradley, Hax, Magnanti, Applied Mathematical Programming, </font></b>
+13: <b><font color="#007D00">// Chapter 9, Exercise 24</font></b>
+14: 
+15: <b><font color="#007D00">//  - A Custom Pilot Chemical Company is a chemical manufacturer that produces</font></b>
+16: <b><font color="#007D00">// batches of specialty chemicals to order. Principal equipment consists of</font></b>
+17: <b><font color="#007D00">// eight interchangable reactor vessels, five interchangeable distillation</font></b>
+18: <b><font color="#007D00">// columns, four large interchangeable centrifuges, and a network of switchable</font></b>
+19: <b><font color="#007D00">// piping and storage tanks. Customer demand comes in the form of orders for</font></b>
+20: <b><font color="#007D00">// batches of one or more specialty chemicals, normally to be delivered</font></b>
+21: <b><font color="#007D00">// simultaneously for further use by the customer.</font></b>
+22: 
+23: <b><font color="#007D00">// - An order consists of a set of jobs. Each job has an optional precedence</font></b>
+24: <b><font color="#007D00">// requirement, arrival week of the job, duration of the job in weeks, the week</font></b>
+25: <b><font color="#007D00">// that the job is due, the number of reactors required, distillation columns</font></b>
+26: <b><font color="#007D00">// required, and centrifuges required.</font></b>
+27: 
+28: <b><font color="#007D00">// - Find a schedule of the orders and jobs to minimize the completion time of all</font></b>
+29: <b><font color="#007D00">// orders</font></b>
+30: 
+31: 
+32: <b><font color="#0000FF">using</font></b> <b><font color="#0000FF">CP</font></b>;
+33: 
+34: <b><font color="#0000FF">int</font></b> NbReactors    = ...;
+35: <b><font color="#0000FF">int</font></b> NbColumns     = ...;
+36: <b><font color="#0000FF">int</font></b> NbCentrifuges = ...;
+37: 
+38: <b><font color="#0000FF">execute</font></b>{
+39:         }
+40:         
+41: tuple JobIndex {
+42:   string ordernumber;
+43:   <b><font color="#0000FF">int</font></b>    jobnum;
+44: };
+45: 
+46: tuple JobInfo {
+47:   <b><font color="#0000FF">int</font></b> jobprec;
+48:   <b><font color="#0000FF">int</font></b> arrival;
+49:   <b><font color="#0000FF">int</font></b> duration;
+50:   <b><font color="#0000FF">int</font></b> weekdue;
+51:   <b><font color="#0000FF">int</font></b> reactors;
+52:   <b><font color="#0000FF">int</font></b> columns;
+53:   <b><font color="#0000FF">int</font></b> centrifuges;
+54: };
+55: 
+56: tuple JobData {
+57:   JobIndex ind;
+58:   JobInfo  info;
+59: };
+60: {JobData} jobs = ...;
+61: 
+62: {JobIndex} joblist = { i | &lt;i,j&gt; <b><font color="EA7D00">in</font></b> jobs };
+63: assert ( card(joblist) == card(jobs) );
+64: 
+65: JobInfo datarray[joblist];
+66: 
+67: execute {
+68:   <b><font color="EA7D00">for</font></b>(<b><font color="EA7D00">var</font></b> j <b><font color="EA7D00">in</font></b> jobs)
+69:     datarray[j.ind] = j.info;
+70: };
+71: 
+72: dvar interval a[j in joblist] 
+73:   in datarray[j].arrival..datarray[j].weekdue 
+74:   size datarray[j].duration;
+75: 
+76: cumulFunction reactors    = sum (j in joblist) pulse(a[j], datarray[j].reactors);
+77: cumulFunction columns     = sum (j in joblist) pulse(a[j], datarray[j].columns);
+78: cumulFunction centrifuges = sum (j in joblist) pulse(a[j], datarray[j].centrifuges);
+79: 
+80: minimize max(j in joblist) endOf(a[j]);
+81: subject to {
+82:   forall (j <b><font color="EA7D00">in</font></b> joblist) {
+83:     <b><font color="EA7D00">if</font></b> (datarray[j].jobprec &gt; 0) {
+84:       endBeforeStart(a[&lt;j.ordernumber,datarray[j].jobprec&gt;], a[j]);
+85:     }
+86:   }
+87:   reactors    &lt;= NbReactors;
+88:   columns     &lt;= NbColumns;
+89:   centrifuges &lt;= NbCentrifuges;
+90: };
+91: 
+92: execute {
+93:   <b><font color="EA7D00">for</font></b>(<b><font color="EA7D00">var</font></b> j <b><font color="EA7D00">in</font></b> joblist) {
+94:     writeln(j + <b><font color="#8A2BE2">" on ["</font></b> + a[j].start + <b><font color="#8A2BE2">","</font></b> + a[j].end + <b><font color="#8A2BE2">")"</font></b>);
+95:   }
+96: }
+</tt></pre>

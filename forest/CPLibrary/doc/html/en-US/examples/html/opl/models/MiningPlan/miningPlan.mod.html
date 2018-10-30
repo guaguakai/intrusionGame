@@ -1,0 +1,90 @@
+<!-- Generator: GNU source-highlight 2.2
+by Lorenzo Bettini
+http://www.lorenzobettini.it
+http://www.gnu.org/software/src-highlite -->
+<pre><tt>01: <b><font color="#007D00">// --------------------------------------------------------------------------</font></b>
+02: <b><font color="#007D00">// Licensed Materials - Property of IBM</font></b>
+03: <b><font color="#007D00">//</font></b>
+04: <b><font color="#007D00">// 5725-A06 5725-A29 5724-Y48 5724-Y49 5724-Y54 5724-Y55</font></b>
+05: <b><font color="#007D00">// Copyright IBM Corporation 1998, 2013. All Rights Reserved.</font></b>
+06: <b><font color="#007D00">//</font></b>
+07: <b><font color="#007D00">// Note to U.S. Government Users Restricted Rights:</font></b>
+08: <b><font color="#007D00">// Use, duplication or disclosure restricted by GSA ADP Schedule</font></b>
+09: <b><font color="#007D00">// Contract with IBM Corp.</font></b>
+10: <b><font color="#007D00">// --------------------------------------------------------------------------</font></b>
+11: 
+12: <b><font color="#007D00">// Problem 7 from Model Building in Mathematical Programming, 3rd ed.</font></b>
+13: <b><font color="#007D00">//   by HP Williams</font></b>
+14: <b><font color="#007D00">// </font></b>
+15: <b><font color="#007D00">// Mining </font></b>
+16: <b><font color="#007D00">//</font></b>
+17: <b><font color="#007D00">// This model is described in the documentation. </font></b>
+18: <b><font color="#007D00">//See IDE and OPL &gt; Language and Interfaces Examples.</font></b>
+19: 
+20: <b><font color="#0000FF">int</font></b> NbMines = ...;
+21: <b><font color="#0000FF">range</font></b> Mines = 1..NbMines;
+22: 
+23: <b><font color="#0000FF">int</font></b> NbYears = ...;
+24: <b><font color="#0000FF">range</font></b> Years = 1..NbYears;
+25: <b><font color="#0000FF">range</font></b> Years2 = 2..NbYears;
+26: 
+27: <b><font color="#0000FF">float</font></b> Royalties[Mines] = ...;
+28: <b><font color="#0000FF">float</font></b> LimExtract[Mines] = ...;
+29: <b><font color="#0000FF">float</font></b> LimWork = ...;
+30: <b><font color="#0000FF">float</font></b> OreQual[Mines] = ...;
+31: <b><font color="#0000FF">float</font></b> BlendQual[Years] = ...;
+32: <b><font color="#0000FF">float</font></b> BlendPrice = ...;
+33: <b><font color="#0000FF">float</font></b> DiscountRate = ...;
+34: <b><font color="#0000FF">float</font></b> DiscountFactor[Years];
+35: 
+36: <b><font color="#0000FF">execute</font></b> INITIALIZE {
+37:    DiscountFactor[1] = 1.0;
+38:    <b><font color="EA7D00">for</font></b>(<b><font color="EA7D00">var</font></b> y <b><font color="EA7D00">in</font></b> Years2)
+39:       DiscountFactor[y] = DiscountFactor[y-1]*(1.0-DiscountRate);
+40: }
+41:                            
+42: dvar boolean Work[Mines,Years];
+43: dvar boolean Open[Mines,Years];
+44: dvar float+ Ore[m in Mines][y in Years] in 0..LimExtract[m];
+45: dvar float+ Blend[Years];
+46: 
+47: dexpr float Objective = 
+48:   sum(y in Years) (BlendPrice * DiscountFactor[y] * Blend[y]  
+49:    - sum(m in Mines) Royalties[m] * DiscountFactor[y] * Open[m][y]);
+50: 
+51: maximize Objective;
+52: 
+53: subject to {
+54:   <b><font color="#007D00">// Maximum yearly capacity </font></b>
+55:   forall(m <b><font color="EA7D00">in</font></b> Mines, y <b><font color="EA7D00">in</font></b> Years)
+56:    ctMaxYearCap: Ore[m][y] &lt;= LimExtract[m] * Work[m][y];
+57: 
+58:   <b><font color="#007D00">// Limit on mines worked in a year</font></b>
+59:   forall(y <b><font color="EA7D00">in</font></b> Years)
+60:     ctMinLim: sum(m <b><font color="EA7D00">in</font></b> Mines) Work[m][y] &lt;= LimWork;
+61: 
+62:   <b><font color="#007D00">// Closed mines cannot be worked</font></b>
+63:   forall(m <b><font color="EA7D00">in</font></b> Mines, y <b><font color="EA7D00">in</font></b> Years)
+64:     ctClosedMine: Work[m][y] &lt;= Open[m][y];
+65:    
+66:   <b><font color="#007D00">// Once closed, a mine stays closed</font></b>
+67:   forall(m <b><font color="EA7D00">in</font></b> Mines, y <b><font color="EA7D00">in</font></b> 1..NbYears-1)
+68:     ctStaysClosed: Open[m][y+1] &lt;= Open[m][y];
+69:  
+70:   <b><font color="#007D00">// Quality requirement on blended ore</font></b>
+71:   forall(y <b><font color="EA7D00">in</font></b> Years)
+72:     ctQuality: sum(m <b><font color="EA7D00">in</font></b> Mines) OreQual[m] * Ore[m][y] == BlendQual[y] * Blend[y];
+73: 
+74:   <b><font color="#007D00">// Balance constraint</font></b>
+75:   forall(y <b><font color="EA7D00">in</font></b> Years)
+76:     ctBalance: sum(m <b><font color="EA7D00">in</font></b> Mines) Ore[m][y] == Blend[y];
+77:      
+78:   Work[2][3]==0;
+79:   Work[1][2]==0;
+80:   Work[2][1]==0;
+81:   Work[4][4]==1;
+82:   Work[4][3]==0;
+83:   Work[3][4]==0;
+84:   Work[4][5]==0;
+85: }
+</tt></pre>

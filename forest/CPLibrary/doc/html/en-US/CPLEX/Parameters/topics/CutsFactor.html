@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-us" lang="en-us">
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+<meta name="copyright" content="© Copyright IBM Corporation 2014" />
+<meta name="DC.Rights.Owner" content="© Copyright IBM Corporation 2014" />
+<meta name="security" content="public" />
+<meta name="Robots" content="index,follow" />
+<meta name="DC.Type" content="reference" />
+<meta name="DC.Title" content="row multiplier factor for cuts" />
+<meta name="abstract" content="Limits the number of cuts that can be added." />
+<meta name="Description" content="Limits the number of cuts that can be added." />
+<meta name="DC.subject" content="CPX_PARAM_CUTSFACTOR, CutsFactor, MIP limit, cuts, cut, limiting number of" />
+<meta name="keywords" content="CPX_PARAM_CUTSFACTOR, CutsFactor, MIP limit, cuts, cut, limiting number of" />
+<meta name="DC.Relation" scheme="URI" content="../../../CPLEX/Parameters/topics/introListAlpha.html" />
+<meta name="DC.Date" scheme="iso8601" content="2014-11-18" />
+<meta name="DC.Format" content="XHTML" />
+<meta name="DC.Identifier" content="languageRefTopic1196781122307" />
+<meta name="DC.Language" content="en-us" />
+<meta name="IBM.Country" content="ZZ" />
+<!-- Licensed Materials - Property of IBM -->
+<!-- US Government Users Restricted Rights -->
+<!-- Use, duplication or disclosure restricted by -->
+<!-- GSA ADP Schedule Contract with IBM Corp. -->
+<link rel="stylesheet" type="text/css" href="../../.././ibmdita.css" />
+<link rel="stylesheet" type="text/css" href="../../.././swg_info_common_opti.css" />
+<link rel="Start" href="../../../CPLEX/Parameters/topics/introListAlpha.html" />
+<title>row multiplier factor for cuts</title>
+</head>
+<body role="main" id="languageRefTopic1196781122307">
+<h1 class="title topictitle1">row multiplier factor for cuts</h1>
+<div class="body refbody"><p class="shortdesc">Limits the number of cuts that can be added.</p>
+<div class="section"><h2 class="title sectiontitle">Purpose</h2>    
+    <p class="p">Row multiplier factor for cuts</p>
+</div>
+<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" role="presentation" class="table presentation NoBorder" rules="none" frame="void" border="0"><thead class="thead" align="left"><tr class="row"><th class="entry" valign="top" width="12.5%" id="d150786e36">API</th>
+<th class="entry" valign="top" width="50%" id="d150786e38">Parameter Name</th>
+<th class="entry" valign="top" width="37.5%" id="d150786e40">Name prior to V12.6.0</th>
+</tr>
+</thead>
+<tbody class="tbody"><tr class="row"><td class="entry" valign="top" width="12.5%" headers="d150786e36 ">C</td>
+<td class="entry" valign="top" width="50%" headers="d150786e38 ">CPXPARAM_MIP_Limits_CutsFactor</td>
+<td class="entry" valign="top" width="37.5%" headers="d150786e40 ">CPX_PARAM_CUTSFACTOR</td>
+</tr>
+<tr class="row"><td class="entry" valign="top" width="12.5%" headers="d150786e36 ">C++</td>
+<td class="entry" valign="top" width="50%" headers="d150786e38 ">IloCplex::Param::MIP::Limits::CutsFactor</td>
+<td class="entry" valign="top" width="37.5%" headers="d150786e40 ">CutsFactor (double)</td>
+</tr>
+<tr class="row"><td class="entry" valign="top" width="12.5%" headers="d150786e36 ">Java</td>
+<td class="entry" valign="top" width="50%" headers="d150786e38 ">IloCplex.Param.MIP.Limits.CutsFactor</td>
+<td class="entry" valign="top" width="37.5%" headers="d150786e40 ">CutsFactor (double)</td>
+</tr>
+<tr class="row"><td class="entry" valign="top" width="12.5%" headers="d150786e36 ">.NET</td>
+<td class="entry" valign="top" width="50%" headers="d150786e38 ">Cplex.Param.MIP.Limits.CutsFactor</td>
+<td class="entry" valign="top" width="37.5%" headers="d150786e40 ">CutsFactor (double)</td>
+</tr>
+<tr class="row"><td class="entry" valign="top" width="12.5%" headers="d150786e36 ">OPL</td>
+<td class="entry" valign="top" width="50%" headers="d150786e38 "> </td>
+<td class="entry" valign="top" width="37.5%" headers="d150786e40 ">cutsfactor</td>
+</tr>
+<tr class="row"><td class="entry" valign="top" width="12.5%" headers="d150786e36 ">Python</td>
+<td class="entry" valign="top" width="50%" headers="d150786e38 ">parameters.mip.limits.cutsfactor</td>
+<td class="entry" valign="top" width="37.5%" headers="d150786e40 ">mip.limits.cutsfactor</td>
+</tr>
+<tr class="row"><td class="entry" valign="top" width="12.5%" headers="d150786e36 ">MATLAB</td>
+<td class="entry" valign="top" width="50%" headers="d150786e38 ">Cplex.Param.mip.limits.cutsfactor</td>
+<td class="entry" valign="top" width="37.5%" headers="d150786e40 ">mip.limits.cutsfactor</td>
+</tr>
+<tr class="row"><td class="entry" valign="top" width="12.5%" headers="d150786e36 ">Interactive</td>
+<td class="entry" valign="top" width="50%" headers="d150786e38 ">mip limits cutsfactor</td>
+<td class="entry" valign="top" width="37.5%" headers="d150786e40 ">mip limits cutsfactor</td>
+</tr>
+<tr class="row"><td class="entry" valign="top" width="12.5%" headers="d150786e36 ">Identifier</td>
+<td class="entry" valign="top" width="50%" headers="d150786e38 ">2033</td>
+<td class="entry" valign="top" width="37.5%" headers="d150786e40 ">2033</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section"><h2 class="title sectiontitle">Description</h2><p class="p">Limits
+the number of cuts that can be added. The number of rows in the problem
+with cuts added is limited to <samp class="ph codeph">CutsFactor</samp> 
+times the original number of rows. If the problem is presolved, the
+original number of rows is that from the presolved problem. </p>
+<p class="p">A <samp class="ph codeph">CutsFactor</samp>  of 1.0 or less means
+that no cuts will be generated. </p>
+<p class="p">Because cuts can be
+added and removed during the course of optimization, <samp class="ph codeph">CutsFactor</samp> 
+may not correspond directly to the number of cuts seen in the node
+log or in the summary table at the end of optimization. </p>
+<p class="p paragrouptitle">Values</p>
+<p class="p">Any nonnegative
+number; <strong class="ph b">default</strong>: 4.0 </p>
+</div>
+</div>
+<div class="related-links">
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong> <a class="link" href="../../../CPLEX/Parameters/topics/introListAlpha.html" title="CPLEX parameters, documented here alphabetically by name in the Callable Library (C API), are available in the C++, Java, .NET, and Python APIs, as well as in the Interactive Optimizer, the MathWorks MATLAB connector, and the Excel Connector.">List of CPLEX parameters</a></div>
+</div>
+</div></body>
+</html>

@@ -1,0 +1,115 @@
+<!-- Generator: GNU source-highlight 2.2
+by Lorenzo Bettini
+http://www.lorenzobettini.it
+http://www.gnu.org/software/src-highlite -->
+<pre><tt>001: <b><font color="#007D00">// --------------------------------------------------------------------------</font></b>
+002: <b><font color="#007D00">// Licensed Materials - Property of IBM</font></b>
+003: <b><font color="#007D00">//</font></b>
+004: <b><font color="#007D00">// 5725-A06 5725-A29 5724-Y48 5724-Y49 5724-Y54 5724-Y55</font></b>
+005: <b><font color="#007D00">// Copyright IBM Corporation 1998, 2013. All Rights Reserved.</font></b>
+006: <b><font color="#007D00">//</font></b>
+007: <b><font color="#007D00">// Note to U.S. Government Users Restricted Rights:</font></b>
+008: <b><font color="#007D00">// Use, duplication or disclosure restricted by GSA ADP Schedule</font></b>
+009: <b><font color="#007D00">// Contract with IBM Corp.</font></b>
+010: <b><font color="#007D00">// --------------------------------------------------------------------------</font></b>
+011: 
+012: <b><font color="#007D00">/* ------------------------------------------------------------</font></b>
+013: 
+014: <b><font color="#007D00">Problem Description</font></b>
+015: <b><font color="#007D00">-------------------</font></b>
+016: 
+017: <b><font color="#007D00">This is a basic problem that involves building a house. The masonry,</font></b>
+018: <b><font color="#007D00">roofing, painting, etc.  must be scheduled. Some tasks must</font></b>
+019: <b><font color="#007D00">necessarily take place before others, and these requirements are</font></b>
+020: <b><font color="#007D00">expressed through precedence constraints.</font></b>
+021: 
+022: <b><font color="#007D00">------------------------------------------------------------ */</font></b>
+023: 
+024: <b><font color="#0000FF">using</font></b> <b><font color="#0000FF">CP</font></b>;
+025: 
+026: <b><font color="#0000FF">execute</font></b>{
+027:         }
+028: 
+029: dvar interval masonry    size 35;
+030: dvar interval carpentry  size 15;
+031: dvar interval plumbing   size 40;
+032: dvar interval ceiling    size 15;
+033: dvar interval roofing    size 5;
+034: dvar interval painting   size 10;
+035: dvar interval windows    size 5;
+036: dvar interval facade     size 10;
+037: dvar interval garden     size 5;
+038: dvar interval moving     size 5;
+039: 
+040: subject to {
+041:   endBeforeStart(masonry,   carpentry);
+042:   endBeforeStart(masonry,   plumbing);
+043:   endBeforeStart(masonry,   ceiling);
+044:   endBeforeStart(carpentry, roofing);
+045:   endBeforeStart(ceiling,   painting);
+046:   endBeforeStart(roofing,   windows);
+047:   endBeforeStart(roofing,   facade);
+048:   endBeforeStart(plumbing,  facade);
+049:   endBeforeStart(roofing,   garden);
+050:   endBeforeStart(plumbing,  garden);
+051:   endBeforeStart(windows,   moving);
+052:   endBeforeStart(facade,    moving);
+053:   endBeforeStart(garden,    moving);
+054:   endBeforeStart(painting,  moving);
+055: }
+056: 
+057: execute {
+058:   writeln(<b><font color="#8A2BE2">"Masonry  : "</font></b> + masonry.start   + <b><font color="#8A2BE2">".."</font></b> + masonry.end);
+059:   writeln(<b><font color="#8A2BE2">"Carpentry: "</font></b> + carpentry.start + <b><font color="#8A2BE2">".."</font></b> + carpentry.end);
+060:   writeln(<b><font color="#8A2BE2">"Plumbing : "</font></b> + plumbing.start  + <b><font color="#8A2BE2">".."</font></b> + plumbing.end);
+061:   writeln(<b><font color="#8A2BE2">"Ceiling  : "</font></b> + ceiling.start   + <b><font color="#8A2BE2">".."</font></b> + ceiling.end);
+062:   writeln(<b><font color="#8A2BE2">"Roofing  : "</font></b> + roofing.start   + <b><font color="#8A2BE2">".."</font></b> + roofing.end);
+063:   writeln(<b><font color="#8A2BE2">"Painting : "</font></b> + painting.start  + <b><font color="#8A2BE2">".."</font></b> + painting.end);
+064:   writeln(<b><font color="#8A2BE2">"Windows  : "</font></b> + windows.start   + <b><font color="#8A2BE2">".."</font></b> + windows.end);
+065:   writeln(<b><font color="#8A2BE2">"Facade   : "</font></b> + facade.start    + <b><font color="#8A2BE2">".."</font></b> + facade.end);
+066:   writeln(<b><font color="#8A2BE2">"Garden   : "</font></b> + garden.start    + <b><font color="#8A2BE2">".."</font></b> + garden.end);
+067:   writeln(<b><font color="#8A2BE2">"Moving   : "</font></b> + moving.start    + <b><font color="#8A2BE2">".."</font></b> + moving.end);
+068: }
+069: 
+070: /*
+071: &lt;&lt;&lt; setup
+072: 
+073: 
+074: &lt;&lt;&lt; generate
+075: 
+076:  ! ----------------------------------------------------------------------------
+077:  ! Satisfiability problem - 10 variables, 14 constraints
+078:  ! Initial process time : 0.00s (0.00s extraction + 0.00s propagation)
+079:  !  . Log search space  : 300.0 (before), 300.0 (after)
+080:  !  . Memory usage      : 283.0 Kb (before), 283.0 Kb (after)
+081:  ! ----------------------------------------------------------------------------
+082:  !   Branches  Non-fixed                Branch decision
+083:  *         13      0.00s                         -
+084:  ! ----------------------------------------------------------------------------
+085:  ! Solution status        : Terminated normally, solution found
+086:  ! Number of branches     : 13
+087:  ! Number of fails        : 0
+088:  ! Total memory usage     : 432.3 Kb (315.0 Kb CP Optimizer + 117.3 Kb Concert)
+089:  ! Time spent in solve    : 0.00s (0.00s engine + 0.00s extraction)
+090:  ! Search speed (br. / s) : 1300.0
+091:  ! ----------------------------------------------------------------------------
+092: 
+093: &lt;&lt;&lt; solve
+094: 
+095: 
+096: 
+097: OBJECTIVE: no objective
+098: Masonry  : 0..35
+099: Carpentry: 35..50
+100: Plumbing : 35..75
+101: Ceiling  : 35..50
+102: Roofing  : 50..55
+103: Painting : 50..60
+104: Windows  : 55..60
+105: Facade   : 75..85
+106: Garden   : 75..80
+107: Moving   : 85..90
+108: 
+109: &lt;&lt;&lt; post process
+110: */
+</tt></pre>

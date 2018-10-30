@@ -1,0 +1,69 @@
+<!-- Generator: GNU source-highlight 2.2
+by Lorenzo Bettini
+http://www.lorenzobettini.it
+http://www.gnu.org/software/src-highlite -->
+<pre><tt>01: <b><font color="#007D00">// --------------------------------------------------------------------------</font></b>
+02: <b><font color="#007D00">// Licensed Materials - Property of IBM</font></b>
+03: <b><font color="#007D00">//</font></b>
+04: <b><font color="#007D00">// 5725-A06 5725-A29 5724-Y48 5724-Y49 5724-Y54 5724-Y55</font></b>
+05: <b><font color="#007D00">// Copyright IBM Corporation 1998, 2013. All Rights Reserved.</font></b>
+06: <b><font color="#007D00">//</font></b>
+07: <b><font color="#007D00">// Note to U.S. Government Users Restricted Rights:</font></b>
+08: <b><font color="#007D00">// Use, duplication or disclosure restricted by GSA ADP Schedule</font></b>
+09: <b><font color="#007D00">// Contract with IBM Corp.</font></b>
+10: <b><font color="#007D00">// --------------------------------------------------------------------------</font></b>
+11:  
+12: <b><font color="#0000FF">range</font></b> r = 1..10;
+13: <b><font color="#0000FF">dvar</font></b> <b><font color="#0000FF">int</font></b>+ x[r] <b><font color="#0000FF">in</font></b> 1..10;
+14: <b><font color="#007D00">// Preferences are stated as data of the opl model.</font></b>
+15: <b><font color="#007D00">// prefs[i] will be used to represent the preference of seeing cts[i] in the relaxation.</font></b>
+16: <b><font color="#0000FF">float</font></b> prefs[i <b><font color="#0000FF">in</font></b> r] = i;
+17: 
+18: <b><font color="#0000FF">minimize</font></b> <b><font color="#7D007D">sum</font></b>(i <b><font color="#0000FF">in</font></b> r) x[i];
+19: <b><font color="#0000FF">subject</font></b> <b><font color="#0000FF">to</font></b> {
+20:    ct: <b><font color="#7D007D">sum</font></b>(i <b><font color="#0000FF">in</font></b> r) x[i] &gt;= 10;
+21:    <b><font color="#7D007D">forall</font></b>(i <b><font color="#0000FF">in</font></b> r) 
+22:      cts: x[i] &gt;= i+5;
+23: } 
+24: <b><font color="#0000FF">main</font></b> {
+25:    <b><font color="#0000FF">thisOplModel</font></b>.generate();
+26:    <b><font color="EA7D00">var</font></b> def = <b><font color="#0000FF">thisOplModel</font></b>.modelDefinition;   
+27:    <b><font color="#007D00">// Default behavior</font></b>
+28:    writeln(<b><font color="#8A2BE2">"Default Behavior"</font></b>);
+29:    
+30:    <b><font color="EA7D00">var</font></b> cplex1 = <b><font color="EA7D00">new</font></b> IloCplex();
+31:    <b><font color="EA7D00">var</font></b> opl1 = <b><font color="EA7D00">new</font></b> IloOplModel(def, cplex1);
+32:    opl1.settings.relaxationLevel=1;
+33:    opl1.generate();
+34:    writeln(opl1.printRelaxation());     
+35:    
+36:    <b><font color="#007D00">// now iterating manually</font></b>
+37:    writeln(<b><font color="#8A2BE2">"now iterating manually"</font></b>);
+38:    <b><font color="EA7D00">var</font></b> iter = opl1.relaxationIterator;  
+39:    <b><font color="EA7D00">for</font></b>(<b><font color="EA7D00">var</font></b> c <b><font color="EA7D00">in</font></b> iter)
+40:    {
+41:      <b><font color="EA7D00">var</font></b> constraint=c.ct;
+42:      writeln(constraint.name);
+43:      writeln(<b><font color="#8A2BE2">"LB      = "</font></b>,c.LB);
+44:      writeln(<b><font color="#8A2BE2">"UB      = "</font></b>,c.UB);
+45:      writeln(<b><font color="#8A2BE2">"relaxedUB      = "</font></b>,c.relaxedUB);
+46:      writeln(<b><font color="#8A2BE2">"relaxedLB      = "</font></b>,c.relaxedLB);
+47:    }
+48:   
+49:    opl1.end();
+50:    cplex1.end();
+51:    writeln();
+52:    <b><font color="#007D00">// With user-defined preferences</font></b>
+53:    writeln(<b><font color="#8A2BE2">"With user-defined preferences"</font></b>);   
+54:    <b><font color="EA7D00">var</font></b> cplex2 = <b><font color="EA7D00">new</font></b> IloCplex();
+55:    <b><font color="EA7D00">var</font></b> opl2 = <b><font color="EA7D00">new</font></b> IloOplModel(def, cplex2);
+56:    opl2.generate();
+57:    
+58:    <b><font color="#007D00">// We attach prefs (defined as data in the opl model) as preferences </font></b>
+59:    <b><font color="#007D00">// for constraints cts for the conflict refinement.</font></b>
+60:    opl2.relaxationIterator.attach(opl2.cts, opl2.prefs);
+61:    writeln(opl2.printRelaxation());        
+62:    opl2.end();
+63:    cplex2.end();
+64: }
+</tt></pre>

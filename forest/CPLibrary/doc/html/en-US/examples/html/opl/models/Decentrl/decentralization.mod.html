@@ -1,0 +1,58 @@
+<!-- Generator: GNU source-highlight 2.2
+by Lorenzo Bettini
+http://www.lorenzobettini.it
+http://www.gnu.org/software/src-highlite -->
+<pre><tt>01: <b><font color="#007D00">// --------------------------------------------------------------------------</font></b>
+02: <b><font color="#007D00">// Licensed Materials - Property of IBM</font></b>
+03: <b><font color="#007D00">//</font></b>
+04: <b><font color="#007D00">// 5725-A06 5725-A29 5724-Y48 5724-Y49 5724-Y54 5724-Y55</font></b>
+05: <b><font color="#007D00">// Copyright IBM Corporation 1998, 2013. All Rights Reserved.</font></b>
+06: <b><font color="#007D00">//</font></b>
+07: <b><font color="#007D00">// Note to U.S. Government Users Restricted Rights:</font></b>
+08: <b><font color="#007D00">// Use, duplication or disclosure restricted by GSA ADP Schedule</font></b>
+09: <b><font color="#007D00">// Contract with IBM Corp.</font></b>
+10: <b><font color="#007D00">// --------------------------------------------------------------------------</font></b>
+11: 
+12: <b><font color="#007D00">// Problem 10 from Model Building in Mathematical Programming, 3rd ed.</font></b>
+13: <b><font color="#007D00">//   by HP Williams</font></b>
+14: <b><font color="#007D00">//</font></b>
+15: <b><font color="#007D00">//This model is described in the documentation. </font></b>
+16: <b><font color="#007D00">//See IDE and OPL &gt; Language and Interfaces Examples.</font></b>
+17: 
+18: {<b><font color="#0000FF">string</font></b>} Cities = ...;
+19: {<b><font color="#0000FF">string</font></b>} Depts = ...;
+20: 
+21: <b><font color="#0000FF">float</font></b> Benefit[Depts][Cities] = ...;
+22: <b><font color="#0000FF">float</font></b> CostComm[Cities][Cities] = ...;
+23: <b><font color="#0000FF">float</font></b> Comm[Depts][Depts] = ...;
+24: <b><font color="#0000FF">int</font></b>   LimDeptsLoc = ...;
+25: 
+26: <b><font color="#0000FF">dvar</font></b> <b><font color="#0000FF">int</font></b> IsIn[Depts][Cities] <b><font color="#0000FF">in</font></b> 0..1;
+27: <b><font color="#0000FF">dvar</font></b> <b><font color="#0000FF">int</font></b> Link[Depts][Cities][Depts][Cities] <b><font color="#0000FF">in</font></b> 0..1; 
+28: 
+29: <b><font color="#0000FF">dexpr</font></b> <b><font color="#0000FF">float</font></b> Cost =
+30:   <b><font color="#7D007D">sum</font></b>(<b><font color="#0000FF">ordered</font></b> d1, d2 <b><font color="#0000FF">in</font></b> Depts, c1, c2 <b><font color="#0000FF">in</font></b> Cities)
+31:         CostComm[c1][c2] * Comm[d1][d2] * Link[d1][c1][d2][c2]; 
+32: <b><font color="#0000FF">dexpr</font></b> <b><font color="#0000FF">float</font></b> Benef =
+33:   <b><font color="#7D007D">sum</font></b>(d <b><font color="#0000FF">in</font></b> Depts, c <b><font color="#0000FF">in</font></b> Cities) Benefit[d][c] * IsIn[d][c];
+34:   
+35: <b><font color="#0000FF">minimize</font></b> Cost - Benef;
+36: 
+37: <b><font color="#0000FF">subject</font></b> <b><font color="#0000FF">to</font></b> {
+38:    <b><font color="#007D00">// Each department must be in one city</font></b>
+39:    <b><font color="#7D007D">forall</font></b>(d <b><font color="#0000FF">in</font></b> Depts) 
+40:       <b><font color="#7D007D">sum</font></b>(c <b><font color="#0000FF">in</font></b> Cities) IsIn[d][c] == 1;
+41:    
+42:    <b><font color="#007D00">// No city can be the location of more than the specified</font></b>
+43:    <b><font color="#007D00">// number of departments</font></b>
+44:    <b><font color="#7D007D">forall</font></b>(c <b><font color="#0000FF">in</font></b> Cities)
+45:       <b><font color="#7D007D">sum</font></b>(d <b><font color="#0000FF">in</font></b> Depts) IsIn[d][c] &lt;= LimDeptsLoc;
+46: 
+47:    <b><font color="#007D00">// Link the linearized quadratic terms to the binaries</font></b>
+48:    <b><font color="#7D007D">forall</font></b>(<b><font color="#0000FF">ordered</font></b> d1,d2 <b><font color="#0000FF">in</font></b> Depts, c1, c2 <b><font color="#0000FF">in</font></b> Cities) {
+49:       Link[d1][c1][d2][c2] - IsIn[d1][c1] &lt;= 0;
+50:       Link[d1][c1][d2][c2] - IsIn[d2][c2] &lt;= 0;
+51:       IsIn[d1][c1] + IsIn[d2][c2] - Link[d1][c1][d2][c2] &lt;= 1;
+52:    }
+53: };
+</tt></pre>

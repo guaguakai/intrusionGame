@@ -1,0 +1,836 @@
+package model.graphutils;
+
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Map;
+import java.util.Random;
+import java.util.Set;
+
+import model.Configuration;
+import model.graphutils.IEdge.EDGE_TYPE;
+import model.graphutils.INode.NODE_TYPE;
+import model.urbansecModels.AdversaryPath;
+import model.urbansecModels.MinCut;
+
+import org.jgrapht.DirectedGraph;
+import org.jgrapht.alg.ConnectivityInspector;
+import org.jgrapht.alg.DijkstraShortestPath;
+import org.jgrapht.graph.AbstractBaseGraph;
+import org.jgrapht.graph.DirectedWeightedMultigraph;
+
+public class GraphGenerator {
+
+	public static AbstractBaseGraph<INode, ExtDWE> genFullyConnectedGraph(
+			int numNodes) {
+		return genFullyConnectedGraph(numNodes, 10);
+	}
+
+	public static AbstractBaseGraph<INode, ExtDWE> genTestGraph() {
+		Node.resetCounter();
+		ExtDWE.reset();
+		AbstractBaseGraph<INode, ExtDWE> graph = new DirectedWeightedMultigraph<INode, ExtDWE>(
+				ExtDWE.class);
+
+		INode source = new Node(NODE_TYPE.SOURCE, 0);
+		INode target1 = new Node(NODE_TYPE.TARGET, 10);
+		INode target2 = new Node(NODE_TYPE.TARGET, 5);
+
+		INode n1 = new Node(NODE_TYPE.INTERMEDIATE, 0);
+		INode n2 = new Node(NODE_TYPE.INTERMEDIATE, 0);
+		INode n3 = new Node(NODE_TYPE.INTERMEDIATE, 0);
+		INode n4 = new Node(NODE_TYPE.INTERMEDIATE, 0);
+
+		graph.addVertex(source);
+		graph.addVertex(target1);
+		// graph.addVertex(target2);
+		graph.addVertex(n1);
+		graph.addVertex(n2);
+//		graph.addVertex(n3);
+		// graph.addVertex(n4);
+
+		ExtDWE e1 = graph.addEdge(source, n1);
+		// e1.setType(EDGE_TYPE.VIRTUAL);
+		ExtDWE e2 = graph.addEdge(source, n2);
+		ExtDWE e3 = graph.addEdge(n1, target1);
+		ExtDWE e4 = graph.addEdge(n2, target1);
+//		ExtDWE e5 = graph.addEdge(n3, n1);
+
+		AdversaryPath ap = new AdversaryPath(target1);
+		ap.addEdgeToPath(e1);
+		ap.addEdgeToPath(e2);
+		ap.addEdgeToPath(e3);
+		ap.addEdgeToPath(e4);
+//		ap.addEdgeToPath(e5);
+
+		System.out.println("AP with cycle: " + ap);
+		ap.removeCycleFromPath(source);
+		System.out.println("AP without cycle: " + ap);
+
+		// ExtDWE e6 = graph.addEdge(n3, target1);
+		// ExtDWE e7 = graph.addEdge(target1, target2);
+		// ExtDWE e4 = graph.addEdge(n1, n3);
+		// ExtDWE e5 = graph.addEdge(n1, n4);
+		// ExtDWE e6 = graph.addEdge(n4, n5);
+		// ExtDWE e7 = graph.addEdge(n2, target);
+		// ExtDWE e8 = graph.addEdge(n4, target);
+
+		// for ( ExtDWE e : graph.edgeSet() ) {
+		// graph.setEdgeWeight(e, 1.0);
+		// }
+
+		// graph.setEdgeWeight(arg0, arg1)
+
+		try {
+			lpWrapper.Configuration.loadLibrariesCplex();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			System.err.println("Couldn't load Cplex.\n");
+			e.printStackTrace();
+		}
+
+		MinCut minCutObj = new MinCut(graph);
+		minCutObj.setSource(source);
+		minCutObj.setTarget(target1);
+		minCutObj.loadProblem();
+		// minCutObj.writeProb("minCut1");
+		System.out.println("Min Cut: " + minCutObj.getMinCut());
+
+		// minCutObj.disableEdge(e1);
+		// try {
+		// minCutObj.updateObjective();
+		// } catch (Exception e9) {
+		// // TODO Auto-generated catch block
+		// e9.printStackTrace();
+		// }
+		// minCutObj.writeProb("minCut2");
+		// minCutObj.disableEdge(e7);
+		// minCutObj.disableEdge(e2);
+
+		// System.out.println("Min Cut: " + minCutObj.getMinCut());
+
+		List<ExtDWE> lstEdges = DijkstraShortestPath.findPathBetween(graph,
+				source, target1);
+		double totalPathWeight = 0.0;
+		System.out.println("Shortest path edge weights: ");
+		for (ExtDWE e : lstEdges) {
+			System.out.println(e + " : " + graph.getEdgeWeight(e));
+			totalPathWeight += graph.getEdgeWeight(e);
+		}
+		System.out.println("Shortest path: " + lstEdges + ": "
+				+ totalPathWeight);
+
+		return graph;
+	}
+
+	public static AbstractBaseGraph<INode, ExtDWE> genFullyConnectedGraph(
+			int numNodes, int targetval) {
+		Node.resetCounter();
+		ExtDWE.reset();
+		AbstractBaseGraph<INode, ExtDWE> graph = new DirectedWeightedMultigraph<INode, ExtDWE>(
+				ExtDWE.class);
+		// set source, then nodes, then target
+		List<INode> nodeList = new ArrayList<INode>(numNodes);
+		INode source = new Node(NODE_TYPE.SOURCE, 0);
+		nodeList.add(source);
+		graph.addVertex(source);
+		for (int i = 1; i < numNodes - 2; i++) {
+			INode n = new Node(NODE_TYPE.INTERMEDIATE, 0);
+			nodeList.add(n);
+			graph.addVertex(n);
+		}
+		INode target = new Node(NODE_TYPE.TARGET, targetval);
+		nodeList.add(target);
+		graph.addVertex(target);
+
+		INode target2 = new Node(NODE_TYPE.TARGET, targetval);
+		nodeList.add(target2);
+		graph.addVertex(target2);
+
+		for (int i = 0; i < numNodes - 1; i++) {
+			for (int j = i + 1; j < numNodes; j++) {
+				// for ( int j=0; j<numNodes; j++) {
+				// if(i!=j){
+				ExtDWE e = graph.addEdge(nodeList.get(i), nodeList.get(j));
+				// }
+			}
+		}
+		return graph;
+	}
+
+	public static AbstractBaseGraph<INode, ExtDWE> genFullyConnectedGraph(
+			int numNodes, int targetsNo, int targetVal, Random random) {
+		Node.resetCounter();
+		ExtDWE.reset();
+		AbstractBaseGraph<INode, ExtDWE> graph = new DirectedWeightedMultigraph<INode, ExtDWE>(
+				ExtDWE.class);
+		// set source, then nodes, then target
+		List<INode> nodeList = new ArrayList<INode>(numNodes);
+
+		INode source = new Node(NODE_TYPE.SOURCE, 0);
+		nodeList.add(source);
+		graph.addVertex(source);
+
+		for (int i = 1; i < numNodes - targetsNo; i++) {
+			INode n = new Node(NODE_TYPE.INTERMEDIATE, 0);
+			nodeList.add(n);
+			graph.addVertex(n);
+		}
+
+		for (int i = 0; i < targetsNo; i++) {
+			INode target = new Node(NODE_TYPE.TARGET,
+					random.nextInt(targetVal) + 1);
+			nodeList.add(target);
+			graph.addVertex(target);
+		}
+
+		for (int i = 0; i < numNodes - 1; i++) {
+			for (int j = i + 1; j < numNodes; j++) {
+				// for ( int j=0; j<numNodes; j++) {
+				// if(i!=j){
+				graph.addEdge(nodeList.get(i), nodeList.get(j));
+				// }
+			}
+		}
+		return graph;
+	}
+
+	public static AbstractBaseGraph<INode, ExtDWE> getPonyTailGraph(int length,
+			int minedges, int maxedges, double targetProb, Random random) {
+		Node.resetCounter();
+		ExtDWE.reset();
+		AbstractBaseGraph<INode, ExtDWE> graph = new DirectedWeightedMultigraph<INode, ExtDWE>(
+				ExtDWE.class);
+		// set source, then nodes, then target
+		List<INode> nodeList = new ArrayList<INode>();
+		INode source = new Node(NODE_TYPE.SOURCE, 0);
+		nodeList.add(source);
+		graph.addVertex(source);
+		int targets = 0;
+		for (int i = 1; i < length; i++) { // generate vertices
+			if (random.nextDouble() > targetProb && i < length - 1) { // last
+																		// one
+																		// is
+																		// target
+				// as well as some in the middle
+				INode node = new Node(NODE_TYPE.INTERMEDIATE, 0);
+				nodeList.add(node);
+				graph.addVertex(node);
+			} else {
+				targets++;
+				INode node = new Node(NODE_TYPE.TARGET, random.nextInt(100));
+				nodeList.add(node);
+				graph.addVertex(node);
+			}
+		}
+
+		for (int j = 0; j < nodeList.size() - 1; j++) {
+			int nrOfEdges = random.nextInt(maxedges - minedges) + minedges;
+			for (int k = 0; k < nrOfEdges; k++) {
+				graph.addEdge(nodeList.get(j), nodeList.get(j + 1));
+			}
+		}
+		// System.out.println("Targets: "+ targets);
+		return graph;
+	}
+
+	/**
+	 * 
+	 * @param length
+	 * @param minedges
+	 * @param maxedges
+	 * @param targetProb
+	 * @return
+	 */
+	public static AbstractBaseGraph<INode, ExtDWE> getExamplePonny() {
+		Node.resetCounter();
+		ExtDWE.reset();
+		// Random random= new Random(3);
+		AbstractBaseGraph<INode, ExtDWE> graph = new DirectedWeightedMultigraph<INode, ExtDWE>(
+				ExtDWE.class);
+		// set source, then nodes, then target
+		INode source = new Node(NODE_TYPE.SOURCE, 0);
+		graph.addVertex(source);
+
+		INode target = new Node(NODE_TYPE.TARGET, 1);
+		graph.addVertex(target);
+		for (int k = 0; k < 3; k++) {
+			graph.addEdge(source, target);
+		}
+
+		INode target2 = new Node(NODE_TYPE.TARGET, 10000);
+		graph.addVertex(target2);
+		graph.addEdge(target, target2);
+		// for(int k = 0;k<2;k++){
+		// }
+
+		return graph;
+	}
+
+	public static INode addVirtualTarget(AbstractBaseGraph<INode, ExtDWE> graph) {
+		INode virtualTarget = new Node(NODE_TYPE.VIRTUAL_TARGET, 0);
+		graph.addVertex(virtualTarget);
+
+		for (INode node : graph.vertexSet()) {
+			if (node.getType() == NODE_TYPE.TARGET) {
+				ExtDWE newEdge = graph.addEdge(node, virtualTarget);
+				newEdge.setType(EDGE_TYPE.VIRTUAL);
+			}
+		}
+		return virtualTarget;
+	}
+
+	public static INode addVirtualSource(AbstractBaseGraph<INode, ExtDWE> graph) {
+		INode virtualSource = new Node(NODE_TYPE.INTERMEDIATE, 0);
+		virtualSource.setLatLon(-1, -1);
+		graph.addVertex(virtualSource);
+
+		for (INode node : graph.vertexSet()) {
+			if (node.getType() == NODE_TYPE.SOURCE) {
+				ExtDWE newEdge = graph.addEdge(virtualSource, node);
+				newEdge.setType(EDGE_TYPE.VIRTUAL);
+				node.setType(NODE_TYPE.INTERMEDIATE);
+			}
+		}
+		virtualSource.setType(NODE_TYPE.SOURCE);
+
+		return virtualSource;
+	}
+
+	public static AbstractBaseGraph<INode, ExtDWE> getRandomGeometricGraph(
+			int numNodes, int nrOfSources, int nrOfTargets, double r,
+			int maxTargetVal, Random random) {
+		// r should be between 0 and 1.
+		if (nrOfSources + nrOfTargets > numNodes) {
+			System.out.println("numNodes: " + numNodes);
+			System.out.println("numSources: " + nrOfSources);
+			System.out.println("numTargets: " + nrOfTargets);
+			throw new RuntimeException(
+					"Can't generate this graph which has more sources and targets than nodes");
+		}
+
+		Node.resetCounter();
+		ExtDWE.reset();
+		AbstractBaseGraph<INode, ExtDWE> graph = new DirectedWeightedMultigraph<INode, ExtDWE>(
+				ExtDWE.class);
+		Map<INode, LatLon> nodeMap = new HashMap<INode, LatLon>();
+
+		for (int i = 0; i < numNodes; i++) {
+			INode node = new Node(NODE_TYPE.INTERMEDIATE, 0);
+			LatLon ll = new LatLon(random.nextDouble(), random.nextDouble());
+			node.setLatLon(ll.getLat(), ll.getLon());
+			nodeMap.put(node, ll);
+			graph.addVertex(node);
+		}
+
+		for (INode u : nodeMap.keySet()) {
+			for (INode v : nodeMap.keySet()) {
+				if (u.equals(v))
+					continue;
+				if (nodeMap.get(u).getDistance(nodeMap.get(v)) < r) {
+					graph.addEdge(u, v);
+				}
+			}
+		}
+
+		List<INode> nodes = new LinkedList<INode>();
+		nodes.addAll(nodeMap.keySet());
+		Collections.shuffle(nodes, random);
+		for (int i = 0; i < nrOfTargets; i++) {
+			Node target = (Node) nodes.remove(0);
+			target.setType(NODE_TYPE.TARGET);
+			target.setPayoff(Configuration.randomGenerator
+					.nextInt(maxTargetVal));
+		}
+
+		// System.out.println("lstSets size: " + lstSets.size());
+
+		connectDisconnectedGraph(graph);
+
+		INode source = new Node(NODE_TYPE.SOURCE, 0);
+		source.setLatLon(-1, -1);
+		graph.addVertex(source);
+
+		int countSources = 0;
+		Collections.shuffle(nodes, random);
+		while (countSources < nrOfSources) {
+			Node sourceToAdd = (Node) nodes.remove(0);
+			if (sourceToAdd.getType() == NODE_TYPE.TARGET) {
+				continue;
+			}
+			ExtDWE newEdge = graph.addEdge(source, sourceToAdd);
+			newEdge.setType(EDGE_TYPE.VIRTUAL);
+			countSources++;
+		}
+
+		return graph;
+	}
+
+	public static Set<INode> getSourceSet(
+			AbstractBaseGraph<INode, ExtDWE> graph) {
+		Set<INode> sources = new HashSet<INode>();
+		for (INode u : graph.vertexSet()) {
+			if (u.getType() == NODE_TYPE.SOURCE) {
+				sources.add(u);
+			}
+		}
+		return sources;
+	}
+	
+	public static Set<INode> getSourceSet(
+			AbstractBaseGraph<INode, ExtDWE> graph, Set<Long> sourceOSMIDs) {
+		Set<INode> sources = new HashSet<INode>();
+		for (INode u : graph.vertexSet()) {
+			if (sourceOSMIDs.contains(u.getOsmId())) {
+				sources.add(u);
+			}
+		}
+		return sources;
+	}
+
+	public static Set<INode> getTargetSet(
+			AbstractBaseGraph<INode, ExtDWE> graph) {
+		Set<INode> targets = new HashSet<INode>();
+		for (INode u : graph.vertexSet()) {
+			if (u.getType() == NODE_TYPE.TARGET) {
+				targets.add(u);
+			}
+		}
+		return targets;
+	}
+	
+	public static Set<INode> getTargetSet(
+			AbstractBaseGraph<INode, ExtDWE> graph, Set<Long> targetOSMIds) {
+		Set<INode> targets = new HashSet<INode>();
+		for (INode u : graph.vertexSet()) {
+			if (targetOSMIds.contains(u.getOsmId())) {
+				targets.add(u);
+			}
+		}
+		return targets;
+	}
+
+	public static void removeNodesWithDegree2(
+			AbstractBaseGraph<INode, ExtDWE> graph, Set<INode> sources,
+			Set<INode> targets) {
+		Set<INode> removeNodeSet = new HashSet<INode>();
+		for (INode n : graph.vertexSet()) {
+			if ((targets != null && targets.contains(n))
+					|| (sources != null && sources.contains(n))) {
+				continue;
+			}
+			Set<ExtDWE> inlinks = graph.incomingEdgesOf(n);
+			Set<ExtDWE> outlinks = graph.outgoingEdgesOf(n);
+
+			if (inlinks.size() <= 1 && outlinks.size() <= 1) {
+				// remove this node
+				boolean removeNode = true;
+				if (targets != null && targets.contains(n)) {
+					removeNode = false;
+				}
+				if (sources != null && sources.contains(n)) {
+					removeNode = false;
+				}
+				if (removeNode) {
+					removeNodeSet.add(n);
+				}
+			}
+		}
+
+		for (INode n : removeNodeSet) {
+			if (graph.inDegreeOf(n) == 1 && graph.outDegreeOf(n) == 1) {
+				ExtDWE i_e = (ExtDWE) graph.incomingEdgesOf(n).toArray()[0];
+				ExtDWE o_e = (ExtDWE) graph.outgoingEdgesOf(n).toArray()[0];
+
+				if (i_e.getsource() != o_e.gettarget()) {
+					graph.addEdge(i_e.getsource(), o_e.gettarget());
+					graph.addEdge(o_e.gettarget(), i_e.getsource());
+					System.err.println("SHOULD NOT HAPPEN");
+				}
+				graph.removeVertex(n);
+			} else if (graph.inDegreeOf(n) == 0 || graph.outDegreeOf(n) == 0) {
+				graph.removeVertex(n);
+			}
+		}
+	}
+
+	public static boolean verifyFiltering(
+			AbstractBaseGraph<INode, ExtDWE> graph, Set<INode> sources,
+			Set<INode> targets) {
+		System.out.print("Verifying ...");
+		for (INode u : graph.vertexSet()) {
+			if (targets.contains(u) || sources.contains(u)) {
+				continue;
+			}
+			if (graph.inDegreeOf(u) <= 2 && graph.outDegreeOf(u) <= 2) {
+				return false;
+			}
+		}
+		return true;
+	}
+
+	public static void removeNodesWithDegree4(
+			AbstractBaseGraph<INode, ExtDWE> graph, Set<INode> targets,
+			Set<INode> sources) {
+
+		Set<INode> removeNodeSet = new HashSet<INode>();
+		for (INode n : graph.vertexSet()) {
+			Set<ExtDWE> inlinks = graph.incomingEdgesOf(n);
+			Set<ExtDWE> outlinks = graph.outgoingEdgesOf(n);
+
+			if (inlinks.size() <= 2 && outlinks.size() <= 2) {
+				// remove this node
+				boolean removeNode = true;
+				if (targets != null && targets.contains(n)) {
+					removeNode = false;
+				}
+				if (sources != null && sources.contains(n)) {
+					removeNode = false;
+				}
+				if (removeNode) {
+					removeNodeSet.add(n);
+				}
+			}
+		}
+		for (INode n : removeNodeSet) {
+			Set<ExtDWE> inArraySet = graph.incomingEdgesOf(n);
+			Set<ExtDWE> outArraySet = graph.outgoingEdgesOf(n);
+
+			if (graph.inDegreeOf(n) == 2 && graph.outDegreeOf(n) == 2) {
+				ExtDWE[] inArray = inArraySet.toArray(new ExtDWE[0]);
+				if (inArray[0].getsource() != inArray[1].getsource()) {
+					graph.addEdge(inArray[0].getsource(),
+							inArray[1].getsource());
+					graph.addEdge(inArray[1].getsource(),
+							inArray[0].getsource());
+				}
+				graph.removeVertex(n);
+			} else if (graph.inDegreeOf(n) <= 1 || graph.outDegreeOf(n) <= 1) {
+				graph.removeVertex(n);
+			}
+
+		}
+
+	}
+
+	public static void connectDisconnectedGraph(
+			AbstractBaseGraph<INode, ExtDWE> graph) {
+		ConnectivityInspector<INode, ExtDWE> conn = new ConnectivityInspector<INode, ExtDWE>(
+				(DirectedGraph<INode, ExtDWE>) graph);
+		List<Set<INode>> lstSets = conn.connectedSets();
+
+		System.out.println("Components: " + lstSets.size());
+
+		while (lstSets.size() != 1) {
+			int index1 = model.Configuration.randomGenerator.nextInt(lstSets
+					.size());
+			int index2 = model.Configuration.randomGenerator.nextInt(lstSets
+					.size());
+			while (index2 == index1) {
+				index2 = model.Configuration.randomGenerator.nextInt(lstSets
+						.size());
+			}
+
+			int n1_index = model.Configuration.randomGenerator.nextInt(lstSets
+					.get(index1).size());
+			int n2_index = model.Configuration.randomGenerator.nextInt(lstSets
+					.get(index2).size());
+
+			INode n1 = (INode) lstSets.get(index1).toArray()[n1_index];
+			INode n2 = (INode) lstSets.get(index2).toArray()[n2_index];
+
+			ExtDWE e1 = graph.addEdge(n1, n2);
+			ExtDWE e2 = graph.addEdge(n2, n1);
+
+			conn = new ConnectivityInspector<INode, ExtDWE>(
+					(DirectedGraph<INode, ExtDWE>) graph);
+
+			lstSets = conn.connectedSets();
+			// System.out.println(lstSets.size());
+		}
+	}
+
+	public static AbstractBaseGraph<INode, ExtDWE> getGridGraph(int width,
+			int length, boolean diagonal, int nrOfSources, int nrOfTargets,
+			int maxTargetVal, Random random) {
+
+		if ((width * length) < (nrOfSources + nrOfTargets)) {
+			throw new IllegalArgumentException(
+					"Graph is not big enough for so many sources and targets, man! Do your math!");
+		}
+		Node.resetCounter();
+		ExtDWE.reset();
+		AbstractBaseGraph<INode, ExtDWE> graph = new DirectedWeightedMultigraph<INode, ExtDWE>(
+				ExtDWE.class);
+		Map<LatLon, INode> map = new HashMap<LatLon, INode>();
+
+		for (int y = 0; y < width; y++) {
+			for (int x = 0; x < length; x++) {
+				INode node = new Node();
+				LatLon ll = new LatLon(x, y);
+				node.setLatLon(ll.getLat(), ll.getLon());
+				map.put(ll, node);
+				graph.addVertex(node);
+			}
+		}
+
+		for (int y = 0; y < width; y++) {
+			for (int x = 0; x < length; x++) {
+				LatLon llfrom = new LatLon(x, y);
+				LatLon llto = new LatLon(x + 1, y);
+				INode from = map.get(llfrom);
+				INode to = map.get(llto);
+				if (from != null && to != null) {
+					graph.addEdge(from, to);
+					graph.addEdge(to, from);
+				}
+
+			}
+		}
+
+		for (int y = 0; y < width; y++) {
+			for (int x = 0; x < length; x++) {
+				LatLon llfrom = new LatLon(x, y);
+				LatLon llto = new LatLon(x, y + 1);
+				INode from = map.get(llfrom);
+				INode to = map.get(llto);
+				if (from != null && to != null) {
+					graph.addEdge(from, to);
+					graph.addEdge(to, from);
+				}
+
+			}
+		}
+
+		if (diagonal) {
+			for (int y = 0; y < width; y++) {
+				for (int x = 0; x < length; x++) {
+					LatLon llfrom = new LatLon(x, y);
+					LatLon llto = new LatLon(x + 1, y + 1);
+					INode from = map.get(llfrom);
+					INode to = map.get(llto);
+					if (from != null && to != null) {
+						graph.addEdge(from, to);
+						graph.addEdge(to, from);
+					}
+
+				}
+			}
+
+			for (int y = 0; y < width; y++) {
+				for (int x = 1; x <= length; x++) {
+					LatLon llfrom = new LatLon(x, y);
+					LatLon llto = new LatLon(x - 1, y + 1);
+					INode from = map.get(llfrom);
+					INode to = map.get(llto);
+					if (from != null && to != null) {
+						graph.addEdge(from, to);
+						graph.addEdge(to, from);
+					}
+				}
+			}
+		}
+
+		List<INode> nodes = new LinkedList<INode>();
+		nodes.addAll(map.values());
+		Collections.shuffle(nodes, random);
+		for (int i = 0; i < nrOfTargets; i++) {
+			Node target = (Node) nodes.remove(0);
+			target.setType(NODE_TYPE.TARGET);
+			target.setPayoff(random.nextInt(maxTargetVal));
+		}
+
+		List<Node> sources = new ArrayList<Node>();
+		for (int i = 0; i < nrOfSources; i++) {
+			sources.add((Node) nodes.remove(0));
+		}
+
+		INode virtual = new Node(NODE_TYPE.SOURCE, 0);
+		virtual.setLatLon(-1, -1);
+		graph.addVertex(virtual);
+		for (Node n : sources) {
+			ExtDWE e = graph.addEdge(virtual, n);
+			e.setType(EDGE_TYPE.VIRTUAL);
+		}
+		return graph;
+	}
+
+	public static void main(String[] args) {
+		Configuration.initialize(0);
+		// AbstractBaseGraph<INode, ExtDWE> graph =
+		// GraphGenerator.getGridGraph(3,
+		// 3, true, 3, 3, 100, Configuration.randomGenerator);
+		AbstractBaseGraph<INode, ExtDWE> graph = GraphGenerator.genTestGraph();
+		System.out.println(graph);
+		for (INode n : graph.vertexSet()) {
+			System.out.println(n.getType());
+		}
+	}
+
+	public static AbstractBaseGraph<INode, ExtDWE> getMumbaiGraph() {
+		// TODO Auto-generated method stub
+		AbstractBaseGraph<INode, ExtDWE> graph = new DirectedWeightedMultigraph<INode, ExtDWE>(
+				ExtDWE.class);
+
+		List<INode> nodeList = new ArrayList<INode>();
+		for (int x = 0; x < 108; x++) {
+			INode v = new Node();
+			v.setType(NODE_TYPE.INTERMEDIATE);
+			nodeList.add(v);
+			graph.addVertex(v);
+		}
+
+		int[] sourceIndexes = { 27, 43 };
+		int[] targetIndexes = { 26, 105 };
+
+		INode virtual = new Node();
+		virtual.setType(NODE_TYPE.SOURCE);
+		graph.addVertex(virtual);
+		for (int i : sourceIndexes) {
+			ExtDWE e = graph.addEdge(virtual, nodeList.get(i - 1));
+			e.setType(EDGE_TYPE.VIRTUAL);
+		}
+
+		for (int i : targetIndexes) {
+			nodeList.get(i - 1).setType(NODE_TYPE.TARGET);
+			nodeList.get(i - 1).setPayoff(100);
+		}
+		nodeList.get(25).setPayoff(100);
+		nodeList.get(104).setPayoff(200);
+
+		int[][] edgeSet = { { 1, 2 }, { 2, 3 }, { 2, 4 }, { 4, 5 }, { 4, 6 },
+				{ 6, 8 }, { 7, 8 }, { 8, 9 }, { 9, 10 }, { 10, 11 },
+				{ 10, 12 }, { 12, 13 }, { 13, 14 }, { 14, 17 }, { 15, 17 },
+				{ 17, 18 }, { 13, 18 }, { 16, 17 }, { 18, 19 }, { 19, 20 },
+				{ 19, 24 }, { 24, 25 }, { 23, 24 }, { 20, 23 }, { 21, 23 },
+				{ 20, 21 }, { 21, 22 }, { 3, 20 }, { 3, 5 }, { 12, 26 },
+				{ 26, 49 }, { 26, 32 }, { 31, 32 }, { 30, 31 }, { 29, 30 },
+				{ 9, 29 }, { 28, 29 }, { 8, 27 }, { 27, 28 }, { 27, 33 },
+				{ 5, 6 }, { 33, 35 }, { 33, 34 }, { 28, 34 }, { 34, 37 },
+				{ 34, 36 }, { 36, 37 }, { 37, 38 }, { 36, 39 }, { 38, 39 },
+				{ 30, 37 }, { 31, 38 }, { 39, 40 }, { 40, 43 }, { 43, 45 },
+				{ 45, 47 }, { 47, 48 }, { 47, 46 }, { 45, 46 }, { 46, 44 },
+				{ 44, 43 }, { 42, 44 }, { 40, 42 }, { 41, 40 }, { 32, 41 },
+				{ 41, 49 }, { 49, 51 }, { 42, 50 }, { 50, 52 }, { 52, 53 },
+				{ 51, 52 }, { 50, 51 }, { 51, 68 }, { 68, 69 }, { 67, 68 },
+				{ 67, 69 }, { 67, 66 }, { 69, 70 }, { 66, 70 }, { 70, 72 },
+				{ 71, 72 }, { 70, 73 }, { 73, 106 }, { 72, 106 }, { 106, 75 },
+				{ 72, 76 }, { 75, 76 }, { 74, 75 }, { 73, 74 }, { 74, 82 },
+				{ 82, 81 }, { 81, 85 }, { 81, 80 }, { 76, 77 }, { 80, 78 },
+				{ 78, 79 }, { 81, 84 }, { 84, 85 }, { 85, 86 }, { 85, 87 },
+				{ 86, 87 }, { 87, 88 }, { 86, 83 }, { 84, 83 }, { 82, 83 },
+				{ 83, 89 }, { 94, 89 }, { 89, 90 }, { 90, 91 }, { 90, 93 },
+				{ 92, 93 }, { 93, 94 }, { 94, 95 }, { 95, 96 }, { 96, 97 },
+				{ 98, 96 }, { 103, 98 }, { 98, 99 }, { 99, 95 }, { 94, 100 },
+				{ 99, 100 }, { 100, 101 }, { 101, 102 }, { 102, 99 },
+				{ 102, 103 }, { 64, 103 }, { 64, 104 }, { 102, 104 },
+				{ 104, 105 }, { 101, 105 }, { 105, 66 }, { 65, 66 },
+				{ 63, 65 }, { 63, 64 }, { 61, 63 }, { 61, 62 }, { 59, 61 },
+				{ 59, 64 }, { 59, 60 }, { 57, 59 }, { 57, 58 }, { 56, 57 },
+				{ 56, 59 }, { 56, 55 }, { 55, 54 }, { 55, 108 }, { 108, 54 },
+				{ 107, 108 }, { 107, 65 }, { 49, 107 } };
+
+		for (int[] edge : edgeSet) {
+			graph.addEdge(nodeList.get(edge[0] - 1), nodeList.get(edge[1] - 1));
+			graph.addEdge(nodeList.get(edge[1] - 1), nodeList.get(edge[0] - 1));
+		}
+
+		System.out.println("No. of edges: " + graph.edgeSet().size());
+		System.out.println("No. of nodes: " + graph.vertexSet().size());
+
+		return graph;
+	}
+
+	public static void setTargetAndSources(
+			final AbstractBaseGraph<INode, ExtDWE> graph, Set<Long> sourceIDs,
+			Set<Long> targetIDs, int maxTargetVal) {
+		for (INode n : graph.vertexSet()) {
+			if (sourceIDs.contains(n.getOsmId())) {
+				n.setType(NODE_TYPE.SOURCE);
+			}
+			if (targetIDs.contains(n.getOsmId())) {
+				n.setType(NODE_TYPE.TARGET);
+				n.setPayoff(model.Configuration.randomGenerator
+						.nextInt(maxTargetVal));
+			}
+		}
+	}
+	
+	public static void setTargetAndSources(final AbstractBaseGraph<INode, ExtDWE> graph, int numSources,
+			int numTargets, int maxTargetVal, Random random) {
+		List<INode> nodeList = new ArrayList<INode>(graph.vertexSet());
+		
+		Collections.shuffle(nodeList, random);
+		for ( int i = 0; i<numTargets; i++) {
+			nodeList.get(i).setType(NODE_TYPE.TARGET);
+			nodeList.get(i).setPayoff(random.nextInt(maxTargetVal));
+		}
+		for ( int i = numTargets; i<numTargets + numSources; i++) {
+			nodeList.get(i).setType(NODE_TYPE.SOURCE);
+		}
+	}
+
+	public static void setTargetAndSourcesBasedOnDegree(
+			final AbstractBaseGraph<INode, ExtDWE> graph, int numSources,
+			int numTargets, int maxTargetVal, Random random) {
+		// find nodes with least outDegree and set as Sources
+		List<INode> nodeList = new ArrayList<INode>(graph.vertexSet());
+
+		// ascending order
+		Collections.sort(nodeList, new Comparator<INode>() {
+			@Override
+			public int compare(INode arg0, INode arg1) {
+				if (graph.outDegreeOf(arg0) < graph.outDegreeOf(arg1)) {
+					return -1;
+				} else
+					return 1;
+			}
+		});
+
+		System.out.println("Nodelist size: " + nodeList.size()
+				+ ", numSources: " + numSources);
+
+		for (int i = 0; i < numSources; i++) {
+			nodeList.get(i).setType(NODE_TYPE.SOURCE);
+		}
+
+		// find nodes with maximum inDegree and set as Targets
+		// descending order
+		Collections.sort(nodeList, new Comparator<INode>() {
+			@Override
+			public int compare(INode arg0, INode arg1) {
+				if (graph.inDegreeOf(arg0) > graph.inDegreeOf(arg1)) {
+					return -1;
+				} else
+					return 1;
+			}
+		});
+		for (int i = 0; i < numTargets; i++) {
+			nodeList.get(i).setType(NODE_TYPE.TARGET);
+			nodeList.get(i).setPayoff(random.nextInt(maxTargetVal));
+		}
+
+	}
+
+	public static void removeNodesNorthEastOf(LatLon latLon, AbstractBaseGraph<INode, ExtDWE> graph) {
+		// TODO Auto-generated method stub
+		List<INode> removeNodeList = new ArrayList<INode>();
+		for ( INode u : graph.vertexSet() ) {
+			if (u.getLat() > latLon.getLat()) {
+//				System.out.println(u.getLat() + ", " + u.getLon() + ", " + latLon.getLat() + ", " + latLon.getLon());
+				removeNodeList.add(u);
+			} else if (u.getLon() > latLon.getLon()) {
+//				System.out.println(u.getLat() + ", " + u.getLon() + ", " + latLon.getLat() + ", " + latLon.getLon());
+				removeNodeList.add(u);
+			}
+
+		}
+		graph.removeAllVertices(removeNodeList);		
+	}
+
+}

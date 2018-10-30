@@ -1,0 +1,51 @@
+<?xml version = "1.0" encoding="UTF-8" standalone="yes"?>
+<CPLEXSolution version="1.2">
+ <header
+   problemName="CompactLP"
+   objectiveValue="-1.1839772303098173"
+   solutionTypeValue="1"
+   solutionTypeString="basic"
+   solutionStatusValue="1"
+   solutionStatusString="optimal"
+   solutionMethodString="primal"
+   primalFeasible="1"
+   dualFeasible="1"
+   simplexIterations="0"
+   writeLevel="1"/>
+ <quality
+   epRHS="9.9999999999999995e-07"
+   epOpt="9.9999999999999995e-07"
+   maxPrimalInfeas="0"
+   maxDualInfeas="0"
+   maxPrimalResidual="1.2490009027033011e-16"
+   maxDualResidual="1.2490009027033011e-16"
+   maxX="1.1839772303098173"
+   maxPi="1.1839772303098173"
+   maxSlack="0"
+   maxRedCost="4.8099074981336321"
+   kappa="36.271371367453277"/>
+ <linearConstraints>
+  <constraint name="SumX" index="0" status="LL" slack="0" dual="-1.1839772303098173"/>
+  <constraint name="AP1" index="1" status="LL" slack="0" dual="0.050516361826552204"/>
+  <constraint name="AP2" index="2" status="LL" slack="0" dual="0.050516361826552204"/>
+  <constraint name="AP3" index="3" status="LL" slack="0" dual="0.090207788975986081"/>
+  <constraint name="AP4" index="4" status="LL" slack="0" dual="0.090207788975986081"/>
+  <constraint name="AP5" index="5" status="LL" slack="0" dual="0.043548587781510523"/>
+  <constraint name="AP6" index="6" status="LL" slack="0" dual="0.043548587781510523"/>
+  <constraint name="AP7" index="7" status="LL" slack="0" dual="0.31572726141595125"/>
+  <constraint name="AP8" index="8" status="LL" slack="0" dual="0.31572726141595125"/>
+ </linearConstraints>
+ <variables>
+  <variable name="d" index="0" status="BS" value="-1.1839772303098173" reducedCost="-0"/>
+  <variable name="x1" index="1" status="BS" value="0.31572726141595125" reducedCost="-0"/>
+  <variable name="x2" index="2" status="LL" value="0" reducedCost="-4.8099074981336321"/>
+  <variable name="x3" index="3" status="BS" value="0.043548587781510523" reducedCost="-0"/>
+  <variable name="x4" index="4" status="BS" value="0.050516361826552204" reducedCost="-0"/>
+  <variable name="x5" index="5" status="BS" value="0.050516361826552204" reducedCost="-0"/>
+  <variable name="x6" index="6" status="BS" value="0.090207788975986081" reducedCost="-0"/>
+  <variable name="x7" index="7" status="BS" value="0.31572726141595125" reducedCost="-0"/>
+  <variable name="x8" index="8" status="BS" value="0.043548587781510523" reducedCost="-0"/>
+  <variable name="x9" index="9" status="BS" value="0.090207788975986081" reducedCost="-0"/>
+  <variable name="x10" index="10" status="LL" value="0" reducedCost="-0"/>
+ </variables>
+</CPLEXSolution>

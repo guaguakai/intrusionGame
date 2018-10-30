@@ -1,0 +1,180 @@
+<!-- Generator: GNU source-highlight 2.2
+by Lorenzo Bettini
+http://www.lorenzobettini.it
+http://www.gnu.org/software/src-highlite -->
+<pre><tt>001: <b><font color="#007D00">// --------------------------------------------------------------------------</font></b>
+002: <b><font color="#007D00">// Licensed Materials - Property of IBM</font></b>
+003: <b><font color="#007D00">//</font></b>
+004: <b><font color="#007D00">// 5725-A06 5725-A29 5724-Y48 5724-Y49 5724-Y54 5724-Y55</font></b>
+005: <b><font color="#007D00">// Copyright IBM Corporation 1998, 2013. All Rights Reserved.</font></b>
+006: <b><font color="#007D00">//</font></b>
+007: <b><font color="#007D00">// Note to U.S. Government Users Restricted Rights:</font></b>
+008: <b><font color="#007D00">// Use, duplication or disclosure restricted by GSA ADP Schedule</font></b>
+009: <b><font color="#007D00">// Contract with IBM Corp.</font></b>
+010: <b><font color="#007D00">// --------------------------------------------------------------------------</font></b>
+011: 
+012: <b><font color="#007D00">// Problem 6 from Model Building in Mathematical Programming, 3rd ed.</font></b>
+013: <b><font color="#007D00">//   by HP Williams</font></b>
+014: <b><font color="#007D00">// Refinery Optimization</font></b>
+015: <b><font color="#007D00">// This model is described in the documentation. </font></b>
+016: <b><font color="#007D00">// See IDE and OPL &gt; Language and Interfaces Examples.</font></b>
+017: 
+018: {<b><font color="#0000FF">string</font></b>} Crude = ...;
+019: {<b><font color="#0000FF">string</font></b>} Naptha = ...;
+020: {<b><font color="#0000FF">string</font></b>} Resid = ...;
+021: {<b><font color="#0000FF">string</font></b>} Oil = ...;
+022: {<b><font color="#0000FF">string</font></b>} ReformProd = ...;
+023: {<b><font color="#0000FF">string</font></b>} CrackProd = ...;
+024: {<b><font color="#0000FF">string</font></b>} Petrol = ...; 
+025: {<b><font color="#0000FF">string</font></b>} Fuel = ...;
+026: {<b><font color="#0000FF">string</font></b>} Lube = ...;
+027: 
+028: <b><font color="#0000FF">float</font></b> DistillNaptha[Crude][Naptha] = ...;
+029: <b><font color="#0000FF">float</font></b> DistillOil[Crude][Oil] = ...;
+030: <b><font color="#0000FF">float</font></b> DistillResid[Crude][Resid] = ...;
+031: 
+032: <b><font color="#0000FF">float</font></b> ResidProcess[Resid][Lube] = ...;
+033: <b><font color="#0000FF">float</font></b> ReformProcess[Naptha][ReformProd] = ...;
+034: <b><font color="#0000FF">float</font></b> CrackProcess[Oil][CrackProd] = ...;
+035: 
+036: <b><font color="#0000FF">float</font></b> VaporOil[Oil] = ...;
+037: <b><font color="#0000FF">float</font></b> VaporResid[Resid] = ...;
+038: <b><font color="#0000FF">float</font></b> VaporCrkOil = ...;
+039: <b><font color="#0000FF">float</font></b> LimVaporJF = ...;
+040: 
+041: <b><font color="#0000FF">float</font></b> LimCrude[Crude] = ...;
+042: <b><font color="#0000FF">float</font></b> LimDistill = ...;
+043: <b><font color="#0000FF">float</font></b> LimReform = ...;
+044: <b><font color="#0000FF">float</font></b> LimCrack = ...;
+045: <b><font color="#0000FF">float</font></b> LoLube[Lube] = ...;
+046: <b><font color="#0000FF">float</font></b> UpLube[Lube] = ...;
+047: 
+048: <b><font color="#0000FF">float</font></b> OctaneNaptha[Naptha] = ...;
+049: <b><font color="#0000FF">float</font></b> OctaneReform[ReformProd] = ...;
+050: <b><font color="#0000FF">float</font></b> OctaneCG = ...;
+051: <b><font color="#0000FF">float</font></b> ReqOctane[Petrol] = ...;
+052: <b><font color="#0000FF">float</font></b> ReqRatioPetrol = ...;
+053: 
+054: <b><font color="#0000FF">float</font></b> ReqOilFO[Oil] = ...;
+055: <b><font color="#0000FF">float</font></b> ReqCrkFO = ...;
+056: <b><font color="#0000FF">float</font></b> ReqResidFO[Resid] = ...;
+057: 
+058: <b><font color="#0000FF">float</font></b> ProfitPetrol[Petrol] = ...;
+059: <b><font color="#0000FF">float</font></b> ProfitFuel[Fuel] = ...;
+060: <b><font color="#0000FF">float</font></b> ProfitLube[Lube] = ...;
+061: 
+062: <b><font color="#0000FF">dvar</font></b> <b><font color="#0000FF">float</font></b>+ Cr[c <b><font color="#0000FF">in</font></b> Crude] <b><font color="#0000FF">in</font></b> 0..LimCrude[c];
+063: <b><font color="#0000FF">dvar</font></b> <b><font color="#0000FF">float</font></b>+ Nap[Naptha];
+064: <b><font color="#0000FF">dvar</font></b> <b><font color="#0000FF">float</font></b>+ Napref[Naptha][ReformProd];
+065: <b><font color="#0000FF">dvar</font></b> <b><font color="#0000FF">float</font></b>+ Napb[Naptha][Petrol];
+066: <b><font color="#0000FF">dvar</font></b> <b><font color="#0000FF">float</font></b>+ Refb[ReformProd][Petrol];
+067: <b><font color="#0000FF">dvar</font></b> <b><font color="#0000FF">float</font></b>+ Ref[ReformProd];
+068: <b><font color="#0000FF">dvar</font></b> <b><font color="#0000FF">float</font></b>+ OilVar[Oil];
+069: <b><font color="#0000FF">dvar</font></b> <b><font color="#0000FF">float</font></b>+ Oilcrk[Oil];
+070: <b><font color="#0000FF">dvar</font></b> <b><font color="#0000FF">float</font></b>+ Oilb[Oil][Fuel];
+071: <b><font color="#0000FF">dvar</font></b> <b><font color="#0000FF">float</font></b>+ Crk[CrackProd];
+072: <b><font color="#0000FF">dvar</font></b> <b><font color="#0000FF">float</font></b>+ Crkg[Petrol];
+073: <b><font color="#0000FF">dvar</font></b> <b><font color="#0000FF">float</font></b>+ Crko[Fuel];
+074: <b><font color="#0000FF">dvar</font></b> <b><font color="#0000FF">float</font></b>+ ResidVar[Resid];
+075: <b><font color="#0000FF">dvar</font></b> <b><font color="#0000FF">float</font></b>+ Residl[Resid][Lube];
+076: <b><font color="#0000FF">dvar</font></b> <b><font color="#0000FF">float</font></b>+ Residbf[Resid][Fuel];
+077: <b><font color="#0000FF">dvar</font></b> <b><font color="#0000FF">float</font></b>+ Fpf[Fuel]; 
+078: <b><font color="#0000FF">dvar</font></b> <b><font color="#0000FF">float</font></b>+ Fpp[Petrol]; 
+079: <b><font color="#0000FF">dvar</font></b> <b><font color="#0000FF">float</font></b>+ Fpl[l <b><font color="#0000FF">in</font></b> Lube] <b><font color="#0000FF">in</font></b> LoLube[l]..UpLube[l];
+080: 
+081: <b><font color="#0000FF">dexpr</font></b> <b><font color="#0000FF">float</font></b> TotalProfitFuel =
+082:    <b><font color="#7D007D">sum</font></b>(f <b><font color="#0000FF">in</font></b> Fuel) ProfitFuel[f] * Fpf[f];
+083:      
+084: <b><font color="#0000FF">dexpr</font></b> <b><font color="#0000FF">float</font></b> TotalProfitPetrol =
+085:    <b><font color="#7D007D">sum</font></b>(p <b><font color="#0000FF">in</font></b> Petrol) ProfitPetrol[p] * Fpp[p];
+086:    
+087: <b><font color="#0000FF">dexpr</font></b> <b><font color="#0000FF">float</font></b> TotalProfitLube = 
+088:    <b><font color="#7D007D">sum</font></b>(l <b><font color="#0000FF">in</font></b> Lube) ProfitLube[l] * Fpl[l];
+089:    
+090: <b><font color="#0000FF">maximize</font></b> TotalProfitFuel + TotalProfitPetrol + TotalProfitLube;
+091: 
+092: <b><font color="#0000FF">subject</font></b> <b><font color="#0000FF">to</font></b> {
+093:   <b><font color="#007D00">// Distallation capacity</font></b>
+094:   ctDistCap: <b><font color="#7D007D">sum</font></b>(c <b><font color="#0000FF">in</font></b> Crude) Cr[c] &lt;= LimDistill;
+095: 
+096:   <b><font color="#007D00">// Reforming capacity</font></b>
+097:   ctRefCap:
+098:     <b><font color="#7D007D">sum</font></b>(n <b><font color="#0000FF">in</font></b> Naptha, r <b><font color="#0000FF">in</font></b> ReformProd) Napref[n][r] &lt;= LimReform;
+099: 
+100:   <b><font color="#007D00">// Cracking capacity</font></b>
+101:   ctCrkCap: <b><font color="#7D007D">sum</font></b>(o <b><font color="#0000FF">in</font></b> Oil) Oilcrk[o] &lt;= LimCrack;
+102: 
+103:   <b><font color="#007D00">// Distallation products</font></b>
+104:   <b><font color="#7D007D">forall</font></b>(n <b><font color="#0000FF">in</font></b> Naptha)
+105:     <b><font color="#7D007D">sum</font></b>(c <b><font color="#0000FF">in</font></b> Crude) DistillNaptha[c][n] * Cr[c] == Nap[n];     
+106: 
+107:   <b><font color="#7D007D">forall</font></b>(o <b><font color="#0000FF">in</font></b> Oil)
+108:     <b><font color="#7D007D">sum</font></b>(c <b><font color="#0000FF">in</font></b> Crude) DistillOil[c][o] * Cr[c] == OilVar[o];     
+109: 
+110:   <b><font color="#7D007D">forall</font></b>(r <b><font color="#0000FF">in</font></b> Resid)
+111:     <b><font color="#7D007D">sum</font></b>(c <b><font color="#0000FF">in</font></b> Crude) DistillResid[c][r] * Cr[c] == ResidVar[r];     
+112: 
+113:   <b><font color="#007D00">// Reformer products</font></b>
+114:   <b><font color="#7D007D">forall </font></b>(r <b><font color="#0000FF">in</font></b> ReformProd)
+115:     <b><font color="#7D007D">sum</font></b>(n <b><font color="#0000FF">in</font></b> Naptha) ReformProcess[n][r] * Napref[n][r] == Ref[r]; 
+116:    
+117:   <b><font color="#007D00">// Cracking products</font></b>
+118:   <b><font color="#7D007D">forall</font></b>(c <b><font color="#0000FF">in</font></b> CrackProd)
+119:     <b><font color="#7D007D">sum</font></b>(o <b><font color="#0000FF">in</font></b> Oil) CrackProcess[o][c] * Oilcrk[o] == Crk[c];
+120: 
+121:   Crk[<b><font color="#8A2BE2">"CG"</font></b>] == <b><font color="#7D007D">sum</font></b>(p <b><font color="#0000FF">in</font></b> Petrol) Crkg[p];
+122:   Crk[<b><font color="#8A2BE2">"CO"</font></b>] == <b><font color="#7D007D">sum</font></b>(f <b><font color="#0000FF">in</font></b> Fuel) Crko[f];
+123: 
+124:   <b><font color="#007D00">// Resid process</font></b>
+125:   <b><font color="#7D007D">forall</font></b>(l <b><font color="#0000FF">in</font></b> Lube)
+126:     <b><font color="#7D007D">sum</font></b>(r <b><font color="#0000FF">in</font></b> Resid) ResidProcess[r][l] * Residl[r][l] == Fpl[l];
+127: 
+128:   <b><font color="#007D00">// Balance constraints on Napthas</font></b>
+129:   <b><font color="#7D007D">forall</font></b>(n <b><font color="#0000FF">in</font></b> Naptha)
+130:     <b><font color="#7D007D">sum</font></b>(r <b><font color="#0000FF">in</font></b> ReformProd) Napref[n][r] + <b><font color="#7D007D">sum</font></b>(p <b><font color="#0000FF">in</font></b> Petrol) Napb[n][p] == Nap[n];
+131: 
+132:   <b><font color="#007D00">// Balance constraints on Oils</font></b>
+133:   <b><font color="#7D007D">forall</font></b>(o <b><font color="#0000FF">in</font></b> Oil)
+134:     Oilcrk[o] + <b><font color="#7D007D">sum</font></b>(f <b><font color="#0000FF">in</font></b> Fuel) Oilb[o][f] == OilVar[o];   
+135: 
+136:   <b><font color="#007D00">// Balance constraints on Resids</font></b>
+137:   <b><font color="#7D007D">forall</font></b>(r <b><font color="#0000FF">in</font></b> Resid)
+138:     <b><font color="#7D007D">sum</font></b>(f <b><font color="#0000FF">in</font></b> Fuel) Residbf[r][f] + <b><font color="#7D007D">sum</font></b>(l <b><font color="#0000FF">in</font></b> Lube) Residl[r][l] == ResidVar[r];
+139: 
+140:   <b><font color="#007D00">// Balance constaint on Reformer products</font></b>
+141:   <b><font color="#7D007D">forall</font></b>(r <b><font color="#0000FF">in</font></b> ReformProd)
+142:     <b><font color="#7D007D">sum</font></b>(p <b><font color="#0000FF">in</font></b> Petrol) Refb[r][p] == Ref[r];
+143: 
+144:   <b><font color="#007D00">// Balance constraints on Petrols</font></b>
+145:   <b><font color="#7D007D">forall</font></b>(p <b><font color="#0000FF">in</font></b> Petrol)
+146:     <b><font color="#7D007D">sum</font></b>(n <b><font color="#0000FF">in</font></b> Naptha) Napb[n][p] + <b><font color="#7D007D">sum</font></b>(r <b><font color="#0000FF">in</font></b> ReformProd) Refb[r][p] + Crkg[p] == Fpp[p];
+147: 
+148:   <b><font color="#007D00">// Balance constraint on Fuels</font></b>
+149:   <b><font color="#7D007D">forall</font></b>(f <b><font color="#0000FF">in</font></b> Fuel)
+150:     <b><font color="#7D007D">sum</font></b>(o <b><font color="#0000FF">in</font></b> Oil) Oilb[o][f] + Crko[f] + <b><font color="#7D007D">sum</font></b>(r <b><font color="#0000FF">in</font></b> Resid) Residbf[r][f] == Fpf[f];
+151:    
+152:   <b><font color="#007D00">// Fixed proportions required for Fuel Oil</font></b>
+153:   <b><font color="#7D007D">forall</font></b>(o <b><font color="#0000FF">in</font></b> Oil)
+154:     Oilb[o,<b><font color="#8A2BE2">"FO"</font></b>] == ReqOilFO[o] * Fpf[<b><font color="#8A2BE2">"FO"</font></b>];
+155:   Crko[<b><font color="#8A2BE2">"FO"</font></b>] == ReqCrkFO * Fpf[<b><font color="#8A2BE2">"FO"</font></b>];
+156:   <b><font color="#7D007D">forall</font></b>(r <b><font color="#0000FF">in</font></b> Resid)
+157:     Residbf[r][<b><font color="#8A2BE2">"FO"</font></b>] == ReqResidFO[r] * Fpf[<b><font color="#8A2BE2">"FO"</font></b>]; 
+158: 
+159:   <b><font color="#007D00">// Required ratio beteen petrols</font></b>
+160:   cttReqRatio: Fpp[<b><font color="#8A2BE2">"PMF"</font></b>] &gt;= ReqRatioPetrol * Fpp[<b><font color="#8A2BE2">"RMF"</font></b>];
+161:    
+162:   <b><font color="#007D00">// Qualities</font></b>
+163:   <b><font color="#007D00">// Octane</font></b>
+164:   <b><font color="#7D007D">forall</font></b>(p <b><font color="#0000FF">in</font></b> Petrol)
+165:     ctOctane :      
+166:       <b><font color="#7D007D">sum</font></b>(n <b><font color="#0000FF">in</font></b> Naptha) OctaneNaptha[n] * Napb[n][p] + 
+167:       <b><font color="#7D007D">sum</font></b>(r <b><font color="#0000FF">in</font></b> ReformProd) OctaneReform[r] * Refb[r][p]
+168:          + OctaneCG * Crkg[p] &gt;= ReqOctane[p] * Fpp[p]; 
+169: 
+170:   <b><font color="#007D00">// Vapor Pressure constraint on Jet Fuel</font></b>
+171:   ctVapPres: 
+172:   <b><font color="#7D007D">sum</font></b>(o <b><font color="#0000FF">in</font></b> Oil) VaporOil[o] * Oilb[o][<b><font color="#8A2BE2">"JF"</font></b>] + VaporCrkOil * Crko[<b><font color="#8A2BE2">"JF"</font></b>]
+173:        + <b><font color="#7D007D">sum</font></b>(r <b><font color="#0000FF">in</font></b> Resid) VaporResid[r] * Residbf[r][<b><font color="#8A2BE2">"JF"</font></b>] &lt;= LimVaporJF * Fpf[<b><font color="#8A2BE2">"JF"</font></b>];
+174:       
+175: }
+</tt></pre>

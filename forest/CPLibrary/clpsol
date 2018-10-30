@@ -1,0 +1,41 @@
+<?xml version = "1.0" encoding="UTF-8" standalone="yes"?>
+<CPLEXSolution version="1.2">
+ <header
+   problemName="CoreLP"
+   objectiveValue="-30"
+   solutionTypeValue="1"
+   solutionTypeString="basic"
+   solutionStatusValue="1"
+   solutionStatusString="optimal"
+   solutionMethodString="primal"
+   primalFeasible="1"
+   dualFeasible="1"
+   simplexIterations="0"
+   writeLevel="1"/>
+ <quality
+   epRHS="9.9999999999999995e-07"
+   epOpt="9.9999999999999995e-07"
+   maxPrimalInfeas="0"
+   maxDualInfeas="0"
+   maxPrimalResidual="0"
+   maxDualResidual="0"
+   maxX="30"
+   maxPi="30"
+   maxSlack="30"
+   maxRedCost="0"
+   kappa="157.38994565217391"/>
+ <linearConstraints>
+  <constraint name="SumX" index="0" status="LL" slack="0" dual="-30"/>
+  <constraint name="AP1" index="1" status="BS" slack="30" dual="-0"/>
+  <constraint name="AP2" index="2" status="LL" slack="0" dual="-0"/>
+  <constraint name="AP3" index="3" status="LL" slack="0" dual="-0"/>
+  <constraint name="AP4" index="4" status="LL" slack="0" dual="1"/>
+ </linearConstraints>
+ <variables>
+  <variable name="d" index="0" status="BS" value="-30" reducedCost="-0"/>
+  <variable name="x1" index="1" status="LL" value="0" reducedCost="-0"/>
+  <variable name="x2" index="2" status="BS" value="1" reducedCost="-0"/>
+  <variable name="x3" index="3" status="BS" value="0" reducedCost="-0"/>
+  <variable name="x4" index="4" status="BS" value="0" reducedCost="-0"/>
+ </variables>
+</CPLEXSolution>

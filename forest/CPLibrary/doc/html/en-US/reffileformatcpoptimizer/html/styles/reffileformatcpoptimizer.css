@@ -1,0 +1,8 @@
+@import url("ibmdita.css");
+@import url("swg_info_common_opti.css");
+
+.syntaxdiagram { width: 75%; }
+.stringemph { color: rgb(32,128,32); }
+.commentemph { color: rgb(64, 64, 64); }
+.codeblock a { text-decoration: none; }
+/* .codeph a { text-decoration: none; } */

@@ -1,0 +1,6 @@
+Manifest-Version: 1.0
+Class-Path: ./cpoptimizer/bin/x86-64_osx/ILOG.CP.jar ./cplex/bin/x86-64_osx/cplex.jar ./lib/jgrapht-jdk1.6.jar ./lib/jgraph-5.
+ 8.3.1.jar ./lib/jgraph-5.13.0.0.jar ./lib/mxgraph-all.jar
+Main-Class: SaraCompareSolvers
+
+

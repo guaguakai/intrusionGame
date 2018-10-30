@@ -1,0 +1,116 @@
+<!-- Generator: GNU source-highlight 2.2
+by Lorenzo Bettini
+http://www.lorenzobettini.it
+http://www.gnu.org/software/src-highlite -->
+<pre><tt>001: <b><font color="#007D00">// --------------------------------------------------------------------------</font></b>
+002: <b><font color="#007D00">// Licensed Materials - Property of IBM</font></b>
+003: <b><font color="#007D00">//</font></b>
+004: <b><font color="#007D00">// 5725-A06 5725-A29 5724-Y48 5724-Y49 5724-Y54 5724-Y55</font></b>
+005: <b><font color="#007D00">// Copyright IBM Corporation 1998, 2013. All Rights Reserved.</font></b>
+006: <b><font color="#007D00">//</font></b>
+007: <b><font color="#007D00">// Note to U.S. Government Users Restricted Rights:</font></b>
+008: <b><font color="#007D00">// Use, duplication or disclosure restricted by GSA ADP Schedule</font></b>
+009: <b><font color="#007D00">// Contract with IBM Corp.</font></b>
+010: <b><font color="#007D00">// --------------------------------------------------------------------------</font></b>
+011: 
+012: <b><font color="#007D00">// The nodes of the supply chain</font></b>
+013: Sites = {
+014:    Atlanta,
+015:    Chicago,
+016:    Dallas,
+017:    Denver,
+018:    Newark,
+019:    Pasadena,
+020:    Portland
+021: };
+022: 
+023: <b><font color="#007D00">// The articles</font></b>
+024: Articles = {
+025:    A04567,
+026:    A04900
+027: };
+028: 
+029: <b><font color="#007D00">// Stocks on hand at each node at the begining of the period.</font></b>
+030: OnHand = [
+031:       [ 200, 150 ],    <b><font color="#007D00">// Atlanta,    A04567, A04900</font></b>
+032:       [ 30, 90 ],      <b><font color="#007D00">// Chicago,    A04567, A04900</font></b>
+033:       [ 70, 50 ],      <b><font color="#007D00">// Dallas,     A04567, A04900</font></b>
+034:       [ 100, 10 ],       <b><font color="#007D00">// Denver,     A04567, A04900</font></b>
+035:       [ 100, 10 ],       <b><font color="#007D00">// Newark,     A04567, A04900</font></b>
+036:       [ 100, 10 ],       <b><font color="#007D00">// Pasadena,   A04567, A04900</font></b>
+037:       [ 200, 100 ]     <b><font color="#007D00">// Portland,   A04567, A04900</font></b>
+038:       ];
+039: 
+040: <b><font color="#007D00">// Directed links of the supply chain</font></b>
+041: Links = {
+042:    &lt;   Atlanta,   Chicago    &gt;,
+043:    &lt;   Chicago,   Dallas     &gt;,
+044:    &lt;   Chicago,   Denver     &gt;,
+045:    &lt;   Dallas,    Newark     &gt;,
+046:    &lt;   Dallas,    Pasadena   &gt;,
+047:    &lt;   Portland,  Dallas     &gt;,
+048:    &lt;   Portland,  Denver     &gt;
+049: };
+050: 
+051: <b><font color="#007D00">// Demands for all articles at each node at the begining of the period.</font></b>
+052: Demand = [
+053:       [ 0, 0 ],       <b><font color="#007D00">// Atlanta, A04567, A04900</font></b>
+054:       [ 50, 30 ],     <b><font color="#007D00">// Chicago, A04567, A04900</font></b>
+055:       [ 40, 80 ],     <b><font color="#007D00">// Dallas,  A04567, A04900</font></b>
+056:       [ 30, 10 ],     <b><font color="#007D00">// Denver,  A04567, A04900</font></b>
+057:       [ 30, 50 ],     <b><font color="#007D00">// Newark,  A04567, A04900</font></b>
+058:       [ 30, 20 ],     <b><font color="#007D00">// Pasadena,A04567, A04900</font></b>
+059:       [ 0, 10 ]       <b><font color="#007D00">// Portland,A04567, A04900</font></b>
+060:       ];
+061: 
+062: <b><font color="#007D00">//Unit transportation cost on each link</font></b>
+063: Cost = #[
+064:    &lt;   Atlanta,  Chicago  &gt;:   2,
+065:    &lt;   Chicago,  Dallas   &gt;:   2,
+066:    &lt;   Chicago,  Denver   &gt;:   1,
+067:    &lt;   Dallas,   Newark   &gt;:   2,
+068:    &lt;   Dallas,   Pasadena &gt;:   1,
+069:    &lt;   Portland, Dallas   &gt;:   1,
+070:    &lt;   Portland, Denver   &gt;:   1
+071:  ]#;
+072: 
+073: <b><font color="#007D00">// The linkExtraCost is incremental cost </font></b>
+074: <b><font color="#007D00">// (=Cost of unit extra flow - Standard cost of unit flow)</font></b>
+075: LinkExtraCost = #[
+076:    &lt;   Atlanta,  Chicago  &gt;:   2,
+077:    &lt;   Chicago,  Dallas   &gt;:   1,
+078:    &lt;   Chicago,  Denver   &gt;:   2,
+079:    &lt;   Dallas,   Newark   &gt;:   1,
+080:    &lt;   Dallas,   Pasadena &gt;:   1,
+081:    &lt;   Portland, Dallas   &gt;:   1,
+082:    &lt;   Portland, Denver   &gt;:   1
+083:  ]#;
+084:  
+085: 
+086: 
+087: <b><font color="#007D00">// Tranportation capacities for each link</font></b>
+088: LinkCapacity = #[
+089:    &lt;   Atlanta,  Chicago  &gt;:   50,
+090:    &lt;   Chicago,  Dallas   &gt;:   40,
+091:    &lt;   Chicago,  Denver   &gt;:   60,
+092:    &lt;   Dallas,   Newark   &gt;:   60,
+093:    &lt;   Dallas,   Pasadena &gt;:   40,
+094:    &lt;   Portland, Dallas   &gt;:   30,
+095:    &lt;   Portland, Denver   &gt;:   30
+096:   ]#;
+097:   
+098: 
+099: <b><font color="#007D00">// Storage capacities at each node</font></b>
+100: SiteCapacity = [ 100, 150, 100, 120, 100, 180, 100 ];
+101: 
+102: <b><font color="#007D00">// Cost of unit extra storage capacity </font></b>
+103: SiteExtraCost = [
+104:       2,    <b><font color="#007D00">// Atlanta,    </font></b>
+105:       5,    <b><font color="#007D00">// Chicago,    </font></b>
+106:       2,    <b><font color="#007D00">// Dallas,     </font></b>
+107:       1 ,   <b><font color="#007D00">// Denver,   </font></b>
+108:       1,    <b><font color="#007D00">// Newark,    </font></b>
+109:       3,    <b><font color="#007D00">// Pasadena,  </font></b>
+110:       1     <b><font color="#007D00">// Portland,   </font></b>
+111:       ];
+</tt></pre>

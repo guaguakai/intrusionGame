@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="src" path="teamsearchtree"/>
+	<classpathentry kind="src" path="Utilities"/>
+	<classpathentry kind="src" path="models"/>
+	<classpathentry kind="src" path="solvers"/>
+	<classpathentry kind="src" path="Wrapper"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER">
+		<attributes>
+			<attribute name="module" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="cplex/lib/cplex.jar">
+		<attributes>
+			<attribute name="org.eclipse.jdt.launching.CLASSPATH_ATTR_LIBRARY_PATH_ENTRY" value="CPLibrary/cplex/bin/x86-64_osx"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="cpoptimizer/lib/ILOG.CP.jar">
+		<attributes>
+			<attribute name="javadoc_location" value="file:/Users/Sara/StackelbergGame/CPLibrary/doc/html/en-US/refjavacpoptimizer/html/"/>
+			<attribute name="org.eclipse.jdt.launching.CLASSPATH_ATTR_LIBRARY_PATH_ENTRY" value="CPLibrary/cpoptimizer/bin/x86-64_osx"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="lib/jgrapht-jdk1.6.jar"/>
+	<classpathentry kind="lib" path="lib/jgraph-5.8.3.1.jar"/>
+	<classpathentry kind="lib" path="lib/moreJgrapht/jgraph-5.13.0.0.jar"/>
+	<classpathentry kind="lib" path="lib/mxgraph-all.jar"/>
+	<classpathentry kind="lib" path="/opt/ibm/ILOG/CPLEX_Studio128/cplex/lib/cplex.jar"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>

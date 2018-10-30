@@ -1,0 +1,66 @@
+<!-- Generator: GNU source-highlight 2.2
+by Lorenzo Bettini
+http://www.lorenzobettini.it
+http://www.gnu.org/software/src-highlite -->
+<pre><tt>01: <b><font color="#007D00">// --------------------------------------------------------------------------</font></b>
+02: <b><font color="#007D00">// Licensed Materials - Property of IBM</font></b>
+03: <b><font color="#007D00">//</font></b>
+04: <b><font color="#007D00">// 5725-A06 5725-A29 5724-Y48 5724-Y49 5724-Y54 5724-Y55</font></b>
+05: <b><font color="#007D00">// Copyright IBM Corporation 1998, 2013. All Rights Reserved.</font></b>
+06: <b><font color="#007D00">//</font></b>
+07: <b><font color="#007D00">// Note to U.S. Government Users Restricted Rights:</font></b>
+08: <b><font color="#007D00">// Use, duplication or disclosure restricted by GSA ADP Schedule</font></b>
+09: <b><font color="#007D00">// Contract with IBM Corp.</font></b>
+10: <b><font color="#007D00">// --------------------------------------------------------------------------</font></b>
+11: 
+12: <b><font color="#0000FF">using</font></b> <b><font color="#0000FF">CP</font></b>;
+13: 
+14: <b><font color="#0000FF">int</font></b> nbJobs = ...;
+15: <b><font color="#0000FF">int</font></b> nbMchs = ...;
+16: 
+17: <b><font color="#0000FF">range</font></b> Jobs = 1..nbJobs;
+18: <b><font color="#0000FF">range</font></b> Mchs = 1..nbMchs; 
+19: 
+20: <b><font color="#0000FF">tuple</font></b> Operation {
+21:   <b><font color="#0000FF">int</font></b> id;    <b><font color="#007D00">// Operation id</font></b>
+22:   <b><font color="#0000FF">int</font></b> jobId; <b><font color="#007D00">// Job id</font></b>
+23:   <b><font color="#0000FF">int</font></b> pos;   <b><font color="#007D00">// Position in job</font></b>
+24: };
+25: 
+26: <b><font color="#0000FF">tuple</font></b> Mode {
+27:   <b><font color="#0000FF">int</font></b> opId; <b><font color="#007D00">// Operation id</font></b>
+28:   <b><font color="#0000FF">int</font></b> mch;  <b><font color="#007D00">// Machine</font></b>
+29:   <b><font color="#0000FF">int</font></b> pt;   <b><font color="#007D00">// Processing time</font></b>
+30: };
+31: 
+32: {Operation} Ops   = ...;
+33: {Mode}      Modes = ...;
+34: 
+35: <b><font color="#007D00">// Position of last operation of job j</font></b>
+36: <b><font color="#0000FF">int</font></b> jlast[j <b><font color="#0000FF">in</font></b> Jobs] = <b><font color="#7D007D">max</font></b>(o <b><font color="#0000FF">in</font></b> Ops: o.jobId==j) o.pos;
+37: 
+38: <b><font color="#0000FF">dvar</font></b> <b><font color="#0000FF">interval</font></b> ops  [Ops]; 
+39: <b><font color="#0000FF">dvar</font></b> <b><font color="#0000FF">interval</font></b> modes[md <b><font color="#0000FF">in</font></b> Modes] <b><font color="#0000FF">optional</font></b> <b><font color="#0000FF">size</font></b> md.pt;
+40: <b><font color="#0000FF">dvar</font></b> <b><font color="#0000FF">sequence</font></b> mchs[m <b><font color="#0000FF">in</font></b> Mchs] <b><font color="#0000FF">in</font></b> <b><font color="#7D007D">all</font></b>(md <b><font color="#0000FF">in</font></b> Modes: md.mch == m) modes[md];
+41: 
+42: <b><font color="#0000FF">execute</font></b> {
+43:                 cp.param.FailLimit = 10000;
+44: }
+45: 
+46: minimize max(j in Jobs, o in Ops: o.pos==jlast[j]) endOf(ops[o]);
+47: subject to {
+48:   forall (j <b><font color="EA7D00">in</font></b> Jobs, o1 <b><font color="EA7D00">in</font></b> Ops, o2 <b><font color="EA7D00">in</font></b> Ops: o1.jobId==j &amp;&amp; o2.jobId==j &amp;&amp; o2.pos==1+o1.pos)
+49:     endBeforeStart(ops[o1],ops[o2]);
+50:   forall (o <b><font color="EA7D00">in</font></b> Ops)
+51:     alternative(ops[o], all(md <b><font color="EA7D00">in</font></b> Modes: md.opId==o.id) modes[md]);
+52:   forall (m <b><font color="EA7D00">in</font></b> Mchs)
+53:     noOverlap(mchs[m]);
+54: }
+55: 
+56: execute {
+57:   <b><font color="EA7D00">for</font></b> (<b><font color="EA7D00">var</font></b> m <b><font color="EA7D00">in</font></b> Modes) {
+58:     <b><font color="EA7D00">if</font></b> (modes[m].present)
+59:       writeln(<b><font color="#8A2BE2">"Operation "</font></b> + m.opId + <b><font color="#8A2BE2">" on machine "</font></b> + m.mch + <b><font color="#8A2BE2">" starting at "</font></b> + modes[m].start);
+60:   }
+61: }
+</tt></pre>

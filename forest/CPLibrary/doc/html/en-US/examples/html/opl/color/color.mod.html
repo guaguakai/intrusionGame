@@ -1,0 +1,66 @@
+<!-- Generator: GNU source-highlight 2.2
+by Lorenzo Bettini
+http://www.lorenzobettini.it
+http://www.gnu.org/software/src-highlite -->
+<pre><tt>01: <b><font color="#007D00">// --------------------------------------------------------------------------</font></b>
+02: <b><font color="#007D00">// Licensed Materials - Property of IBM</font></b>
+03: <b><font color="#007D00">//</font></b>
+04: <b><font color="#007D00">// 5725-A06 5725-A29 5724-Y48 5724-Y49 5724-Y54 5724-Y55</font></b>
+05: <b><font color="#007D00">// Copyright IBM Corporation 1998, 2013. All Rights Reserved.</font></b>
+06: <b><font color="#007D00">//</font></b>
+07: <b><font color="#007D00">// Note to U.S. Government Users Restricted Rights:</font></b>
+08: <b><font color="#007D00">// Use, duplication or disclosure restricted by GSA ADP Schedule</font></b>
+09: <b><font color="#007D00">// Contract with IBM Corp.</font></b>
+10: <b><font color="#007D00">// --------------------------------------------------------------------------</font></b>
+11: 
+12: <b><font color="#007D00">/* ------------------------------------------------------------</font></b>
+13: 
+14: <b><font color="#007D00">Problem Description</font></b>
+15: <b><font color="#007D00">-------------------</font></b>
+16: 
+17: <b><font color="#007D00">The problem involves choosing colors for the countries on a map in </font></b>
+18: <b><font color="#007D00">such a way that at most four colors (blue, white, yellow, green) are </font></b>
+19: <b><font color="#007D00">used and no neighboring countries are the same color. In this exercise, </font></b>
+20: <b><font color="#007D00">you will find a solution for a map coloring problem with six countries: </font></b>
+21: <b><font color="#007D00">Belgium, Denmark, France, Germany, Luxembourg, and the Netherlands. </font></b>
+22: 
+23: <b><font color="#007D00">------------------------------------------------------------ */</font></b>
+24: <b><font color="#0000FF">using</font></b> <b><font color="#0000FF">CP</font></b>;
+25: 
+26: <b><font color="#0000FF">range</font></b> r = 0..3;
+27: 
+28: <b><font color="#0000FF">execute</font></b>{
+29:         }
+30: 
+31: 
+32: string Names[r] = ["blue", "white", "yellow", "green"]; 
+33: 
+34: dvar int Belgium in r;
+35: dvar int Denmark in r;
+36: dvar int France in r;
+37: dvar int Germany  in r;
+38: dvar int Luxembourg in r;
+39: dvar int Netherlands in r;
+40: 
+41: subject to {  
+42:    Belgium != France; 
+43:    Belgium != Germany; 
+44:    Belgium != Netherlands;
+45:    Belgium != Luxembourg;
+46:    Denmark != Germany; 
+47:    France != Germany; 
+48:    France != Luxembourg; 
+49:    Germany != Luxembourg;
+50:    Germany != Netherlands;    
+51: }
+52: 
+53: execute {
+54:    writeln(<b><font color="#8A2BE2">"Belgium:     "</font></b>, Names[Belgium]);
+55:    writeln(<b><font color="#8A2BE2">"Denmark:     "</font></b>, Names[Denmark]);
+56:    writeln(<b><font color="#8A2BE2">"France:      "</font></b>, Names[France]);
+57:    writeln(<b><font color="#8A2BE2">"Germany:     "</font></b>, Names[Germany]);
+58:    writeln(<b><font color="#8A2BE2">"Luxembourg:  "</font></b>, Names[Luxembourg]);
+59:    writeln(<b><font color="#8A2BE2">"Netherlands: "</font></b>, Names[Netherlands]);
+60: }
+61: 
+</tt></pre>
