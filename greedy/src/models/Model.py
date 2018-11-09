@@ -64,10 +64,13 @@ class DefenderMixedStrategy:
         self.length = len(prob)
 
 class GameModel:
-    def __init__(self, n=200, p=0.3, T=3, S=1, R=3, resource_list=None):
+    def __init__(self, n=200, p=0.3, T=3, S=1, R=3, G=None, resource_list=None, source_list=None, terminal_list=None, terminal_payoff=None):
         self.n = n
         self.p = p
-        self.G = nx.random_geometric_graph(self.n, self.p).to_directed()
+        if G:
+            self.G = G
+        else:
+            self.G = nx.random_geometric_graph(self.n, self.p).to_directed()
         self.T = T
         assert(S == 1) # currently not allow S > 1
         self.S = S
@@ -75,9 +78,20 @@ class GameModel:
         self.m = len(self.G.edges)
 
         random_targets = np.random.choice(self.n, self.T + self.S, replace=False)
-        self.terminal_list = random_targets[:self.T]
-        self.terminal_payoff = np.random.random(self.T) * 10
-        self.source_list = random_targets[-self.S:]
+        if terminal_list:
+            self.terminal_list = terminal_list
+        else:
+            self.terminal_list = random_targets[:self.T]
+
+        if source_list:
+            self.source_list = source_list
+        else:
+            self.source_list = random_targets[-self.S:]
+
+        if terminal_payoff:
+            self.terminal_payoff = terminal_payoff
+        else:
+            self.terminal_payoff = np.random.random(self.T) * 10
 
         self.reward_list = np.zeros(self.n)
         for t in range(len(self.terminal_list)):
@@ -96,7 +110,7 @@ class GameModel:
         if resource_list is not None:
             self.resource_list = resource_list
         else:
-            self.resource_list = [(Resource(3,0.5))] * self.R # list[i] is a tuple of resource (coverage, prob) and number of this particular resource
+            self.resource_list = [Resource(3,0.5)] * self.R # list[i] is a tuple of resource (coverage, prob) and number of this particular resource
 
         self.defender_strategy_size = 5
         self.defender_strategy_set = [self.randomDefenderStrategy() for i in range(5)]

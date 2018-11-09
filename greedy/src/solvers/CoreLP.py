@@ -30,6 +30,7 @@ def CoreLP(gameModel):
     variables = cpx.solution.get_values()
 
     def_prob = np.array(variables[:d_size])
-    att_prob = -np.array(cpx.solution.get_dual_values(["c{0}".format(j) for j in range(a_size)]))
+    att_prob = -np.array(cpx.solution.get_dual_values(["c{0}".format(j) for j in range(a_size)])) # the inequality direction is reverse, so we need a negation
+    att_prob /= sum(att_prob)
     return def_prob, att_prob, obj
 
