@@ -1,5 +1,7 @@
 from models.Model import *
-from solvers.CoreLP import coreLP
+from solvers.CoreLP import CoreLP
+from solvers.DefenderOracle.BRDefenderP import BRDefenderP
+from solvers.AttackerOracle.BRAttackerP import BRAttackerP
 
 if __name__ == "__main__":
     gameModel = GameModel(n=20)
@@ -9,5 +11,17 @@ if __name__ == "__main__":
     print(gameModel.payoff_matrix)
     # gameModel.drawGraph()
 
-    prob, obj = coreLP(gameModel)
-    print(prob, obj)
+    for count in range(100):
+        def_prob, att_prob, obj = CoreLP(gameModel)
+
+        print("iteration: {0}, objective value: {1}".format(count, obj))
+        print("defender probability:", def_prob)
+        print("attacker probability:", att_prob)
+
+        gameModel.updateProbability(def_prob, att_prob)
+
+        cp_def_obj, cp_def_coverage = BRDefenderP(gameModel)
+        cp_att_obj, cp_att_path = BRAttackerP(gameModel)
+
+        gameModel.updateDefenderStrategy(DefenderStrategy(cp_def_coverage, R=gameModel.R))
+        gameModel.updateAttackerStrategy(AttackerStrategy(cp_att_path))

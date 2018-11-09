@@ -1,6 +1,7 @@
 import cplex
+import numpy as np
 
-def coreLP(gameModel):
+def CoreLP(gameModel):
     payoff_matrix = gameModel.payoff_matrix
     (d_size, a_size) = payoff_matrix.shape # defender strategy size and attacker strategy size
 
@@ -28,6 +29,7 @@ def coreLP(gameModel):
     obj = cpx.solution.get_objective_value()
     variables = cpx.solution.get_values()
 
-    prob = variables[:d_size]
-    return prob, obj
+    def_prob = np.array(variables[:d_size])
+    att_prob = -np.array(cpx.solution.get_dual_values(["c{0}".format(j) for j in range(a_size)]))
+    return def_prob, att_prob, obj
 
