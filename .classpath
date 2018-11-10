@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="src" path="forest/Experiments/08-23-experiments/GridRes1"/>
+	<classpathentry kind="src" path="forest/models/model"/>
+	<classpathentry kind="src" path="forest/teamsearchtree/PQsearch"/>
+	<classpathentry kind="src" path="forest/Wrapper/lpWrapper"/>
+	<classpathentry kind="src" path="forest/Experiments/08-23-experiments/GridRes2"/>
+	<classpathentry kind="src" path="forest/Experiments/08-23-experiments/GridRes3"/>
+	<classpathentry kind="src" path="forest/Experiments/08-23-experiments/RandomRes1"/>
+	<classpathentry kind="src" path="forest/Experiments/08-23-experiments/RandomRes2"/>
+	<classpathentry kind="src" path="forest/Experiments/08-23-experiments/RandomRes3"/>
+	<classpathentry kind="src" path="forest/Experiments/old/greedy_heuristics/BiggerGraphs"/>
+	<classpathentry kind="src" path="forest/Experiments/old/greedy_heuristics/New scripts"/>
+	<classpathentry kind="src" path="forest/Experiments/old/greedy_heuristics/old"/>
+	<classpathentry kind="src" path="forest/Experiments/old/incr_vs_non-incr"/>
+	<classpathentry kind="src" path="forest/Experiments/old/RunForrestRun"/>
+	<classpathentry kind="src" path="forest/Experiments/old/RunOpt"/>
+	<classpathentry kind="src" path="forest/SaraCode"/>
+	<classpathentry kind="src" path="forest/Why"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/CPLibrary"/>
+	<classpathentry kind="lib" path="/jgrapht-1.2.0/lib/jgrapht-core-1.2.0.jar"/>
+	<classpathentry kind="lib" path="/jgrapht-1.2.0/lib/jgrapht-ext-1.2.0-uber.jar"/>
+	<classpathentry kind="lib" path="/jgrapht-1.2.0/lib/jgraphx-3.4.1.3.jar"/>
+	<classpathentry kind="lib" path="/jgrapht-1.2.0/lib/jgrapht-io-1.2.0-uber.jar"/>
+	<classpathentry kind="lib" path="/jgrapht-1.2.0/lib/jgrapht-guava-1.2.0-uber.jar"/>
+	<classpathentry kind="lib" path="/jgrapht-1.2.0/lib/jgrapht-demo-1.2.0.jar"/>
+	<classpathentry kind="lib" path="/jgrapht-1.2.0/lib/commons-lang3-3.5.jar"/>
+	<classpathentry kind="lib" path="/Applications/CPLEX_Studio128/cplex/lib/cplex.jar"/>
+	<classpathentry kind="lib" path="/Applications/CPLEX_Studio128/cpoptimizer/lib/ILOG.CP.jar"/>
+	<classpathentry kind="output" path="forest/Experiments/old/greedy_heuristics/MostRecentResults"/>
+</classpath>

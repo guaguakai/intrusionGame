@@ -31,7 +31,6 @@ import model.teamBuildingModels.CompactPath;
 import model.teamBuildingModels.MinCut;
 import model.teamBuildingModels.TeamBuildingProblem;
 
-import org.jgrapht.alg.BellmanFordShortestPath;
 import org.jgrapht.graph.AbstractBaseGraph;
 import org.jgrapht.graph.DirectedWeightedMultigraph;
 import org.jgrapht.graph.WeightedMultigraph;
