@@ -5,6 +5,8 @@ import time
 import cplex
 import random
 
+numerical_error = 1e-6
+
 class Resource:
     def __init__(self, size, prob, price=1):
         self.size = size
@@ -36,20 +38,17 @@ class AttackerMixedStrategy:
         self.length = len(prob)
 
 class DefenderStrategy:
-    def __init__(self, coverage, resource_usage=None, R=None):
+    def __init__(self, coverage, R):
         self.coverage = coverage
         # a dictionary: edge -> recourse id that covers this edge
         # This should follow the resource order
 
-        if resource_usage:
-            self.resource_usage = resource_usage
-        else:
-            assert(R is not None)
-            resource_usage = [[] for i in range(R)]
-            for x in coverage:
-                for y in coverage[x]:
-                    resource_usage[y].append(x)
-            self.resource_usage = resource_usage
+        assert(R is not None)
+        resource_usage = [[] for i in range(R)]
+        for x in coverage:
+            for y in coverage[x]:
+                resource_usage[y].append(x)
+        self.resource_usage = resource_usage
         # a list of edges that this resource covers
 
 class DefenderMixedStrategy:
@@ -168,7 +167,6 @@ class GameModel:
 
     def randomDefenderStrategy(self):
         coverage = {}
-        resource_usage = []
         for i in range(len(self.resource_list)):
             n1 = np.random.randint(self.n)
             out_edge = list(self.G.out_edges(n1))[np.random.randint(len(self.G.out_edges(n1)))]
@@ -177,9 +175,7 @@ class GameModel:
             else:
                 coverage[out_edge] = {i}
 
-            resource_usage.append(out_edge)
-
-        return DefenderStrategy(coverage, resource_usage)
+        return DefenderStrategy(coverage, self.R)
         print("TODO...")
         # TODO...
 
@@ -198,9 +194,9 @@ class GameModel:
 
     def updateProbability(self, def_prob, att_prob):
         assert(len(def_prob) == self.defender_strategy_size)
-        assert(sum(def_prob) == 1)
+        assert(sum(def_prob) <= 1 + numerical_error and sum(def_prob) >= 1 - numerical_error)
         assert(len(att_prob) == self.attacker_strategy_size)
-        assert(sum(att_prob) == 1)
+        assert(sum(att_prob) <= 1 + numerical_error and sum(att_prob) >= 1 - numerical_error)
         self.defender_prob = def_prob
         self.attacker_prob = att_prob
 

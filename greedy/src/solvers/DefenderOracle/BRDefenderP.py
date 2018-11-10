@@ -28,16 +28,16 @@ def BRDefenderP(gameModel):
         node_variables.append(tmp_node_variable_list)
 
         # ---------------- connected edge constraint ----------------
-        if gameModel.resource_list[i].size > 1: # only need connectivity constraints when the resource coverage size is more than 1
-            for e in range(gameModel.m):
-                (ns, nt) = edges[e]
+        for e in range(gameModel.m):
+            (ns, nt) = edges[e]
+            if gameModel.resource_list[i].size > 1: # only need connectivity constraints when the resource coverage size is more than 1
                 ns_incoming_sum = cpo.sum([edge_variables[i][edge2index[in_edge]] for in_edge in gameModel.G.in_edges(ns)])
                 nt_outgoing_sum = cpo.sum([edge_variables[i][edge2index[out_edge]] for out_edge in gameModel.G.out_edges(nt)])
                 cpo.add(edge_variables[i][e] <= ns_incoming_sum + nt_outgoing_sum)
 
-                # --------------------- node constraint ---------------------
-                cpo.add(edge_variables[i][e] <= node_variables[i][ns])
-                cpo.add(edge_variables[i][e] <= node_variables[i][nt])
+            # --------------------- node constraint ---------------------
+            cpo.add(edge_variables[i][e] <= node_variables[i][ns])
+            cpo.add(edge_variables[i][e] <= node_variables[i][nt])
 
         cpo.add(sum(edge_variables[i]) == gameModel.resource_list[i].size)
         cpo.add(sum(node_variables[i]) == gameModel.resource_list[i].size + 1)
@@ -54,6 +54,7 @@ def BRDefenderP(gameModel):
         objective_value += - success_prob * attacker_prob[j] * gameModel.reward_list[attacker_path[j].path[-1]] # defender payoff, therefore negation of the attacker payoff
     
     cpo.add(cpo.maximize(objective_value))
+    cpo.export_model("defender.cpo")
     cpo_solution = cpo.solve()
 
     if cpo_solution:

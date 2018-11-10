@@ -26,8 +26,8 @@ def BRAttackerP(gameModel):
         cpo.set_parameters(params)
 
         edge_variables = cpo.binary_var_list(gameModel.m, "gamma")
-        cpo.add(sum([edge_variables[edge2index[source_out]] for source_out in gameModel.G.out_edges(source)]) == 1)
-        cpo.add(sum([edge_variables[edge2index[target_in]] for target_in in gameModel.G.in_edges(target)]) == 1)
+        cpo.add(sum([edge_variables[edge2index[source_out]] for source_out in gameModel.G.out_edges(source)]) - sum([edge_variables[edge2index[source_in]] for source_in in gameModel.G.in_edges(source)]) == 1)
+        cpo.add(sum([edge_variables[edge2index[target_out]] for target_out in gameModel.G.out_edges(target)]) - sum([edge_variables[edge2index[target_in]] for target_in in gameModel.G.in_edges(target)]) == -1)
         for node in nodes:
             if node == source or node == target:
                 continue
@@ -38,9 +38,12 @@ def BRAttackerP(gameModel):
         objective_value = 0
         for i in range(len(defender_coverage)):
             success_prob = 1
-            for e_i in range(len(defender_coverage[i].resource_usage)):
-                covering_prob = gameModel.resource_list[e_i].prob # covering prob
-                success_prob *= (1 - edge_variables[e_i] * covering_prob)
+            for r in range(gameModel.R):
+                covering_prob = gameModel.resource_list[r].prob # covering prob
+                # print defender_coverage[i].resource_usage
+                for e_i in range(len(defender_coverage[i].resource_usage[r])):
+                    e = defender_coverage[i].resource_usage[r][e_i]
+                    success_prob *= (1 - edge_variables[edge2index[e]] * covering_prob)
             objective_value += success_prob * defender_prob[i] * gameModel.terminal_payoff[j]
 
         cpo.add(cpo.maximize(objective_value))
@@ -49,14 +52,17 @@ def BRAttackerP(gameModel):
             edge_usage = [edges[i] for i in range(gameModel.m) if cpo_solution[edge_variables[i]] == 1]
             obj = cpo_solution.get_objective_values()
 
-            solution_list.append((obj, edge_usage, target))
+            solution_list.append((obj, edge_usage, target, cpo))
         else:
             print("no solution")
 
     best_solution = max(solution_list, key=lambda x: x[0])
     best_target = best_solution[2]
+    best_cpo = best_solution[3]
+    best_cpo.export_model("attacker.cpo")
     new_obj = best_solution[0]
     new_G = nx.DiGraph(best_solution[1])
+    print("edges:", new_G.edges)
     new_path = nx.shortest_path(new_G, source, best_target)
     return new_obj, new_path
 
