@@ -8,6 +8,8 @@ import random
 if __name__ == "__main__":
     np.random.seed(1234)
     random.seed(1234)
+
+    # vary parameters
     gameModel = GameModel(n=200, p=0.3, T=5, S=1, R=3, G=None, resource_list=None, source_list=None, terminal_list=None, terminal_payoff=None)
     print(gameModel.attacker_strategy_set[0].path)
     print(gameModel.defender_strategy_set[0].coverage)
@@ -43,4 +45,5 @@ if __name__ == "__main__":
 
         print("defender time:{0}, \t attacker time:{1}".format(defender_time, attacker_time))
         print("defender avg:{0}, \t attacker avg:{1}".format(defender_time/(count+1), attacker_time/(count+1)))
+
 
