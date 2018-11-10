@@ -55,7 +55,6 @@ def BRDefenderP(gameModel):
     
     cpo.add(cpo.maximize(objective_value))
     cpo_solution = cpo.solve()
-    cpo.exportModel("test.cpo")
 
     if cpo_solution:
         coverage = {}
