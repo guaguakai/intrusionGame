@@ -112,8 +112,8 @@ class GameModel:
         else:
             self.resource_list = [Resource(3,0.5)] * self.R # list[i] is a tuple of resource (coverage, prob) and number of this particular resource
 
-        self.defender_strategy_size = 5
-        self.defender_strategy_set = [self.randomDefenderStrategy() for i in range(5)]
+        self.defender_strategy_size = 1
+        self.defender_strategy_set = [self.randomDefenderStrategy() for i in range(1)]
         # self.defender_mixed_strategy = DefenderMixedStrategy(self.defender_strategy_set, prob=[1])
         
         # self.attacker_strategy_set = [self.randomAttackerStrategy()]
