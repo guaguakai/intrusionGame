@@ -2,9 +2,13 @@ from models.Model import *
 from solvers.CoreLP import CoreLP
 from solvers.DefenderOracle.BRDefenderP import BRDefenderP
 from solvers.AttackerOracle.BRAttackerP import BRAttackerP
+import numpy as np
+import random
 
 if __name__ == "__main__":
-    gameModel = GameModel(n=20)
+    np.random.seed(1234)
+    random.seed(1234)
+    gameModel = GameModel(n=200, p=0.3, T=5, S=1, R=3, G=None, resource_list=None, source_list=None, terminal_list=None, terminal_payoff=None)
     print(gameModel.attacker_strategy_set[0].path)
     print(gameModel.defender_strategy_set[0].coverage)
     print(gameModel.terminal_payoff)
