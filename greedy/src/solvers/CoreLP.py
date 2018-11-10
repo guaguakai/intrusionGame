@@ -26,6 +26,7 @@ def CoreLP(gameModel):
         cpx.linear_constraints.add(lin_expr=[[list(range(d_size)) + [d_size], list(payoff_matrix[:,j]) + [-1]]], senses=["G"], rhs=[0.0], names=["c{0}".format(j)])
 
     cpx.solve()
+    cpx.write("LP/1110.lp")
     obj = cpx.solution.get_objective_value()
     variables = cpx.solution.get_values()
 

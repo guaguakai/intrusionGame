@@ -31,8 +31,8 @@ def BRDefenderP(gameModel):
         if gameModel.resource_list[i].size > 1: # only need connectivity constraints when the resource coverage size is more than 1
             for e in range(gameModel.m):
                 (ns, nt) = edges[e]
-                ns_incoming_sum = sum([edge_variables[i][edge2index[in_edge]] for in_edge in gameModel.G.in_edges(ns)])
-                nt_outgoing_sum = sum([edge_variables[i][edge2index[out_edge]] for out_edge in gameModel.G.out_edges(nt)])
+                ns_incoming_sum = cpo.sum([edge_variables[i][edge2index[in_edge]] for in_edge in gameModel.G.in_edges(ns)])
+                nt_outgoing_sum = cpo.sum([edge_variables[i][edge2index[out_edge]] for out_edge in gameModel.G.out_edges(nt)])
                 cpo.add(edge_variables[i][e] <= ns_incoming_sum + nt_outgoing_sum)
 
                 # --------------------- node constraint ---------------------
