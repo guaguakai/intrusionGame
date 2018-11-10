@@ -22,7 +22,7 @@ if __name__ == "__main__":
     print(gameModel.payoff_matrix)
     # gameModel.drawGraph()
 
-    for count in range(100):
+    for count in range(10):
         def_prob, att_prob, obj = CoreLP(gameModel)
 
         print("iteration: {0}, objective value: {1}".format(count, obj))
