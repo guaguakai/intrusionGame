@@ -1,9 +1,13 @@
 from docplex.cp.model import CpoModel
+from docplex.cp.parameters import CpoParameters
 import numpy as np
+
+params = CpoParameters(LogVerbosity="Quiet")
 
 def BRDefenderP(gameModel):
     cpo = CpoModel()
-    # cpo.add_parameters(LogVerbosity="Quiet")
+    #cpo.add_parameters(LogVerbosity="Quiet")
+    cpo.set_parameters(params)
 
     edges = list(gameModel.G.edges())
 
@@ -24,15 +28,16 @@ def BRDefenderP(gameModel):
         node_variables.append(tmp_node_variable_list)
 
         # ---------------- connected edge constraint ----------------
-        for e in range(gameModel.m):
-            (ns, nt) = edges[e]
-            ns_incoming_sum = sum([edge_variables[i][edge2index[in_edge]] for in_edge in gameModel.G.in_edges(ns)])
-            nt_outgoing_sum = sum([edge_variables[i][edge2index[out_edge]] for out_edge in gameModel.G.out_edges(nt)])
-            cpo.add(edge_variables[i][e] <= ns_incoming_sum + nt_outgoing_sum)
+        if gameModel.resource_list[i].size > 1: # only need connectivity constraints when the resource coverage size is more than 1
+            for e in range(gameModel.m):
+                (ns, nt) = edges[e]
+                ns_incoming_sum = sum([edge_variables[i][edge2index[in_edge]] for in_edge in gameModel.G.in_edges(ns)])
+                nt_outgoing_sum = sum([edge_variables[i][edge2index[out_edge]] for out_edge in gameModel.G.out_edges(nt)])
+                cpo.add(edge_variables[i][e] <= ns_incoming_sum + nt_outgoing_sum)
 
-            # --------------------- node constraint ---------------------
-            cpo.add(edge_variables[i][e] <= node_variables[i][ns])
-            cpo.add(edge_variables[i][e] <= node_variables[i][nt])
+                # --------------------- node constraint ---------------------
+                cpo.add(edge_variables[i][e] <= node_variables[i][ns])
+                cpo.add(edge_variables[i][e] <= node_variables[i][nt])
 
         cpo.add(sum(edge_variables[i]) == gameModel.resource_list[i].size)
         cpo.add(sum(node_variables[i]) == gameModel.resource_list[i].size + 1)
@@ -46,7 +51,7 @@ def BRDefenderP(gameModel):
             for i in range(len(resource_list)):
                 success_prob *= (1 - edge_variables[i][e] * resource_list[i].prob)
 
-        objective_value += - success_prob * attacker_prob[j] * gameModel.reward_list[attacker_path[j].path[-1]] # defender payoff, therefore negative of the attacker payoff
+        objective_value += - success_prob * attacker_prob[j] * gameModel.reward_list[attacker_path[j].path[-1]] # defender payoff, therefore negation of the attacker payoff
     
     cpo.add(cpo.maximize(objective_value))
     cpo_solution = cpo.solve()
@@ -65,5 +70,5 @@ def BRDefenderP(gameModel):
         return obj, coverage
 
     else:
-        print("solution not found!")
+        print("defender solution not found!")
 

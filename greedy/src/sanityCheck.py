@@ -5,14 +5,17 @@ from solvers.AttackerOracle.BRAttackerP import BRAttackerP
 
 import numpy as np
 import networkx as nx
+import random
 
 if __name__ == "__main__":
+    np.random.seed(1234)
+    random.seed(1234)
+
     G = nx.DiGraph()
     G.add_edges_from([(0,1), (0,2), (0,3), (1,4), (2,4), (3,4), (4,5)])
     resource_list = [Resource(1,1), Resource(1,1)]
     gameModel = GameModel(n=6, T=2, S=1, R=2, G=G, resource_list=resource_list, source_list=[0], terminal_list=[4,5], terminal_payoff=[1,2])
 
-    gameModel = GameModel(n=20)
     print(gameModel.attacker_strategy_set[0].path)
     print(gameModel.defender_strategy_set[0].coverage)
     print(gameModel.terminal_payoff)
