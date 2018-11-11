@@ -1,9 +1,6 @@
 from docplex.cp.model import CpoModel
-from docplex.cp.parameters import CpoParameters
 import numpy as np
 import networkx as nx
-
-params = CpoParameters(LogVerbosity="Quiet")
 
 def BRAttackerP(gameModel):
     source = gameModel.source_list[0]
@@ -23,7 +20,7 @@ def BRAttackerP(gameModel):
         # ---------------- tarminal j ------------------
         target = gameModel.terminal_list[j]
         cpo = CpoModel()
-        cpo.set_parameters(params)
+        # cpo.add_parameters(LogVerbosity="Quiet")
 
         edge_variables = cpo.binary_var_list(gameModel.m, "gamma")
         cpo.add(sum([edge_variables[edge2index[source_out]] for source_out in gameModel.G.out_edges(source)]) == 1)
