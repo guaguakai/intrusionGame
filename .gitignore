@@ -5,5 +5,5 @@ greedy/src/cplex.log
 __pycache__
 jgrapht-1.2.0
 *.pyc
-
+*.lp
 
