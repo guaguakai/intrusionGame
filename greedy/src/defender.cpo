@@ -1,0 +1,1935 @@
+///////////////////////////////////////////////////////////////////////////////
+// CPO file generated at 2018.11.10-01:19:36 for model: BRDefenderP
+// Source file: /home/kai/Dropbox/USC/publication/intrusion/greedy/src/solvers/DefenderOracle/BRDefenderP.py
+///////////////////////////////////////////////////////////////////////////////
+
+//--- Internals ---
+internals {
+   version(12.8.0.0);
+}
+
+//--- Constants ---
+
+//--- Variables ---
+#line 36 "/home/kai/Dropbox/USC/publication/intrusion/greedy/src/solvers/DefenderOracle/BRDefenderP.py"
+lambda_0_0 = intVar(0..1);
+lambda_0_1 = intVar(0..1);
+lambda_0_2 = intVar(0..1);
+lambda_0_3 = intVar(0..1);
+lambda_0_4 = intVar(0..1);
+lambda_0_5 = intVar(0..1);
+lambda_0_6 = intVar(0..1);
+lambda_0_7 = intVar(0..1);
+lambda_0_8 = intVar(0..1);
+lambda_0_9 = intVar(0..1);
+lambda_0_10 = intVar(0..1);
+lambda_0_11 = intVar(0..1);
+lambda_0_12 = intVar(0..1);
+lambda_0_13 = intVar(0..1);
+lambda_0_14 = intVar(0..1);
+lambda_0_15 = intVar(0..1);
+lambda_0_16 = intVar(0..1);
+lambda_0_17 = intVar(0..1);
+lambda_0_18 = intVar(0..1);
+lambda_0_19 = intVar(0..1);
+lambda_0_20 = intVar(0..1);
+lambda_0_21 = intVar(0..1);
+lambda_0_22 = intVar(0..1);
+lambda_0_23 = intVar(0..1);
+lambda_0_24 = intVar(0..1);
+lambda_0_25 = intVar(0..1);
+lambda_0_26 = intVar(0..1);
+lambda_0_27 = intVar(0..1);
+lambda_0_28 = intVar(0..1);
+lambda_0_29 = intVar(0..1);
+lambda_0_30 = intVar(0..1);
+lambda_0_31 = intVar(0..1);
+lambda_0_32 = intVar(0..1);
+lambda_0_33 = intVar(0..1);
+lambda_0_34 = intVar(0..1);
+lambda_0_35 = intVar(0..1);
+lambda_0_36 = intVar(0..1);
+lambda_0_37 = intVar(0..1);
+lambda_0_38 = intVar(0..1);
+lambda_0_39 = intVar(0..1);
+lambda_0_40 = intVar(0..1);
+lambda_0_41 = intVar(0..1);
+lambda_0_42 = intVar(0..1);
+lambda_0_43 = intVar(0..1);
+lambda_0_44 = intVar(0..1);
+lambda_0_45 = intVar(0..1);
+lambda_0_46 = intVar(0..1);
+lambda_0_47 = intVar(0..1);
+lambda_0_48 = intVar(0..1);
+lambda_0_49 = intVar(0..1);
+lambda_0_50 = intVar(0..1);
+lambda_0_51 = intVar(0..1);
+lambda_0_52 = intVar(0..1);
+lambda_0_53 = intVar(0..1);
+lambda_0_54 = intVar(0..1);
+lambda_0_55 = intVar(0..1);
+lambda_0_56 = intVar(0..1);
+lambda_0_57 = intVar(0..1);
+lambda_0_58 = intVar(0..1);
+lambda_0_59 = intVar(0..1);
+lambda_0_60 = intVar(0..1);
+lambda_0_61 = intVar(0..1);
+lambda_0_62 = intVar(0..1);
+lambda_0_63 = intVar(0..1);
+lambda_0_64 = intVar(0..1);
+lambda_0_65 = intVar(0..1);
+lambda_0_66 = intVar(0..1);
+lambda_0_67 = intVar(0..1);
+lambda_0_68 = intVar(0..1);
+lambda_0_69 = intVar(0..1);
+lambda_0_70 = intVar(0..1);
+lambda_0_71 = intVar(0..1);
+lambda_0_72 = intVar(0..1);
+lambda_0_73 = intVar(0..1);
+lambda_0_74 = intVar(0..1);
+lambda_0_75 = intVar(0..1);
+lambda_0_76 = intVar(0..1);
+lambda_0_77 = intVar(0..1);
+lambda_0_78 = intVar(0..1);
+lambda_0_79 = intVar(0..1);
+lambda_0_80 = intVar(0..1);
+lambda_0_81 = intVar(0..1);
+lambda_1_0 = intVar(0..1);
+lambda_1_1 = intVar(0..1);
+lambda_1_2 = intVar(0..1);
+lambda_1_3 = intVar(0..1);
+lambda_1_4 = intVar(0..1);
+lambda_1_5 = intVar(0..1);
+lambda_1_6 = intVar(0..1);
+lambda_1_7 = intVar(0..1);
+lambda_1_8 = intVar(0..1);
+lambda_1_9 = intVar(0..1);
+lambda_1_10 = intVar(0..1);
+lambda_1_11 = intVar(0..1);
+lambda_1_12 = intVar(0..1);
+lambda_1_13 = intVar(0..1);
+lambda_1_14 = intVar(0..1);
+lambda_1_15 = intVar(0..1);
+lambda_1_16 = intVar(0..1);
+lambda_1_17 = intVar(0..1);
+lambda_1_18 = intVar(0..1);
+lambda_1_19 = intVar(0..1);
+lambda_1_20 = intVar(0..1);
+lambda_1_21 = intVar(0..1);
+lambda_1_22 = intVar(0..1);
+lambda_1_23 = intVar(0..1);
+lambda_1_24 = intVar(0..1);
+lambda_1_25 = intVar(0..1);
+lambda_1_26 = intVar(0..1);
+lambda_1_27 = intVar(0..1);
+lambda_1_28 = intVar(0..1);
+lambda_1_29 = intVar(0..1);
+lambda_1_30 = intVar(0..1);
+lambda_1_31 = intVar(0..1);
+lambda_1_32 = intVar(0..1);
+lambda_1_33 = intVar(0..1);
+lambda_1_34 = intVar(0..1);
+lambda_1_35 = intVar(0..1);
+lambda_1_36 = intVar(0..1);
+lambda_1_37 = intVar(0..1);
+lambda_1_38 = intVar(0..1);
+lambda_1_39 = intVar(0..1);
+lambda_1_40 = intVar(0..1);
+lambda_1_41 = intVar(0..1);
+lambda_1_42 = intVar(0..1);
+lambda_1_43 = intVar(0..1);
+lambda_1_44 = intVar(0..1);
+lambda_1_45 = intVar(0..1);
+lambda_1_46 = intVar(0..1);
+lambda_1_47 = intVar(0..1);
+lambda_1_48 = intVar(0..1);
+lambda_1_49 = intVar(0..1);
+lambda_1_50 = intVar(0..1);
+lambda_1_51 = intVar(0..1);
+lambda_1_52 = intVar(0..1);
+lambda_1_53 = intVar(0..1);
+lambda_1_54 = intVar(0..1);
+lambda_1_55 = intVar(0..1);
+lambda_1_56 = intVar(0..1);
+lambda_1_57 = intVar(0..1);
+lambda_1_58 = intVar(0..1);
+lambda_1_59 = intVar(0..1);
+lambda_1_60 = intVar(0..1);
+lambda_1_61 = intVar(0..1);
+lambda_1_62 = intVar(0..1);
+lambda_1_63 = intVar(0..1);
+lambda_1_64 = intVar(0..1);
+lambda_1_65 = intVar(0..1);
+lambda_1_66 = intVar(0..1);
+lambda_1_67 = intVar(0..1);
+lambda_1_68 = intVar(0..1);
+lambda_1_69 = intVar(0..1);
+lambda_1_70 = intVar(0..1);
+lambda_1_71 = intVar(0..1);
+lambda_1_72 = intVar(0..1);
+lambda_1_73 = intVar(0..1);
+lambda_1_74 = intVar(0..1);
+lambda_1_75 = intVar(0..1);
+lambda_1_76 = intVar(0..1);
+lambda_1_77 = intVar(0..1);
+lambda_1_78 = intVar(0..1);
+lambda_1_79 = intVar(0..1);
+lambda_1_80 = intVar(0..1);
+lambda_1_81 = intVar(0..1);
+lambda_2_0 = intVar(0..1);
+lambda_2_1 = intVar(0..1);
+lambda_2_2 = intVar(0..1);
+lambda_2_3 = intVar(0..1);
+lambda_2_4 = intVar(0..1);
+lambda_2_5 = intVar(0..1);
+lambda_2_6 = intVar(0..1);
+lambda_2_7 = intVar(0..1);
+lambda_2_8 = intVar(0..1);
+lambda_2_9 = intVar(0..1);
+lambda_2_10 = intVar(0..1);
+lambda_2_11 = intVar(0..1);
+lambda_2_12 = intVar(0..1);
+lambda_2_13 = intVar(0..1);
+lambda_2_14 = intVar(0..1);
+lambda_2_15 = intVar(0..1);
+lambda_2_16 = intVar(0..1);
+lambda_2_17 = intVar(0..1);
+lambda_2_18 = intVar(0..1);
+lambda_2_19 = intVar(0..1);
+lambda_2_20 = intVar(0..1);
+lambda_2_21 = intVar(0..1);
+lambda_2_22 = intVar(0..1);
+lambda_2_23 = intVar(0..1);
+lambda_2_24 = intVar(0..1);
+lambda_2_25 = intVar(0..1);
+lambda_2_26 = intVar(0..1);
+lambda_2_27 = intVar(0..1);
+lambda_2_28 = intVar(0..1);
+lambda_2_29 = intVar(0..1);
+lambda_2_30 = intVar(0..1);
+lambda_2_31 = intVar(0..1);
+lambda_2_32 = intVar(0..1);
+lambda_2_33 = intVar(0..1);
+lambda_2_34 = intVar(0..1);
+lambda_2_35 = intVar(0..1);
+lambda_2_36 = intVar(0..1);
+lambda_2_37 = intVar(0..1);
+lambda_2_38 = intVar(0..1);
+lambda_2_39 = intVar(0..1);
+lambda_2_40 = intVar(0..1);
+lambda_2_41 = intVar(0..1);
+lambda_2_42 = intVar(0..1);
+lambda_2_43 = intVar(0..1);
+lambda_2_44 = intVar(0..1);
+lambda_2_45 = intVar(0..1);
+lambda_2_46 = intVar(0..1);
+lambda_2_47 = intVar(0..1);
+lambda_2_48 = intVar(0..1);
+lambda_2_49 = intVar(0..1);
+lambda_2_50 = intVar(0..1);
+lambda_2_51 = intVar(0..1);
+lambda_2_52 = intVar(0..1);
+lambda_2_53 = intVar(0..1);
+lambda_2_54 = intVar(0..1);
+lambda_2_55 = intVar(0..1);
+lambda_2_56 = intVar(0..1);
+lambda_2_57 = intVar(0..1);
+lambda_2_58 = intVar(0..1);
+lambda_2_59 = intVar(0..1);
+lambda_2_60 = intVar(0..1);
+lambda_2_61 = intVar(0..1);
+lambda_2_62 = intVar(0..1);
+lambda_2_63 = intVar(0..1);
+lambda_2_64 = intVar(0..1);
+lambda_2_65 = intVar(0..1);
+lambda_2_66 = intVar(0..1);
+lambda_2_67 = intVar(0..1);
+lambda_2_68 = intVar(0..1);
+lambda_2_69 = intVar(0..1);
+lambda_2_70 = intVar(0..1);
+lambda_2_71 = intVar(0..1);
+lambda_2_72 = intVar(0..1);
+lambda_2_73 = intVar(0..1);
+lambda_2_74 = intVar(0..1);
+lambda_2_75 = intVar(0..1);
+lambda_2_76 = intVar(0..1);
+lambda_2_77 = intVar(0..1);
+lambda_2_78 = intVar(0..1);
+lambda_2_79 = intVar(0..1);
+lambda_2_80 = intVar(0..1);
+lambda_2_81 = intVar(0..1);
+#line 43
+lambda_node_0_0 = intVar(0..1);
+lambda_node_0_1 = intVar(0..1);
+#line 39
+lambda_node_0_2 = intVar(0..1);
+lambda_node_0_3 = intVar(0..1);
+lambda_node_0_4 = intVar(0..1);
+#line 40
+lambda_node_0_5 = intVar(0..1);
+lambda_node_0_6 = intVar(0..1);
+lambda_node_0_7 = intVar(0..1);
+lambda_node_0_8 = intVar(0..1);
+lambda_node_0_9 = intVar(0..1);
+lambda_node_0_10 = intVar(0..1);
+lambda_node_0_11 = intVar(0..1);
+lambda_node_0_12 = intVar(0..1);
+lambda_node_0_13 = intVar(0..1);
+lambda_node_0_14 = intVar(0..1);
+lambda_node_0_15 = intVar(0..1);
+lambda_node_0_16 = intVar(0..1);
+lambda_node_0_17 = intVar(0..1);
+lambda_node_0_18 = intVar(0..1);
+lambda_node_0_19 = intVar(0..1);
+#line 43
+lambda_node_1_0 = intVar(0..1);
+lambda_node_1_1 = intVar(0..1);
+#line 39
+lambda_node_1_2 = intVar(0..1);
+lambda_node_1_3 = intVar(0..1);
+lambda_node_1_4 = intVar(0..1);
+#line 40
+lambda_node_1_5 = intVar(0..1);
+lambda_node_1_6 = intVar(0..1);
+lambda_node_1_7 = intVar(0..1);
+lambda_node_1_8 = intVar(0..1);
+lambda_node_1_9 = intVar(0..1);
+lambda_node_1_10 = intVar(0..1);
+lambda_node_1_11 = intVar(0..1);
+lambda_node_1_12 = intVar(0..1);
+lambda_node_1_13 = intVar(0..1);
+lambda_node_1_14 = intVar(0..1);
+lambda_node_1_15 = intVar(0..1);
+lambda_node_1_16 = intVar(0..1);
+lambda_node_1_17 = intVar(0..1);
+lambda_node_1_18 = intVar(0..1);
+lambda_node_1_19 = intVar(0..1);
+#line 43
+lambda_node_2_0 = intVar(0..1);
+lambda_node_2_1 = intVar(0..1);
+#line 39
+lambda_node_2_2 = intVar(0..1);
+lambda_node_2_3 = intVar(0..1);
+lambda_node_2_4 = intVar(0..1);
+#line 40
+lambda_node_2_5 = intVar(0..1);
+lambda_node_2_6 = intVar(0..1);
+lambda_node_2_7 = intVar(0..1);
+lambda_node_2_8 = intVar(0..1);
+lambda_node_2_9 = intVar(0..1);
+lambda_node_2_10 = intVar(0..1);
+lambda_node_2_11 = intVar(0..1);
+lambda_node_2_12 = intVar(0..1);
+lambda_node_2_13 = intVar(0..1);
+lambda_node_2_14 = intVar(0..1);
+lambda_node_2_15 = intVar(0..1);
+lambda_node_2_16 = intVar(0..1);
+lambda_node_2_17 = intVar(0..1);
+lambda_node_2_18 = intVar(0..1);
+lambda_node_2_19 = intVar(0..1);
+
+//--- Expressions ---
+#line 36 "/home/kai/Dropbox/USC/publication/intrusion/greedy/src/solvers/DefenderOracle/BRDefenderP.py"
+_EXP_1 = [lambda_0_13, lambda_0_17, lambda_0_23, lambda_0_32, lambda_0_54, lambda_0_73];
+_EXP_2 = [lambda_0_12, lambda_0_13, lambda_0_14, lambda_0_15, lambda_0_16];
+lambda_0_0 <= sum(_EXP_1) + sum(_EXP_2);
+#line 39
+lambda_0_0 <= lambda_node_0_2;
+#line 40
+lambda_0_0 <= lambda_node_0_5;
+#line 36
+_EXP_3 = [lambda_0_17, lambda_0_18, lambda_0_19, lambda_0_20, lambda_0_21, lambda_0_22];
+lambda_0_1 <= sum(_EXP_1) + sum(_EXP_3);
+#line 39
+lambda_0_1 <= lambda_node_0_2;
+#line 40
+lambda_0_1 <= lambda_node_0_6;
+#line 36
+_EXP_4 = [lambda_0_23, lambda_0_24, lambda_0_25, lambda_0_26, lambda_0_27, lambda_0_28];
+lambda_0_2 <= sum(_EXP_1) + sum(_EXP_4);
+#line 39
+lambda_0_2 <= lambda_node_0_2;
+#line 40
+lambda_0_2 <= lambda_node_0_7;
+#line 36
+_EXP_5 = [lambda_0_32, lambda_0_33, lambda_0_34, lambda_0_35, lambda_0_36, lambda_0_37];
+lambda_0_3 <= sum(_EXP_1) + sum(_EXP_5);
+#line 39
+lambda_0_3 <= lambda_node_0_2;
+#line 40
+lambda_0_3 <= lambda_node_0_9;
+#line 36
+_EXP_6 = [lambda_0_53, lambda_0_54, lambda_0_55, lambda_0_56, lambda_0_57];
+lambda_0_4 <= sum(_EXP_1) + sum(_EXP_6);
+#line 39
+lambda_0_4 <= lambda_node_0_2;
+#line 40
+lambda_0_4 <= lambda_node_0_14;
+#line 36
+_EXP_7 = [lambda_0_73, lambda_0_74, lambda_0_75, lambda_0_76, lambda_0_77, lambda_0_78, lambda_0_79, lambda_0_80, lambda_0_81];
+lambda_0_5 <= sum(_EXP_1) + sum(_EXP_7);
+#line 39
+lambda_0_5 <= lambda_node_0_2;
+#line 40
+lambda_0_5 <= lambda_node_0_19;
+#line 36
+_EXP_8 = [lambda_0_30, lambda_0_40, lambda_0_47];
+_EXP_9 = [lambda_0_29, lambda_0_30, lambda_0_31];
+lambda_0_6 <= sum(_EXP_8) + sum(_EXP_9);
+#line 39
+lambda_0_6 <= lambda_node_0_3;
+#line 40
+lambda_0_6 <= lambda_node_0_8;
+#line 36
+_EXP_10 = [lambda_0_38, lambda_0_39, lambda_0_40, lambda_0_41, lambda_0_42];
+lambda_0_7 <= sum(_EXP_8) + sum(_EXP_10);
+#line 39
+lambda_0_7 <= lambda_node_0_3;
+#line 40
+lambda_0_7 <= lambda_node_0_10;
+#line 36
+_EXP_11 = [lambda_0_45, lambda_0_46, lambda_0_47];
+lambda_0_8 <= sum(_EXP_8) + sum(_EXP_11);
+#line 39
+lambda_0_8 <= lambda_node_0_3;
+#line 40
+lambda_0_8 <= lambda_node_0_12;
+#line 36
+_EXP_12 = [lambda_0_33, lambda_0_55, lambda_0_24];
+lambda_0_9 <= sum(_EXP_12) + sum(_EXP_5);
+#line 39
+lambda_0_9 <= lambda_node_0_4;
+#line 40
+lambda_0_9 <= lambda_node_0_9;
+#line 36
+lambda_0_10 <= sum(_EXP_12) + sum(_EXP_6);
+#line 39
+lambda_0_10 <= lambda_node_0_4;
+#line 40
+lambda_0_10 <= lambda_node_0_14;
+#line 36
+lambda_0_11 <= sum(_EXP_12) + sum(_EXP_4);
+#line 39
+lambda_0_11 <= lambda_node_0_4;
+#line 40
+lambda_0_11 <= lambda_node_0_7;
+#line 36
+_EXP_13 = [lambda_0_34, lambda_0_0, lambda_0_74, lambda_0_56, lambda_0_25];
+lambda_0_12 <= sum(_EXP_13) + sum(_EXP_5);
+#line 39
+lambda_0_12 <= lambda_node_0_5;
+#line 40
+lambda_0_12 <= lambda_node_0_9;
+#line 36
+_EXP_14 = [lambda_0_0, lambda_0_1, lambda_0_2, lambda_0_3, lambda_0_4, lambda_0_5];
+lambda_0_13 <= sum(_EXP_13) + sum(_EXP_14);
+#line 39
+lambda_0_13 <= lambda_node_0_5;
+#line 40
+lambda_0_13 <= lambda_node_0_2;
+#line 36
+lambda_0_14 <= sum(_EXP_13) + sum(_EXP_7);
+#line 39
+lambda_0_14 <= lambda_node_0_5;
+#line 40
+lambda_0_14 <= lambda_node_0_19;
+#line 36
+lambda_0_15 <= sum(_EXP_13) + sum(_EXP_6);
+#line 39
+lambda_0_15 <= lambda_node_0_5;
+#line 40
+lambda_0_15 <= lambda_node_0_14;
+#line 36
+lambda_0_16 <= sum(_EXP_13) + sum(_EXP_4);
+#line 39
+lambda_0_16 <= lambda_node_0_5;
+#line 40
+lambda_0_16 <= lambda_node_0_7;
+#line 36
+_EXP_15 = [lambda_0_1, lambda_0_44, lambda_0_62, lambda_0_65, lambda_0_72, lambda_0_75];
+lambda_0_17 <= sum(_EXP_15) + sum(_EXP_14);
+#line 39
+lambda_0_17 <= lambda_node_0_6;
+#line 40
+lambda_0_17 <= lambda_node_0_2;
+#line 36
+_EXP_16 = [lambda_0_43, lambda_0_44];
+lambda_0_18 <= sum(_EXP_15) + sum(_EXP_16);
+#line 39
+lambda_0_18 <= lambda_node_0_6;
+#line 40
+lambda_0_18 <= lambda_node_0_11;
+#line 36
+_EXP_17 = [lambda_0_58, lambda_0_59, lambda_0_60, lambda_0_61, lambda_0_62];
+lambda_0_19 <= sum(_EXP_15) + sum(_EXP_17);
+#line 39
+lambda_0_19 <= lambda_node_0_6;
+#line 40
+lambda_0_19 <= lambda_node_0_15;
+#line 36
+_EXP_18 = [lambda_0_63, lambda_0_64, lambda_0_65, lambda_0_66];
+lambda_0_20 <= sum(_EXP_15) + sum(_EXP_18);
+#line 39
+lambda_0_20 <= lambda_node_0_6;
+#line 40
+lambda_0_20 <= lambda_node_0_16;
+#line 36
+_EXP_19 = [lambda_0_71, lambda_0_72];
+lambda_0_21 <= sum(_EXP_15) + sum(_EXP_19);
+#line 39
+lambda_0_21 <= lambda_node_0_6;
+#line 40
+lambda_0_21 <= lambda_node_0_18;
+#line 36
+lambda_0_22 <= sum(_EXP_15) + sum(_EXP_7);
+#line 39
+lambda_0_22 <= lambda_node_0_6;
+#line 40
+lambda_0_22 <= lambda_node_0_19;
+#line 36
+_EXP_20 = [lambda_0_2, lambda_0_11, lambda_0_16, lambda_0_35, lambda_0_57, lambda_0_76];
+lambda_0_23 <= sum(_EXP_20) + sum(_EXP_14);
+#line 39
+lambda_0_23 <= lambda_node_0_7;
+#line 40
+lambda_0_23 <= lambda_node_0_2;
+#line 36
+_EXP_21 = [lambda_0_9, lambda_0_10, lambda_0_11];
+lambda_0_24 <= sum(_EXP_20) + sum(_EXP_21);
+#line 39
+lambda_0_24 <= lambda_node_0_7;
+#line 40
+lambda_0_24 <= lambda_node_0_4;
+#line 36
+lambda_0_25 <= sum(_EXP_20) + sum(_EXP_2);
+#line 39
+lambda_0_25 <= lambda_node_0_7;
+#line 40
+lambda_0_25 <= lambda_node_0_5;
+#line 36
+lambda_0_26 <= sum(_EXP_20) + sum(_EXP_5);
+#line 39
+lambda_0_26 <= lambda_node_0_7;
+#line 40
+lambda_0_26 <= lambda_node_0_9;
+#line 36
+lambda_0_27 <= sum(_EXP_20) + sum(_EXP_6);
+#line 39
+lambda_0_27 <= lambda_node_0_7;
+#line 40
+lambda_0_27 <= lambda_node_0_14;
+#line 36
+lambda_0_28 <= sum(_EXP_20) + sum(_EXP_7);
+#line 39
+lambda_0_28 <= lambda_node_0_7;
+#line 40
+lambda_0_28 <= lambda_node_0_19;
+#line 36
+_EXP_22 = [lambda_0_38, lambda_0_6, lambda_0_45];
+lambda_0_29 <= sum(_EXP_22) + sum(_EXP_10);
+#line 39
+lambda_0_29 <= lambda_node_0_8;
+#line 40
+lambda_0_29 <= lambda_node_0_10;
+#line 36
+_EXP_23 = [lambda_0_6, lambda_0_7, lambda_0_8];
+lambda_0_30 <= sum(_EXP_22) + sum(_EXP_23);
+#line 39
+lambda_0_30 <= lambda_node_0_8;
+#line 40
+lambda_0_30 <= lambda_node_0_3;
+#line 36
+lambda_0_31 <= sum(_EXP_22) + sum(_EXP_11);
+#line 39
+lambda_0_31 <= lambda_node_0_8;
+#line 40
+lambda_0_31 <= lambda_node_0_12;
+#line 36
+_EXP_24 = [lambda_0_3, lambda_0_9, lambda_0_12, lambda_0_26, lambda_0_53, lambda_0_77];
+lambda_0_32 <= sum(_EXP_24) + sum(_EXP_14);
+#line 39
+lambda_0_32 <= lambda_node_0_9;
+#line 40
+lambda_0_32 <= lambda_node_0_2;
+#line 36
+lambda_0_33 <= sum(_EXP_24) + sum(_EXP_21);
+#line 39
+lambda_0_33 <= lambda_node_0_9;
+#line 40
+lambda_0_33 <= lambda_node_0_4;
+#line 36
+lambda_0_34 <= sum(_EXP_24) + sum(_EXP_2);
+#line 39
+lambda_0_34 <= lambda_node_0_9;
+#line 40
+lambda_0_34 <= lambda_node_0_5;
+#line 36
+lambda_0_35 <= sum(_EXP_24) + sum(_EXP_4);
+#line 39
+lambda_0_35 <= lambda_node_0_9;
+#line 40
+lambda_0_35 <= lambda_node_0_7;
+#line 36
+lambda_0_36 <= sum(_EXP_24) + sum(_EXP_6);
+#line 39
+lambda_0_36 <= lambda_node_0_9;
+#line 40
+lambda_0_36 <= lambda_node_0_14;
+#line 36
+lambda_0_37 <= sum(_EXP_24) + sum(_EXP_7);
+#line 39
+lambda_0_37 <= lambda_node_0_9;
+#line 40
+lambda_0_37 <= lambda_node_0_19;
+#line 36
+_EXP_25 = [lambda_0_29, lambda_0_67, lambda_0_7, lambda_0_46, lambda_0_50];
+lambda_0_38 <= sum(_EXP_25) + sum(_EXP_9);
+#line 39
+lambda_0_38 <= lambda_node_0_10;
+#line 40
+lambda_0_38 <= lambda_node_0_8;
+#line 36
+_EXP_26 = [lambda_0_67, lambda_0_68, lambda_0_69, lambda_0_70];
+lambda_0_39 <= sum(_EXP_25) + sum(_EXP_26);
+#line 39
+lambda_0_39 <= lambda_node_0_10;
+#line 40
+lambda_0_39 <= lambda_node_0_17;
+#line 36
+lambda_0_40 <= sum(_EXP_25) + sum(_EXP_23);
+#line 39
+lambda_0_40 <= lambda_node_0_10;
+#line 40
+lambda_0_40 <= lambda_node_0_3;
+#line 36
+lambda_0_41 <= sum(_EXP_25) + sum(_EXP_11);
+#line 39
+lambda_0_41 <= lambda_node_0_10;
+#line 40
+lambda_0_41 <= lambda_node_0_12;
+#line 36
+_EXP_27 = [lambda_0_48, lambda_0_49, lambda_0_50, lambda_0_51, lambda_0_52];
+lambda_0_42 <= sum(_EXP_25) + sum(_EXP_27);
+#line 39
+lambda_0_42 <= lambda_node_0_10;
+#line 40
+lambda_0_42 <= lambda_node_0_13;
+#line 36
+_EXP_28 = [lambda_0_71, lambda_0_18];
+lambda_0_43 <= sum(_EXP_28) + sum(_EXP_19);
+#line 39
+lambda_0_43 <= lambda_node_0_11;
+#line 40
+lambda_0_43 <= lambda_node_0_18;
+#line 36
+lambda_0_44 <= sum(_EXP_28) + sum(_EXP_3);
+#line 39
+lambda_0_44 <= lambda_node_0_11;
+#line 40
+lambda_0_44 <= lambda_node_0_6;
+#line 36
+_EXP_29 = [lambda_0_31, lambda_0_41, lambda_0_8];
+lambda_0_45 <= sum(_EXP_29) + sum(_EXP_9);
+#line 39
+lambda_0_45 <= lambda_node_0_12;
+#line 40
+lambda_0_45 <= lambda_node_0_8;
+#line 36
+lambda_0_46 <= sum(_EXP_29) + sum(_EXP_10);
+#line 39
+lambda_0_46 <= lambda_node_0_12;
+#line 40
+lambda_0_46 <= lambda_node_0_10;
+#line 36
+lambda_0_47 <= sum(_EXP_29) + sum(_EXP_23);
+#line 39
+lambda_0_47 <= lambda_node_0_12;
+#line 40
+lambda_0_47 <= lambda_node_0_3;
+#line 36
+_EXP_30 = [lambda_0_64, lambda_0_69, lambda_0_42, lambda_0_78, lambda_0_61];
+lambda_0_48 <= sum(_EXP_30) + sum(_EXP_18);
+#line 39
+lambda_0_48 <= lambda_node_0_13;
+#line 40
+lambda_0_48 <= lambda_node_0_16;
+#line 36
+lambda_0_49 <= sum(_EXP_30) + sum(_EXP_26);
+#line 39
+lambda_0_49 <= lambda_node_0_13;
+#line 40
+lambda_0_49 <= lambda_node_0_17;
+#line 36
+lambda_0_50 <= sum(_EXP_30) + sum(_EXP_10);
+#line 39
+lambda_0_50 <= lambda_node_0_13;
+#line 40
+lambda_0_50 <= lambda_node_0_10;
+#line 36
+lambda_0_51 <= sum(_EXP_30) + sum(_EXP_7);
+#line 39
+lambda_0_51 <= lambda_node_0_13;
+#line 40
+lambda_0_51 <= lambda_node_0_19;
+#line 36
+lambda_0_52 <= sum(_EXP_30) + sum(_EXP_17);
+#line 39
+lambda_0_52 <= lambda_node_0_13;
+#line 40
+lambda_0_52 <= lambda_node_0_15;
+#line 36
+_EXP_31 = [lambda_0_36, lambda_0_4, lambda_0_10, lambda_0_15, lambda_0_27];
+lambda_0_53 <= sum(_EXP_31) + sum(_EXP_5);
+#line 39
+lambda_0_53 <= lambda_node_0_14;
+#line 40
+lambda_0_53 <= lambda_node_0_9;
+#line 36
+lambda_0_54 <= sum(_EXP_31) + sum(_EXP_14);
+#line 39
+lambda_0_54 <= lambda_node_0_14;
+#line 40
+lambda_0_54 <= lambda_node_0_2;
+#line 36
+lambda_0_55 <= sum(_EXP_31) + sum(_EXP_21);
+#line 39
+lambda_0_55 <= lambda_node_0_14;
+#line 40
+lambda_0_55 <= lambda_node_0_4;
+#line 36
+lambda_0_56 <= sum(_EXP_31) + sum(_EXP_2);
+#line 39
+lambda_0_56 <= lambda_node_0_14;
+#line 40
+lambda_0_56 <= lambda_node_0_5;
+#line 36
+lambda_0_57 <= sum(_EXP_31) + sum(_EXP_4);
+#line 39
+lambda_0_57 <= lambda_node_0_14;
+#line 40
+lambda_0_57 <= lambda_node_0_7;
+#line 36
+_EXP_32 = [lambda_0_66, lambda_0_70, lambda_0_79, lambda_0_52, lambda_0_19];
+lambda_0_58 <= sum(_EXP_32) + sum(_EXP_18);
+#line 39
+lambda_0_58 <= lambda_node_0_15;
+#line 40
+lambda_0_58 <= lambda_node_0_16;
+#line 36
+lambda_0_59 <= sum(_EXP_32) + sum(_EXP_26);
+#line 39
+lambda_0_59 <= lambda_node_0_15;
+#line 40
+lambda_0_59 <= lambda_node_0_17;
+#line 36
+lambda_0_60 <= sum(_EXP_32) + sum(_EXP_7);
+#line 39
+lambda_0_60 <= lambda_node_0_15;
+#line 40
+lambda_0_60 <= lambda_node_0_19;
+#line 36
+lambda_0_61 <= sum(_EXP_32) + sum(_EXP_27);
+#line 39
+lambda_0_61 <= lambda_node_0_15;
+#line 40
+lambda_0_61 <= lambda_node_0_13;
+#line 36
+lambda_0_62 <= sum(_EXP_32) + sum(_EXP_3);
+#line 39
+lambda_0_62 <= lambda_node_0_15;
+#line 40
+lambda_0_62 <= lambda_node_0_6;
+#line 36
+_EXP_33 = [lambda_0_80, lambda_0_48, lambda_0_20, lambda_0_58];
+lambda_0_63 <= sum(_EXP_33) + sum(_EXP_7);
+#line 39
+lambda_0_63 <= lambda_node_0_16;
+#line 40
+lambda_0_63 <= lambda_node_0_19;
+#line 36
+lambda_0_64 <= sum(_EXP_33) + sum(_EXP_27);
+#line 39
+lambda_0_64 <= lambda_node_0_16;
+#line 40
+lambda_0_64 <= lambda_node_0_13;
+#line 36
+lambda_0_65 <= sum(_EXP_33) + sum(_EXP_3);
+#line 39
+lambda_0_65 <= lambda_node_0_16;
+#line 40
+lambda_0_65 <= lambda_node_0_6;
+#line 36
+lambda_0_66 <= sum(_EXP_33) + sum(_EXP_17);
+#line 39
+lambda_0_66 <= lambda_node_0_16;
+#line 40
+lambda_0_66 <= lambda_node_0_15;
+#line 36
+_EXP_34 = [lambda_0_39, lambda_0_81, lambda_0_49, lambda_0_59];
+lambda_0_67 <= sum(_EXP_34) + sum(_EXP_10);
+#line 39
+lambda_0_67 <= lambda_node_0_17;
+#line 40
+lambda_0_67 <= lambda_node_0_10;
+#line 36
+lambda_0_68 <= sum(_EXP_34) + sum(_EXP_7);
+#line 39
+lambda_0_68 <= lambda_node_0_17;
+#line 40
+lambda_0_68 <= lambda_node_0_19;
+#line 36
+lambda_0_69 <= sum(_EXP_34) + sum(_EXP_27);
+#line 39
+lambda_0_69 <= lambda_node_0_17;
+#line 40
+lambda_0_69 <= lambda_node_0_13;
+#line 36
+lambda_0_70 <= sum(_EXP_34) + sum(_EXP_17);
+#line 39
+lambda_0_70 <= lambda_node_0_17;
+#line 40
+lambda_0_70 <= lambda_node_0_15;
+#line 36
+_EXP_35 = [lambda_0_43, lambda_0_21];
+lambda_0_71 <= sum(_EXP_35) + sum(_EXP_16);
+#line 39
+lambda_0_71 <= lambda_node_0_18;
+#line 40
+lambda_0_71 <= lambda_node_0_11;
+#line 36
+lambda_0_72 <= sum(_EXP_35) + sum(_EXP_3);
+#line 39
+lambda_0_72 <= lambda_node_0_18;
+#line 40
+lambda_0_72 <= lambda_node_0_6;
+#line 36
+_EXP_36 = [lambda_0_5, lambda_0_14, lambda_0_22, lambda_0_28, lambda_0_37, lambda_0_51, lambda_0_60, lambda_0_63, lambda_0_68];
+lambda_0_73 <= sum(_EXP_36) + sum(_EXP_14);
+#line 39
+lambda_0_73 <= lambda_node_0_19;
+#line 40
+lambda_0_73 <= lambda_node_0_2;
+#line 36
+lambda_0_74 <= sum(_EXP_36) + sum(_EXP_2);
+#line 39
+lambda_0_74 <= lambda_node_0_19;
+#line 40
+lambda_0_74 <= lambda_node_0_5;
+#line 36
+lambda_0_75 <= sum(_EXP_36) + sum(_EXP_3);
+#line 39
+lambda_0_75 <= lambda_node_0_19;
+#line 40
+lambda_0_75 <= lambda_node_0_6;
+#line 36
+lambda_0_76 <= sum(_EXP_36) + sum(_EXP_4);
+#line 39
+lambda_0_76 <= lambda_node_0_19;
+#line 40
+lambda_0_76 <= lambda_node_0_7;
+#line 36
+lambda_0_77 <= sum(_EXP_36) + sum(_EXP_5);
+#line 39
+lambda_0_77 <= lambda_node_0_19;
+#line 40
+lambda_0_77 <= lambda_node_0_9;
+#line 36
+lambda_0_78 <= sum(_EXP_36) + sum(_EXP_27);
+#line 39
+lambda_0_78 <= lambda_node_0_19;
+#line 40
+lambda_0_78 <= lambda_node_0_13;
+#line 36
+lambda_0_79 <= sum(_EXP_36) + sum(_EXP_17);
+#line 39
+lambda_0_79 <= lambda_node_0_19;
+#line 40
+lambda_0_79 <= lambda_node_0_15;
+#line 36
+lambda_0_80 <= sum(_EXP_36) + sum(_EXP_18);
+#line 39
+lambda_0_80 <= lambda_node_0_19;
+#line 40
+lambda_0_80 <= lambda_node_0_16;
+#line 36
+lambda_0_81 <= sum(_EXP_36) + sum(_EXP_26);
+#line 39
+lambda_0_81 <= lambda_node_0_19;
+#line 40
+lambda_0_81 <= lambda_node_0_17;
+#line 42
+0 + lambda_0_0 + lambda_0_1 + lambda_0_2 + lambda_0_3 + lambda_0_4 + lambda_0_5 + lambda_0_6 + lambda_0_7 + lambda_0_8 + lambda_0_9 + lambda_0_10 + lambda_0_11 + lambda_0_12 + lambda_0_13 + lambda_0_14 + lambda_0_15 + lambda_0_16 + lambda_0_17 + lambda_0_18 + lambda_0_19 + lambda_0_20 + lambda_0_21 + lambda_0_22 + lambda_0_23 + lambda_0_24 + lambda_0_25 + lambda_0_26 + lambda_0_27 + lambda_0_28 + lambda_0_29 + lambda_0_30 + lambda_0_31 + lambda_0_32 + lambda_0_33 + lambda_0_34 + lambda_0_35 + lambda_0_36 + lambda_0_37 + lambda_0_38 + lambda_0_39 + lambda_0_40 + lambda_0_41 + lambda_0_42 + lambda_0_43 + lambda_0_44 + lambda_0_45 + lambda_0_46 + lambda_0_47 + lambda_0_48 + lambda_0_49 + lambda_0_50 + lambda_0_51 + lambda_0_52 + lambda_0_53 + lambda_0_54 + lambda_0_55 + lambda_0_56 + lambda_0_57 + lambda_0_58 + lambda_0_59 + lambda_0_60 + lambda_0_61 + lambda_0_62 + lambda_0_63 + lambda_0_64 + lambda_0_65 + lambda_0_66 + lambda_0_67 + lambda_0_68 + lambda_0_69 + lambda_0_70 + lambda_0_71 + lambda_0_72 + lambda_0_73 + lambda_0_74 + lambda_0_75 + lambda_0_76 + lambda_0_77 + lambda_0_78 + lambda_0_79 + lambda_0_80 + lambda_0_81 == 3;
+#line 43
+0 + lambda_node_0_0 + lambda_node_0_1 + lambda_node_0_2 + lambda_node_0_3 + lambda_node_0_4 + lambda_node_0_5 + lambda_node_0_6 + lambda_node_0_7 + lambda_node_0_8 + lambda_node_0_9 + lambda_node_0_10 + lambda_node_0_11 + lambda_node_0_12 + lambda_node_0_13 + lambda_node_0_14 + lambda_node_0_15 + lambda_node_0_16 + lambda_node_0_17 + lambda_node_0_18 + lambda_node_0_19 == 4;
+#line 36
+_EXP_37 = [lambda_1_13, lambda_1_17, lambda_1_23, lambda_1_32, lambda_1_54, lambda_1_73];
+_EXP_38 = [lambda_1_12, lambda_1_13, lambda_1_14, lambda_1_15, lambda_1_16];
+lambda_1_0 <= sum(_EXP_37) + sum(_EXP_38);
+#line 39
+lambda_1_0 <= lambda_node_1_2;
+#line 40
+lambda_1_0 <= lambda_node_1_5;
+#line 36
+_EXP_39 = [lambda_1_17, lambda_1_18, lambda_1_19, lambda_1_20, lambda_1_21, lambda_1_22];
+lambda_1_1 <= sum(_EXP_37) + sum(_EXP_39);
+#line 39
+lambda_1_1 <= lambda_node_1_2;
+#line 40
+lambda_1_1 <= lambda_node_1_6;
+#line 36
+_EXP_40 = [lambda_1_23, lambda_1_24, lambda_1_25, lambda_1_26, lambda_1_27, lambda_1_28];
+lambda_1_2 <= sum(_EXP_37) + sum(_EXP_40);
+#line 39
+lambda_1_2 <= lambda_node_1_2;
+#line 40
+lambda_1_2 <= lambda_node_1_7;
+#line 36
+_EXP_41 = [lambda_1_32, lambda_1_33, lambda_1_34, lambda_1_35, lambda_1_36, lambda_1_37];
+lambda_1_3 <= sum(_EXP_37) + sum(_EXP_41);
+#line 39
+lambda_1_3 <= lambda_node_1_2;
+#line 40
+lambda_1_3 <= lambda_node_1_9;
+#line 36
+_EXP_42 = [lambda_1_53, lambda_1_54, lambda_1_55, lambda_1_56, lambda_1_57];
+lambda_1_4 <= sum(_EXP_37) + sum(_EXP_42);
+#line 39
+lambda_1_4 <= lambda_node_1_2;
+#line 40
+lambda_1_4 <= lambda_node_1_14;
+#line 36
+_EXP_43 = [lambda_1_73, lambda_1_74, lambda_1_75, lambda_1_76, lambda_1_77, lambda_1_78, lambda_1_79, lambda_1_80, lambda_1_81];
+lambda_1_5 <= sum(_EXP_37) + sum(_EXP_43);
+#line 39
+lambda_1_5 <= lambda_node_1_2;
+#line 40
+lambda_1_5 <= lambda_node_1_19;
+#line 36
+_EXP_44 = [lambda_1_30, lambda_1_40, lambda_1_47];
+_EXP_45 = [lambda_1_29, lambda_1_30, lambda_1_31];
+lambda_1_6 <= sum(_EXP_44) + sum(_EXP_45);
+#line 39
+lambda_1_6 <= lambda_node_1_3;
+#line 40
+lambda_1_6 <= lambda_node_1_8;
+#line 36
+_EXP_46 = [lambda_1_38, lambda_1_39, lambda_1_40, lambda_1_41, lambda_1_42];
+lambda_1_7 <= sum(_EXP_44) + sum(_EXP_46);
+#line 39
+lambda_1_7 <= lambda_node_1_3;
+#line 40
+lambda_1_7 <= lambda_node_1_10;
+#line 36
+_EXP_47 = [lambda_1_45, lambda_1_46, lambda_1_47];
+lambda_1_8 <= sum(_EXP_44) + sum(_EXP_47);
+#line 39
+lambda_1_8 <= lambda_node_1_3;
+#line 40
+lambda_1_8 <= lambda_node_1_12;
+#line 36
+_EXP_48 = [lambda_1_33, lambda_1_55, lambda_1_24];
+lambda_1_9 <= sum(_EXP_48) + sum(_EXP_41);
+#line 39
+lambda_1_9 <= lambda_node_1_4;
+#line 40
+lambda_1_9 <= lambda_node_1_9;
+#line 36
+lambda_1_10 <= sum(_EXP_48) + sum(_EXP_42);
+#line 39
+lambda_1_10 <= lambda_node_1_4;
+#line 40
+lambda_1_10 <= lambda_node_1_14;
+#line 36
+lambda_1_11 <= sum(_EXP_48) + sum(_EXP_40);
+#line 39
+lambda_1_11 <= lambda_node_1_4;
+#line 40
+lambda_1_11 <= lambda_node_1_7;
+#line 36
+_EXP_49 = [lambda_1_34, lambda_1_0, lambda_1_74, lambda_1_56, lambda_1_25];
+lambda_1_12 <= sum(_EXP_49) + sum(_EXP_41);
+#line 39
+lambda_1_12 <= lambda_node_1_5;
+#line 40
+lambda_1_12 <= lambda_node_1_9;
+#line 36
+_EXP_50 = [lambda_1_0, lambda_1_1, lambda_1_2, lambda_1_3, lambda_1_4, lambda_1_5];
+lambda_1_13 <= sum(_EXP_49) + sum(_EXP_50);
+#line 39
+lambda_1_13 <= lambda_node_1_5;
+#line 40
+lambda_1_13 <= lambda_node_1_2;
+#line 36
+lambda_1_14 <= sum(_EXP_49) + sum(_EXP_43);
+#line 39
+lambda_1_14 <= lambda_node_1_5;
+#line 40
+lambda_1_14 <= lambda_node_1_19;
+#line 36
+lambda_1_15 <= sum(_EXP_49) + sum(_EXP_42);
+#line 39
+lambda_1_15 <= lambda_node_1_5;
+#line 40
+lambda_1_15 <= lambda_node_1_14;
+#line 36
+lambda_1_16 <= sum(_EXP_49) + sum(_EXP_40);
+#line 39
+lambda_1_16 <= lambda_node_1_5;
+#line 40
+lambda_1_16 <= lambda_node_1_7;
+#line 36
+_EXP_51 = [lambda_1_1, lambda_1_44, lambda_1_62, lambda_1_65, lambda_1_72, lambda_1_75];
+lambda_1_17 <= sum(_EXP_51) + sum(_EXP_50);
+#line 39
+lambda_1_17 <= lambda_node_1_6;
+#line 40
+lambda_1_17 <= lambda_node_1_2;
+#line 36
+_EXP_52 = [lambda_1_43, lambda_1_44];
+lambda_1_18 <= sum(_EXP_51) + sum(_EXP_52);
+#line 39
+lambda_1_18 <= lambda_node_1_6;
+#line 40
+lambda_1_18 <= lambda_node_1_11;
+#line 36
+_EXP_53 = [lambda_1_58, lambda_1_59, lambda_1_60, lambda_1_61, lambda_1_62];
+lambda_1_19 <= sum(_EXP_51) + sum(_EXP_53);
+#line 39
+lambda_1_19 <= lambda_node_1_6;
+#line 40
+lambda_1_19 <= lambda_node_1_15;
+#line 36
+_EXP_54 = [lambda_1_63, lambda_1_64, lambda_1_65, lambda_1_66];
+lambda_1_20 <= sum(_EXP_51) + sum(_EXP_54);
+#line 39
+lambda_1_20 <= lambda_node_1_6;
+#line 40
+lambda_1_20 <= lambda_node_1_16;
+#line 36
+_EXP_55 = [lambda_1_71, lambda_1_72];
+lambda_1_21 <= sum(_EXP_51) + sum(_EXP_55);
+#line 39
+lambda_1_21 <= lambda_node_1_6;
+#line 40
+lambda_1_21 <= lambda_node_1_18;
+#line 36
+lambda_1_22 <= sum(_EXP_51) + sum(_EXP_43);
+#line 39
+lambda_1_22 <= lambda_node_1_6;
+#line 40
+lambda_1_22 <= lambda_node_1_19;
+#line 36
+_EXP_56 = [lambda_1_2, lambda_1_11, lambda_1_16, lambda_1_35, lambda_1_57, lambda_1_76];
+lambda_1_23 <= sum(_EXP_56) + sum(_EXP_50);
+#line 39
+lambda_1_23 <= lambda_node_1_7;
+#line 40
+lambda_1_23 <= lambda_node_1_2;
+#line 36
+_EXP_57 = [lambda_1_9, lambda_1_10, lambda_1_11];
+lambda_1_24 <= sum(_EXP_56) + sum(_EXP_57);
+#line 39
+lambda_1_24 <= lambda_node_1_7;
+#line 40
+lambda_1_24 <= lambda_node_1_4;
+#line 36
+lambda_1_25 <= sum(_EXP_56) + sum(_EXP_38);
+#line 39
+lambda_1_25 <= lambda_node_1_7;
+#line 40
+lambda_1_25 <= lambda_node_1_5;
+#line 36
+lambda_1_26 <= sum(_EXP_56) + sum(_EXP_41);
+#line 39
+lambda_1_26 <= lambda_node_1_7;
+#line 40
+lambda_1_26 <= lambda_node_1_9;
+#line 36
+lambda_1_27 <= sum(_EXP_56) + sum(_EXP_42);
+#line 39
+lambda_1_27 <= lambda_node_1_7;
+#line 40
+lambda_1_27 <= lambda_node_1_14;
+#line 36
+lambda_1_28 <= sum(_EXP_56) + sum(_EXP_43);
+#line 39
+lambda_1_28 <= lambda_node_1_7;
+#line 40
+lambda_1_28 <= lambda_node_1_19;
+#line 36
+_EXP_58 = [lambda_1_38, lambda_1_6, lambda_1_45];
+lambda_1_29 <= sum(_EXP_58) + sum(_EXP_46);
+#line 39
+lambda_1_29 <= lambda_node_1_8;
+#line 40
+lambda_1_29 <= lambda_node_1_10;
+#line 36
+_EXP_59 = [lambda_1_6, lambda_1_7, lambda_1_8];
+lambda_1_30 <= sum(_EXP_58) + sum(_EXP_59);
+#line 39
+lambda_1_30 <= lambda_node_1_8;
+#line 40
+lambda_1_30 <= lambda_node_1_3;
+#line 36
+lambda_1_31 <= sum(_EXP_58) + sum(_EXP_47);
+#line 39
+lambda_1_31 <= lambda_node_1_8;
+#line 40
+lambda_1_31 <= lambda_node_1_12;
+#line 36
+_EXP_60 = [lambda_1_3, lambda_1_9, lambda_1_12, lambda_1_26, lambda_1_53, lambda_1_77];
+lambda_1_32 <= sum(_EXP_60) + sum(_EXP_50);
+#line 39
+lambda_1_32 <= lambda_node_1_9;
+#line 40
+lambda_1_32 <= lambda_node_1_2;
+#line 36
+lambda_1_33 <= sum(_EXP_60) + sum(_EXP_57);
+#line 39
+lambda_1_33 <= lambda_node_1_9;
+#line 40
+lambda_1_33 <= lambda_node_1_4;
+#line 36
+lambda_1_34 <= sum(_EXP_60) + sum(_EXP_38);
+#line 39
+lambda_1_34 <= lambda_node_1_9;
+#line 40
+lambda_1_34 <= lambda_node_1_5;
+#line 36
+lambda_1_35 <= sum(_EXP_60) + sum(_EXP_40);
+#line 39
+lambda_1_35 <= lambda_node_1_9;
+#line 40
+lambda_1_35 <= lambda_node_1_7;
+#line 36
+lambda_1_36 <= sum(_EXP_60) + sum(_EXP_42);
+#line 39
+lambda_1_36 <= lambda_node_1_9;
+#line 40
+lambda_1_36 <= lambda_node_1_14;
+#line 36
+lambda_1_37 <= sum(_EXP_60) + sum(_EXP_43);
+#line 39
+lambda_1_37 <= lambda_node_1_9;
+#line 40
+lambda_1_37 <= lambda_node_1_19;
+#line 36
+_EXP_61 = [lambda_1_29, lambda_1_67, lambda_1_7, lambda_1_46, lambda_1_50];
+lambda_1_38 <= sum(_EXP_61) + sum(_EXP_45);
+#line 39
+lambda_1_38 <= lambda_node_1_10;
+#line 40
+lambda_1_38 <= lambda_node_1_8;
+#line 36
+_EXP_62 = [lambda_1_67, lambda_1_68, lambda_1_69, lambda_1_70];
+lambda_1_39 <= sum(_EXP_61) + sum(_EXP_62);
+#line 39
+lambda_1_39 <= lambda_node_1_10;
+#line 40
+lambda_1_39 <= lambda_node_1_17;
+#line 36
+lambda_1_40 <= sum(_EXP_61) + sum(_EXP_59);
+#line 39
+lambda_1_40 <= lambda_node_1_10;
+#line 40
+lambda_1_40 <= lambda_node_1_3;
+#line 36
+lambda_1_41 <= sum(_EXP_61) + sum(_EXP_47);
+#line 39
+lambda_1_41 <= lambda_node_1_10;
+#line 40
+lambda_1_41 <= lambda_node_1_12;
+#line 36
+_EXP_63 = [lambda_1_48, lambda_1_49, lambda_1_50, lambda_1_51, lambda_1_52];
+lambda_1_42 <= sum(_EXP_61) + sum(_EXP_63);
+#line 39
+lambda_1_42 <= lambda_node_1_10;
+#line 40
+lambda_1_42 <= lambda_node_1_13;
+#line 36
+_EXP_64 = [lambda_1_71, lambda_1_18];
+lambda_1_43 <= sum(_EXP_64) + sum(_EXP_55);
+#line 39
+lambda_1_43 <= lambda_node_1_11;
+#line 40
+lambda_1_43 <= lambda_node_1_18;
+#line 36
+lambda_1_44 <= sum(_EXP_64) + sum(_EXP_39);
+#line 39
+lambda_1_44 <= lambda_node_1_11;
+#line 40
+lambda_1_44 <= lambda_node_1_6;
+#line 36
+_EXP_65 = [lambda_1_31, lambda_1_41, lambda_1_8];
+lambda_1_45 <= sum(_EXP_65) + sum(_EXP_45);
+#line 39
+lambda_1_45 <= lambda_node_1_12;
+#line 40
+lambda_1_45 <= lambda_node_1_8;
+#line 36
+lambda_1_46 <= sum(_EXP_65) + sum(_EXP_46);
+#line 39
+lambda_1_46 <= lambda_node_1_12;
+#line 40
+lambda_1_46 <= lambda_node_1_10;
+#line 36
+lambda_1_47 <= sum(_EXP_65) + sum(_EXP_59);
+#line 39
+lambda_1_47 <= lambda_node_1_12;
+#line 40
+lambda_1_47 <= lambda_node_1_3;
+#line 36
+_EXP_66 = [lambda_1_64, lambda_1_69, lambda_1_42, lambda_1_78, lambda_1_61];
+lambda_1_48 <= sum(_EXP_66) + sum(_EXP_54);
+#line 39
+lambda_1_48 <= lambda_node_1_13;
+#line 40
+lambda_1_48 <= lambda_node_1_16;
+#line 36
+lambda_1_49 <= sum(_EXP_66) + sum(_EXP_62);
+#line 39
+lambda_1_49 <= lambda_node_1_13;
+#line 40
+lambda_1_49 <= lambda_node_1_17;
+#line 36
+lambda_1_50 <= sum(_EXP_66) + sum(_EXP_46);
+#line 39
+lambda_1_50 <= lambda_node_1_13;
+#line 40
+lambda_1_50 <= lambda_node_1_10;
+#line 36
+lambda_1_51 <= sum(_EXP_66) + sum(_EXP_43);
+#line 39
+lambda_1_51 <= lambda_node_1_13;
+#line 40
+lambda_1_51 <= lambda_node_1_19;
+#line 36
+lambda_1_52 <= sum(_EXP_66) + sum(_EXP_53);
+#line 39
+lambda_1_52 <= lambda_node_1_13;
+#line 40
+lambda_1_52 <= lambda_node_1_15;
+#line 36
+_EXP_67 = [lambda_1_36, lambda_1_4, lambda_1_10, lambda_1_15, lambda_1_27];
+lambda_1_53 <= sum(_EXP_67) + sum(_EXP_41);
+#line 39
+lambda_1_53 <= lambda_node_1_14;
+#line 40
+lambda_1_53 <= lambda_node_1_9;
+#line 36
+lambda_1_54 <= sum(_EXP_67) + sum(_EXP_50);
+#line 39
+lambda_1_54 <= lambda_node_1_14;
+#line 40
+lambda_1_54 <= lambda_node_1_2;
+#line 36
+lambda_1_55 <= sum(_EXP_67) + sum(_EXP_57);
+#line 39
+lambda_1_55 <= lambda_node_1_14;
+#line 40
+lambda_1_55 <= lambda_node_1_4;
+#line 36
+lambda_1_56 <= sum(_EXP_67) + sum(_EXP_38);
+#line 39
+lambda_1_56 <= lambda_node_1_14;
+#line 40
+lambda_1_56 <= lambda_node_1_5;
+#line 36
+lambda_1_57 <= sum(_EXP_67) + sum(_EXP_40);
+#line 39
+lambda_1_57 <= lambda_node_1_14;
+#line 40
+lambda_1_57 <= lambda_node_1_7;
+#line 36
+_EXP_68 = [lambda_1_66, lambda_1_70, lambda_1_79, lambda_1_52, lambda_1_19];
+lambda_1_58 <= sum(_EXP_68) + sum(_EXP_54);
+#line 39
+lambda_1_58 <= lambda_node_1_15;
+#line 40
+lambda_1_58 <= lambda_node_1_16;
+#line 36
+lambda_1_59 <= sum(_EXP_68) + sum(_EXP_62);
+#line 39
+lambda_1_59 <= lambda_node_1_15;
+#line 40
+lambda_1_59 <= lambda_node_1_17;
+#line 36
+lambda_1_60 <= sum(_EXP_68) + sum(_EXP_43);
+#line 39
+lambda_1_60 <= lambda_node_1_15;
+#line 40
+lambda_1_60 <= lambda_node_1_19;
+#line 36
+lambda_1_61 <= sum(_EXP_68) + sum(_EXP_63);
+#line 39
+lambda_1_61 <= lambda_node_1_15;
+#line 40
+lambda_1_61 <= lambda_node_1_13;
+#line 36
+lambda_1_62 <= sum(_EXP_68) + sum(_EXP_39);
+#line 39
+lambda_1_62 <= lambda_node_1_15;
+#line 40
+lambda_1_62 <= lambda_node_1_6;
+#line 36
+_EXP_69 = [lambda_1_80, lambda_1_48, lambda_1_20, lambda_1_58];
+lambda_1_63 <= sum(_EXP_69) + sum(_EXP_43);
+#line 39
+lambda_1_63 <= lambda_node_1_16;
+#line 40
+lambda_1_63 <= lambda_node_1_19;
+#line 36
+lambda_1_64 <= sum(_EXP_69) + sum(_EXP_63);
+#line 39
+lambda_1_64 <= lambda_node_1_16;
+#line 40
+lambda_1_64 <= lambda_node_1_13;
+#line 36
+lambda_1_65 <= sum(_EXP_69) + sum(_EXP_39);
+#line 39
+lambda_1_65 <= lambda_node_1_16;
+#line 40
+lambda_1_65 <= lambda_node_1_6;
+#line 36
+lambda_1_66 <= sum(_EXP_69) + sum(_EXP_53);
+#line 39
+lambda_1_66 <= lambda_node_1_16;
+#line 40
+lambda_1_66 <= lambda_node_1_15;
+#line 36
+_EXP_70 = [lambda_1_39, lambda_1_81, lambda_1_49, lambda_1_59];
+lambda_1_67 <= sum(_EXP_70) + sum(_EXP_46);
+#line 39
+lambda_1_67 <= lambda_node_1_17;
+#line 40
+lambda_1_67 <= lambda_node_1_10;
+#line 36
+lambda_1_68 <= sum(_EXP_70) + sum(_EXP_43);
+#line 39
+lambda_1_68 <= lambda_node_1_17;
+#line 40
+lambda_1_68 <= lambda_node_1_19;
+#line 36
+lambda_1_69 <= sum(_EXP_70) + sum(_EXP_63);
+#line 39
+lambda_1_69 <= lambda_node_1_17;
+#line 40
+lambda_1_69 <= lambda_node_1_13;
+#line 36
+lambda_1_70 <= sum(_EXP_70) + sum(_EXP_53);
+#line 39
+lambda_1_70 <= lambda_node_1_17;
+#line 40
+lambda_1_70 <= lambda_node_1_15;
+#line 36
+_EXP_71 = [lambda_1_43, lambda_1_21];
+lambda_1_71 <= sum(_EXP_71) + sum(_EXP_52);
+#line 39
+lambda_1_71 <= lambda_node_1_18;
+#line 40
+lambda_1_71 <= lambda_node_1_11;
+#line 36
+lambda_1_72 <= sum(_EXP_71) + sum(_EXP_39);
+#line 39
+lambda_1_72 <= lambda_node_1_18;
+#line 40
+lambda_1_72 <= lambda_node_1_6;
+#line 36
+_EXP_72 = [lambda_1_5, lambda_1_14, lambda_1_22, lambda_1_28, lambda_1_37, lambda_1_51, lambda_1_60, lambda_1_63, lambda_1_68];
+lambda_1_73 <= sum(_EXP_72) + sum(_EXP_50);
+#line 39
+lambda_1_73 <= lambda_node_1_19;
+#line 40
+lambda_1_73 <= lambda_node_1_2;
+#line 36
+lambda_1_74 <= sum(_EXP_72) + sum(_EXP_38);
+#line 39
+lambda_1_74 <= lambda_node_1_19;
+#line 40
+lambda_1_74 <= lambda_node_1_5;
+#line 36
+lambda_1_75 <= sum(_EXP_72) + sum(_EXP_39);
+#line 39
+lambda_1_75 <= lambda_node_1_19;
+#line 40
+lambda_1_75 <= lambda_node_1_6;
+#line 36
+lambda_1_76 <= sum(_EXP_72) + sum(_EXP_40);
+#line 39
+lambda_1_76 <= lambda_node_1_19;
+#line 40
+lambda_1_76 <= lambda_node_1_7;
+#line 36
+lambda_1_77 <= sum(_EXP_72) + sum(_EXP_41);
+#line 39
+lambda_1_77 <= lambda_node_1_19;
+#line 40
+lambda_1_77 <= lambda_node_1_9;
+#line 36
+lambda_1_78 <= sum(_EXP_72) + sum(_EXP_63);
+#line 39
+lambda_1_78 <= lambda_node_1_19;
+#line 40
+lambda_1_78 <= lambda_node_1_13;
+#line 36
+lambda_1_79 <= sum(_EXP_72) + sum(_EXP_53);
+#line 39
+lambda_1_79 <= lambda_node_1_19;
+#line 40
+lambda_1_79 <= lambda_node_1_15;
+#line 36
+lambda_1_80 <= sum(_EXP_72) + sum(_EXP_54);
+#line 39
+lambda_1_80 <= lambda_node_1_19;
+#line 40
+lambda_1_80 <= lambda_node_1_16;
+#line 36
+lambda_1_81 <= sum(_EXP_72) + sum(_EXP_62);
+#line 39
+lambda_1_81 <= lambda_node_1_19;
+#line 40
+lambda_1_81 <= lambda_node_1_17;
+#line 42
+0 + lambda_1_0 + lambda_1_1 + lambda_1_2 + lambda_1_3 + lambda_1_4 + lambda_1_5 + lambda_1_6 + lambda_1_7 + lambda_1_8 + lambda_1_9 + lambda_1_10 + lambda_1_11 + lambda_1_12 + lambda_1_13 + lambda_1_14 + lambda_1_15 + lambda_1_16 + lambda_1_17 + lambda_1_18 + lambda_1_19 + lambda_1_20 + lambda_1_21 + lambda_1_22 + lambda_1_23 + lambda_1_24 + lambda_1_25 + lambda_1_26 + lambda_1_27 + lambda_1_28 + lambda_1_29 + lambda_1_30 + lambda_1_31 + lambda_1_32 + lambda_1_33 + lambda_1_34 + lambda_1_35 + lambda_1_36 + lambda_1_37 + lambda_1_38 + lambda_1_39 + lambda_1_40 + lambda_1_41 + lambda_1_42 + lambda_1_43 + lambda_1_44 + lambda_1_45 + lambda_1_46 + lambda_1_47 + lambda_1_48 + lambda_1_49 + lambda_1_50 + lambda_1_51 + lambda_1_52 + lambda_1_53 + lambda_1_54 + lambda_1_55 + lambda_1_56 + lambda_1_57 + lambda_1_58 + lambda_1_59 + lambda_1_60 + lambda_1_61 + lambda_1_62 + lambda_1_63 + lambda_1_64 + lambda_1_65 + lambda_1_66 + lambda_1_67 + lambda_1_68 + lambda_1_69 + lambda_1_70 + lambda_1_71 + lambda_1_72 + lambda_1_73 + lambda_1_74 + lambda_1_75 + lambda_1_76 + lambda_1_77 + lambda_1_78 + lambda_1_79 + lambda_1_80 + lambda_1_81 == 3;
+#line 43
+0 + lambda_node_1_0 + lambda_node_1_1 + lambda_node_1_2 + lambda_node_1_3 + lambda_node_1_4 + lambda_node_1_5 + lambda_node_1_6 + lambda_node_1_7 + lambda_node_1_8 + lambda_node_1_9 + lambda_node_1_10 + lambda_node_1_11 + lambda_node_1_12 + lambda_node_1_13 + lambda_node_1_14 + lambda_node_1_15 + lambda_node_1_16 + lambda_node_1_17 + lambda_node_1_18 + lambda_node_1_19 == 4;
+#line 36
+_EXP_73 = [lambda_2_13, lambda_2_17, lambda_2_23, lambda_2_32, lambda_2_54, lambda_2_73];
+_EXP_74 = [lambda_2_12, lambda_2_13, lambda_2_14, lambda_2_15, lambda_2_16];
+lambda_2_0 <= sum(_EXP_73) + sum(_EXP_74);
+#line 39
+lambda_2_0 <= lambda_node_2_2;
+#line 40
+lambda_2_0 <= lambda_node_2_5;
+#line 36
+_EXP_75 = [lambda_2_17, lambda_2_18, lambda_2_19, lambda_2_20, lambda_2_21, lambda_2_22];
+lambda_2_1 <= sum(_EXP_73) + sum(_EXP_75);
+#line 39
+lambda_2_1 <= lambda_node_2_2;
+#line 40
+lambda_2_1 <= lambda_node_2_6;
+#line 36
+_EXP_76 = [lambda_2_23, lambda_2_24, lambda_2_25, lambda_2_26, lambda_2_27, lambda_2_28];
+lambda_2_2 <= sum(_EXP_73) + sum(_EXP_76);
+#line 39
+lambda_2_2 <= lambda_node_2_2;
+#line 40
+lambda_2_2 <= lambda_node_2_7;
+#line 36
+_EXP_77 = [lambda_2_32, lambda_2_33, lambda_2_34, lambda_2_35, lambda_2_36, lambda_2_37];
+lambda_2_3 <= sum(_EXP_73) + sum(_EXP_77);
+#line 39
+lambda_2_3 <= lambda_node_2_2;
+#line 40
+lambda_2_3 <= lambda_node_2_9;
+#line 36
+_EXP_78 = [lambda_2_53, lambda_2_54, lambda_2_55, lambda_2_56, lambda_2_57];
+lambda_2_4 <= sum(_EXP_73) + sum(_EXP_78);
+#line 39
+lambda_2_4 <= lambda_node_2_2;
+#line 40
+lambda_2_4 <= lambda_node_2_14;
+#line 36
+_EXP_79 = [lambda_2_73, lambda_2_74, lambda_2_75, lambda_2_76, lambda_2_77, lambda_2_78, lambda_2_79, lambda_2_80, lambda_2_81];
+lambda_2_5 <= sum(_EXP_73) + sum(_EXP_79);
+#line 39
+lambda_2_5 <= lambda_node_2_2;
+#line 40
+lambda_2_5 <= lambda_node_2_19;
+#line 36
+_EXP_80 = [lambda_2_30, lambda_2_40, lambda_2_47];
+_EXP_81 = [lambda_2_29, lambda_2_30, lambda_2_31];
+lambda_2_6 <= sum(_EXP_80) + sum(_EXP_81);
+#line 39
+lambda_2_6 <= lambda_node_2_3;
+#line 40
+lambda_2_6 <= lambda_node_2_8;
+#line 36
+_EXP_82 = [lambda_2_38, lambda_2_39, lambda_2_40, lambda_2_41, lambda_2_42];
+lambda_2_7 <= sum(_EXP_80) + sum(_EXP_82);
+#line 39
+lambda_2_7 <= lambda_node_2_3;
+#line 40
+lambda_2_7 <= lambda_node_2_10;
+#line 36
+_EXP_83 = [lambda_2_45, lambda_2_46, lambda_2_47];
+lambda_2_8 <= sum(_EXP_80) + sum(_EXP_83);
+#line 39
+lambda_2_8 <= lambda_node_2_3;
+#line 40
+lambda_2_8 <= lambda_node_2_12;
+#line 36
+_EXP_84 = [lambda_2_33, lambda_2_55, lambda_2_24];
+lambda_2_9 <= sum(_EXP_84) + sum(_EXP_77);
+#line 39
+lambda_2_9 <= lambda_node_2_4;
+#line 40
+lambda_2_9 <= lambda_node_2_9;
+#line 36
+lambda_2_10 <= sum(_EXP_84) + sum(_EXP_78);
+#line 39
+lambda_2_10 <= lambda_node_2_4;
+#line 40
+lambda_2_10 <= lambda_node_2_14;
+#line 36
+lambda_2_11 <= sum(_EXP_84) + sum(_EXP_76);
+#line 39
+lambda_2_11 <= lambda_node_2_4;
+#line 40
+lambda_2_11 <= lambda_node_2_7;
+#line 36
+_EXP_85 = [lambda_2_34, lambda_2_0, lambda_2_74, lambda_2_56, lambda_2_25];
+lambda_2_12 <= sum(_EXP_85) + sum(_EXP_77);
+#line 39
+lambda_2_12 <= lambda_node_2_5;
+#line 40
+lambda_2_12 <= lambda_node_2_9;
+#line 36
+_EXP_86 = [lambda_2_0, lambda_2_1, lambda_2_2, lambda_2_3, lambda_2_4, lambda_2_5];
+lambda_2_13 <= sum(_EXP_85) + sum(_EXP_86);
+#line 39
+lambda_2_13 <= lambda_node_2_5;
+#line 40
+lambda_2_13 <= lambda_node_2_2;
+#line 36
+lambda_2_14 <= sum(_EXP_85) + sum(_EXP_79);
+#line 39
+lambda_2_14 <= lambda_node_2_5;
+#line 40
+lambda_2_14 <= lambda_node_2_19;
+#line 36
+lambda_2_15 <= sum(_EXP_85) + sum(_EXP_78);
+#line 39
+lambda_2_15 <= lambda_node_2_5;
+#line 40
+lambda_2_15 <= lambda_node_2_14;
+#line 36
+lambda_2_16 <= sum(_EXP_85) + sum(_EXP_76);
+#line 39
+lambda_2_16 <= lambda_node_2_5;
+#line 40
+lambda_2_16 <= lambda_node_2_7;
+#line 36
+_EXP_87 = [lambda_2_1, lambda_2_44, lambda_2_62, lambda_2_65, lambda_2_72, lambda_2_75];
+lambda_2_17 <= sum(_EXP_87) + sum(_EXP_86);
+#line 39
+lambda_2_17 <= lambda_node_2_6;
+#line 40
+lambda_2_17 <= lambda_node_2_2;
+#line 36
+_EXP_88 = [lambda_2_43, lambda_2_44];
+lambda_2_18 <= sum(_EXP_87) + sum(_EXP_88);
+#line 39
+lambda_2_18 <= lambda_node_2_6;
+#line 40
+lambda_2_18 <= lambda_node_2_11;
+#line 36
+_EXP_89 = [lambda_2_58, lambda_2_59, lambda_2_60, lambda_2_61, lambda_2_62];
+lambda_2_19 <= sum(_EXP_87) + sum(_EXP_89);
+#line 39
+lambda_2_19 <= lambda_node_2_6;
+#line 40
+lambda_2_19 <= lambda_node_2_15;
+#line 36
+_EXP_90 = [lambda_2_63, lambda_2_64, lambda_2_65, lambda_2_66];
+lambda_2_20 <= sum(_EXP_87) + sum(_EXP_90);
+#line 39
+lambda_2_20 <= lambda_node_2_6;
+#line 40
+lambda_2_20 <= lambda_node_2_16;
+#line 36
+_EXP_91 = [lambda_2_71, lambda_2_72];
+lambda_2_21 <= sum(_EXP_87) + sum(_EXP_91);
+#line 39
+lambda_2_21 <= lambda_node_2_6;
+#line 40
+lambda_2_21 <= lambda_node_2_18;
+#line 36
+lambda_2_22 <= sum(_EXP_87) + sum(_EXP_79);
+#line 39
+lambda_2_22 <= lambda_node_2_6;
+#line 40
+lambda_2_22 <= lambda_node_2_19;
+#line 36
+_EXP_92 = [lambda_2_2, lambda_2_11, lambda_2_16, lambda_2_35, lambda_2_57, lambda_2_76];
+lambda_2_23 <= sum(_EXP_92) + sum(_EXP_86);
+#line 39
+lambda_2_23 <= lambda_node_2_7;
+#line 40
+lambda_2_23 <= lambda_node_2_2;
+#line 36
+_EXP_93 = [lambda_2_9, lambda_2_10, lambda_2_11];
+lambda_2_24 <= sum(_EXP_92) + sum(_EXP_93);
+#line 39
+lambda_2_24 <= lambda_node_2_7;
+#line 40
+lambda_2_24 <= lambda_node_2_4;
+#line 36
+lambda_2_25 <= sum(_EXP_92) + sum(_EXP_74);
+#line 39
+lambda_2_25 <= lambda_node_2_7;
+#line 40
+lambda_2_25 <= lambda_node_2_5;
+#line 36
+lambda_2_26 <= sum(_EXP_92) + sum(_EXP_77);
+#line 39
+lambda_2_26 <= lambda_node_2_7;
+#line 40
+lambda_2_26 <= lambda_node_2_9;
+#line 36
+lambda_2_27 <= sum(_EXP_92) + sum(_EXP_78);
+#line 39
+lambda_2_27 <= lambda_node_2_7;
+#line 40
+lambda_2_27 <= lambda_node_2_14;
+#line 36
+lambda_2_28 <= sum(_EXP_92) + sum(_EXP_79);
+#line 39
+lambda_2_28 <= lambda_node_2_7;
+#line 40
+lambda_2_28 <= lambda_node_2_19;
+#line 36
+_EXP_94 = [lambda_2_38, lambda_2_6, lambda_2_45];
+lambda_2_29 <= sum(_EXP_94) + sum(_EXP_82);
+#line 39
+lambda_2_29 <= lambda_node_2_8;
+#line 40
+lambda_2_29 <= lambda_node_2_10;
+#line 36
+_EXP_95 = [lambda_2_6, lambda_2_7, lambda_2_8];
+lambda_2_30 <= sum(_EXP_94) + sum(_EXP_95);
+#line 39
+lambda_2_30 <= lambda_node_2_8;
+#line 40
+lambda_2_30 <= lambda_node_2_3;
+#line 36
+lambda_2_31 <= sum(_EXP_94) + sum(_EXP_83);
+#line 39
+lambda_2_31 <= lambda_node_2_8;
+#line 40
+lambda_2_31 <= lambda_node_2_12;
+#line 36
+_EXP_96 = [lambda_2_3, lambda_2_9, lambda_2_12, lambda_2_26, lambda_2_53, lambda_2_77];
+lambda_2_32 <= sum(_EXP_96) + sum(_EXP_86);
+#line 39
+lambda_2_32 <= lambda_node_2_9;
+#line 40
+lambda_2_32 <= lambda_node_2_2;
+#line 36
+lambda_2_33 <= sum(_EXP_96) + sum(_EXP_93);
+#line 39
+lambda_2_33 <= lambda_node_2_9;
+#line 40
+lambda_2_33 <= lambda_node_2_4;
+#line 36
+lambda_2_34 <= sum(_EXP_96) + sum(_EXP_74);
+#line 39
+lambda_2_34 <= lambda_node_2_9;
+#line 40
+lambda_2_34 <= lambda_node_2_5;
+#line 36
+lambda_2_35 <= sum(_EXP_96) + sum(_EXP_76);
+#line 39
+lambda_2_35 <= lambda_node_2_9;
+#line 40
+lambda_2_35 <= lambda_node_2_7;
+#line 36
+lambda_2_36 <= sum(_EXP_96) + sum(_EXP_78);
+#line 39
+lambda_2_36 <= lambda_node_2_9;
+#line 40
+lambda_2_36 <= lambda_node_2_14;
+#line 36
+lambda_2_37 <= sum(_EXP_96) + sum(_EXP_79);
+#line 39
+lambda_2_37 <= lambda_node_2_9;
+#line 40
+lambda_2_37 <= lambda_node_2_19;
+#line 36
+_EXP_97 = [lambda_2_29, lambda_2_67, lambda_2_7, lambda_2_46, lambda_2_50];
+lambda_2_38 <= sum(_EXP_97) + sum(_EXP_81);
+#line 39
+lambda_2_38 <= lambda_node_2_10;
+#line 40
+lambda_2_38 <= lambda_node_2_8;
+#line 36
+_EXP_98 = [lambda_2_67, lambda_2_68, lambda_2_69, lambda_2_70];
+lambda_2_39 <= sum(_EXP_97) + sum(_EXP_98);
+#line 39
+lambda_2_39 <= lambda_node_2_10;
+#line 40
+lambda_2_39 <= lambda_node_2_17;
+#line 36
+lambda_2_40 <= sum(_EXP_97) + sum(_EXP_95);
+#line 39
+lambda_2_40 <= lambda_node_2_10;
+#line 40
+lambda_2_40 <= lambda_node_2_3;
+#line 36
+lambda_2_41 <= sum(_EXP_97) + sum(_EXP_83);
+#line 39
+lambda_2_41 <= lambda_node_2_10;
+#line 40
+lambda_2_41 <= lambda_node_2_12;
+#line 36
+_EXP_99 = [lambda_2_48, lambda_2_49, lambda_2_50, lambda_2_51, lambda_2_52];
+lambda_2_42 <= sum(_EXP_97) + sum(_EXP_99);
+#line 39
+lambda_2_42 <= lambda_node_2_10;
+#line 40
+lambda_2_42 <= lambda_node_2_13;
+#line 36
+_EXP_100 = [lambda_2_71, lambda_2_18];
+lambda_2_43 <= sum(_EXP_100) + sum(_EXP_91);
+#line 39
+lambda_2_43 <= lambda_node_2_11;
+#line 40
+lambda_2_43 <= lambda_node_2_18;
+#line 36
+lambda_2_44 <= sum(_EXP_100) + sum(_EXP_75);
+#line 39
+lambda_2_44 <= lambda_node_2_11;
+#line 40
+lambda_2_44 <= lambda_node_2_6;
+#line 36
+_EXP_101 = [lambda_2_31, lambda_2_41, lambda_2_8];
+lambda_2_45 <= sum(_EXP_101) + sum(_EXP_81);
+#line 39
+lambda_2_45 <= lambda_node_2_12;
+#line 40
+lambda_2_45 <= lambda_node_2_8;
+#line 36
+lambda_2_46 <= sum(_EXP_101) + sum(_EXP_82);
+#line 39
+lambda_2_46 <= lambda_node_2_12;
+#line 40
+lambda_2_46 <= lambda_node_2_10;
+#line 36
+lambda_2_47 <= sum(_EXP_101) + sum(_EXP_95);
+#line 39
+lambda_2_47 <= lambda_node_2_12;
+#line 40
+lambda_2_47 <= lambda_node_2_3;
+#line 36
+_EXP_102 = [lambda_2_64, lambda_2_69, lambda_2_42, lambda_2_78, lambda_2_61];
+lambda_2_48 <= sum(_EXP_102) + sum(_EXP_90);
+#line 39
+lambda_2_48 <= lambda_node_2_13;
+#line 40
+lambda_2_48 <= lambda_node_2_16;
+#line 36
+lambda_2_49 <= sum(_EXP_102) + sum(_EXP_98);
+#line 39
+lambda_2_49 <= lambda_node_2_13;
+#line 40
+lambda_2_49 <= lambda_node_2_17;
+#line 36
+lambda_2_50 <= sum(_EXP_102) + sum(_EXP_82);
+#line 39
+lambda_2_50 <= lambda_node_2_13;
+#line 40
+lambda_2_50 <= lambda_node_2_10;
+#line 36
+lambda_2_51 <= sum(_EXP_102) + sum(_EXP_79);
+#line 39
+lambda_2_51 <= lambda_node_2_13;
+#line 40
+lambda_2_51 <= lambda_node_2_19;
+#line 36
+lambda_2_52 <= sum(_EXP_102) + sum(_EXP_89);
+#line 39
+lambda_2_52 <= lambda_node_2_13;
+#line 40
+lambda_2_52 <= lambda_node_2_15;
+#line 36
+_EXP_103 = [lambda_2_36, lambda_2_4, lambda_2_10, lambda_2_15, lambda_2_27];
+lambda_2_53 <= sum(_EXP_103) + sum(_EXP_77);
+#line 39
+lambda_2_53 <= lambda_node_2_14;
+#line 40
+lambda_2_53 <= lambda_node_2_9;
+#line 36
+lambda_2_54 <= sum(_EXP_103) + sum(_EXP_86);
+#line 39
+lambda_2_54 <= lambda_node_2_14;
+#line 40
+lambda_2_54 <= lambda_node_2_2;
+#line 36
+lambda_2_55 <= sum(_EXP_103) + sum(_EXP_93);
+#line 39
+lambda_2_55 <= lambda_node_2_14;
+#line 40
+lambda_2_55 <= lambda_node_2_4;
+#line 36
+lambda_2_56 <= sum(_EXP_103) + sum(_EXP_74);
+#line 39
+lambda_2_56 <= lambda_node_2_14;
+#line 40
+lambda_2_56 <= lambda_node_2_5;
+#line 36
+lambda_2_57 <= sum(_EXP_103) + sum(_EXP_76);
+#line 39
+lambda_2_57 <= lambda_node_2_14;
+#line 40
+lambda_2_57 <= lambda_node_2_7;
+#line 36
+_EXP_104 = [lambda_2_66, lambda_2_70, lambda_2_79, lambda_2_52, lambda_2_19];
+lambda_2_58 <= sum(_EXP_104) + sum(_EXP_90);
+#line 39
+lambda_2_58 <= lambda_node_2_15;
+#line 40
+lambda_2_58 <= lambda_node_2_16;
+#line 36
+lambda_2_59 <= sum(_EXP_104) + sum(_EXP_98);
+#line 39
+lambda_2_59 <= lambda_node_2_15;
+#line 40
+lambda_2_59 <= lambda_node_2_17;
+#line 36
+lambda_2_60 <= sum(_EXP_104) + sum(_EXP_79);
+#line 39
+lambda_2_60 <= lambda_node_2_15;
+#line 40
+lambda_2_60 <= lambda_node_2_19;
+#line 36
+lambda_2_61 <= sum(_EXP_104) + sum(_EXP_99);
+#line 39
+lambda_2_61 <= lambda_node_2_15;
+#line 40
+lambda_2_61 <= lambda_node_2_13;
+#line 36
+lambda_2_62 <= sum(_EXP_104) + sum(_EXP_75);
+#line 39
+lambda_2_62 <= lambda_node_2_15;
+#line 40
+lambda_2_62 <= lambda_node_2_6;
+#line 36
+_EXP_105 = [lambda_2_80, lambda_2_48, lambda_2_20, lambda_2_58];
+lambda_2_63 <= sum(_EXP_105) + sum(_EXP_79);
+#line 39
+lambda_2_63 <= lambda_node_2_16;
+#line 40
+lambda_2_63 <= lambda_node_2_19;
+#line 36
+lambda_2_64 <= sum(_EXP_105) + sum(_EXP_99);
+#line 39
+lambda_2_64 <= lambda_node_2_16;
+#line 40
+lambda_2_64 <= lambda_node_2_13;
+#line 36
+lambda_2_65 <= sum(_EXP_105) + sum(_EXP_75);
+#line 39
+lambda_2_65 <= lambda_node_2_16;
+#line 40
+lambda_2_65 <= lambda_node_2_6;
+#line 36
+lambda_2_66 <= sum(_EXP_105) + sum(_EXP_89);
+#line 39
+lambda_2_66 <= lambda_node_2_16;
+#line 40
+lambda_2_66 <= lambda_node_2_15;
+#line 36
+_EXP_106 = [lambda_2_39, lambda_2_81, lambda_2_49, lambda_2_59];
+lambda_2_67 <= sum(_EXP_106) + sum(_EXP_82);
+#line 39
+lambda_2_67 <= lambda_node_2_17;
+#line 40
+lambda_2_67 <= lambda_node_2_10;
+#line 36
+lambda_2_68 <= sum(_EXP_106) + sum(_EXP_79);
+#line 39
+lambda_2_68 <= lambda_node_2_17;
+#line 40
+lambda_2_68 <= lambda_node_2_19;
+#line 36
+lambda_2_69 <= sum(_EXP_106) + sum(_EXP_99);
+#line 39
+lambda_2_69 <= lambda_node_2_17;
+#line 40
+lambda_2_69 <= lambda_node_2_13;
+#line 36
+lambda_2_70 <= sum(_EXP_106) + sum(_EXP_89);
+#line 39
+lambda_2_70 <= lambda_node_2_17;
+#line 40
+lambda_2_70 <= lambda_node_2_15;
+#line 36
+_EXP_107 = [lambda_2_43, lambda_2_21];
+lambda_2_71 <= sum(_EXP_107) + sum(_EXP_88);
+#line 39
+lambda_2_71 <= lambda_node_2_18;
+#line 40
+lambda_2_71 <= lambda_node_2_11;
+#line 36
+lambda_2_72 <= sum(_EXP_107) + sum(_EXP_75);
+#line 39
+lambda_2_72 <= lambda_node_2_18;
+#line 40
+lambda_2_72 <= lambda_node_2_6;
+#line 36
+_EXP_108 = [lambda_2_5, lambda_2_14, lambda_2_22, lambda_2_28, lambda_2_37, lambda_2_51, lambda_2_60, lambda_2_63, lambda_2_68];
+lambda_2_73 <= sum(_EXP_108) + sum(_EXP_86);
+#line 39
+lambda_2_73 <= lambda_node_2_19;
+#line 40
+lambda_2_73 <= lambda_node_2_2;
+#line 36
+lambda_2_74 <= sum(_EXP_108) + sum(_EXP_74);
+#line 39
+lambda_2_74 <= lambda_node_2_19;
+#line 40
+lambda_2_74 <= lambda_node_2_5;
+#line 36
+lambda_2_75 <= sum(_EXP_108) + sum(_EXP_75);
+#line 39
+lambda_2_75 <= lambda_node_2_19;
+#line 40
+lambda_2_75 <= lambda_node_2_6;
+#line 36
+lambda_2_76 <= sum(_EXP_108) + sum(_EXP_76);
+#line 39
+lambda_2_76 <= lambda_node_2_19;
+#line 40
+lambda_2_76 <= lambda_node_2_7;
+#line 36
+lambda_2_77 <= sum(_EXP_108) + sum(_EXP_77);
+#line 39
+lambda_2_77 <= lambda_node_2_19;
+#line 40
+lambda_2_77 <= lambda_node_2_9;
+#line 36
+lambda_2_78 <= sum(_EXP_108) + sum(_EXP_99);
+#line 39
+lambda_2_78 <= lambda_node_2_19;
+#line 40
+lambda_2_78 <= lambda_node_2_13;
+#line 36
+lambda_2_79 <= sum(_EXP_108) + sum(_EXP_89);
+#line 39
+lambda_2_79 <= lambda_node_2_19;
+#line 40
+lambda_2_79 <= lambda_node_2_15;
+#line 36
+lambda_2_80 <= sum(_EXP_108) + sum(_EXP_90);
+#line 39
+lambda_2_80 <= lambda_node_2_19;
+#line 40
+lambda_2_80 <= lambda_node_2_16;
+#line 36
+lambda_2_81 <= sum(_EXP_108) + sum(_EXP_98);
+#line 39
+lambda_2_81 <= lambda_node_2_19;
+#line 40
+lambda_2_81 <= lambda_node_2_17;
+#line 42
+0 + lambda_2_0 + lambda_2_1 + lambda_2_2 + lambda_2_3 + lambda_2_4 + lambda_2_5 + lambda_2_6 + lambda_2_7 + lambda_2_8 + lambda_2_9 + lambda_2_10 + lambda_2_11 + lambda_2_12 + lambda_2_13 + lambda_2_14 + lambda_2_15 + lambda_2_16 + lambda_2_17 + lambda_2_18 + lambda_2_19 + lambda_2_20 + lambda_2_21 + lambda_2_22 + lambda_2_23 + lambda_2_24 + lambda_2_25 + lambda_2_26 + lambda_2_27 + lambda_2_28 + lambda_2_29 + lambda_2_30 + lambda_2_31 + lambda_2_32 + lambda_2_33 + lambda_2_34 + lambda_2_35 + lambda_2_36 + lambda_2_37 + lambda_2_38 + lambda_2_39 + lambda_2_40 + lambda_2_41 + lambda_2_42 + lambda_2_43 + lambda_2_44 + lambda_2_45 + lambda_2_46 + lambda_2_47 + lambda_2_48 + lambda_2_49 + lambda_2_50 + lambda_2_51 + lambda_2_52 + lambda_2_53 + lambda_2_54 + lambda_2_55 + lambda_2_56 + lambda_2_57 + lambda_2_58 + lambda_2_59 + lambda_2_60 + lambda_2_61 + lambda_2_62 + lambda_2_63 + lambda_2_64 + lambda_2_65 + lambda_2_66 + lambda_2_67 + lambda_2_68 + lambda_2_69 + lambda_2_70 + lambda_2_71 + lambda_2_72 + lambda_2_73 + lambda_2_74 + lambda_2_75 + lambda_2_76 + lambda_2_77 + lambda_2_78 + lambda_2_79 + lambda_2_80 + lambda_2_81 == 3;
+#line 43
+0 + lambda_node_2_0 + lambda_node_2_1 + lambda_node_2_2 + lambda_node_2_3 + lambda_node_2_4 + lambda_node_2_5 + lambda_node_2_6 + lambda_node_2_7 + lambda_node_2_8 + lambda_node_2_9 + lambda_node_2_10 + lambda_node_2_11 + lambda_node_2_12 + lambda_node_2_13 + lambda_node_2_14 + lambda_node_2_15 + lambda_node_2_16 + lambda_node_2_17 + lambda_node_2_18 + lambda_node_2_19 == 4;
+#line 56
+maximize(0 + -(1 * (1 - lambda_0_72 * 0.5) * (1 - lambda_1_72 * 0.5) * (1 - lambda_2_72 * 0.5) * (1 - lambda_0_22 * 0.5) * (1 - lambda_1_22 * 0.5) * (1 - lambda_2_22 * 0.5) * (1 - lambda_0_81 * 0.5) * (1 - lambda_1_81 * 0.5) * (1 - lambda_2_81 * 0.5) * (1 - lambda_0_67 * 0.5) * (1 - lambda_1_67 * 0.5) * (1 - lambda_2_67 * 0.5) * (1 - lambda_0_40 * 0.5) * (1 - lambda_1_40 * 0.5) * (1 - lambda_2_40 * 0.5)) * 0 * 2.017009635158696 + -(1 * (1 - lambda_0_72 * 0.5) * (1 - lambda_1_72 * 0.5) * (1 - lambda_2_72 * 0.5) * (1 - lambda_0_22 * 0.5) * (1 - lambda_1_22 * 0.5) * (1 - lambda_2_22 * 0.5) * (1 - lambda_0_81 * 0.5) * (1 - lambda_1_81 * 0.5) * (1 - lambda_2_81 * 0.5) * (1 - lambda_0_67 * 0.5) * (1 - lambda_1_67 * 0.5) * (1 - lambda_2_67 * 0.5) * (1 - lambda_0_38 * 0.5) * (1 - lambda_1_38 * 0.5) * (1 - lambda_2_38 * 0.5)) * 0 * 3.955362504016595 + -(1 * (1 - lambda_0_72 * 0.5) * (1 - lambda_1_72 * 0.5) * (1 - lambda_2_72 * 0.5) * (1 - lambda_0_17 * 0.5) * (1 - lambda_1_17 * 0.5) * (1 - lambda_2_17 * 0.5) * (1 - lambda_0_0 * 0.5) * (1 - lambda_1_0 * 0.5) * (1 - lambda_2_0 * 0.5)) * 0 * 7.48246796228363 + -(1 * (1 - lambda_0_72 * 0.5) * (1 - lambda_1_72 * 0.5) * (1 - lambda_2_72 * 0.5) * (1 - lambda_0_20 * 0.5) * (1 - lambda_1_20 * 0.5) * (1 - lambda_2_20 * 0.5) * (1 - lambda_0_64 * 0.5) * (1 - lambda_1_64 * 0.5) * (1 - lambda_2_64 * 0.5) * (1 - lambda_0_49 * 0.5) * (1 - lambda_1_49 * 0.5) * (1 - lambda_2_49 * 0.5) * (1 - lambda_0_68 * 0.5) * (1 - lambda_1_68 * 0.5) * (1 - lambda_2_68 * 0.5) * (1 - lambda_0_74 * 0.5) * (1 - lambda_1_74 * 0.5) * (1 - lambda_2_74 * 0.5)) * 0 * 7.48246796228363 + -(1 * (1 - lambda_0_71 * 0.5) * (1 - lambda_1_71 * 0.5) * (1 - lambda_2_71 * 0.5) * (1 - lambda_0_44 * 0.5) * (1 - lambda_1_44 * 0.5) * (1 - lambda_2_44 * 0.5) * (1 - lambda_0_19 * 0.5) * (1 - lambda_1_19 * 0.5) * (1 - lambda_2_19 * 0.5) * (1 - lambda_0_60 * 0.5) * (1 - lambda_1_60 * 0.5) * (1 - lambda_2_60 * 0.5) * (1 - lambda_0_73 * 0.5) * (1 - lambda_1_73 * 0.5) * (1 - lambda_2_73 * 0.5) * (1 - lambda_0_3 * 0.5) * (1 - lambda_1_3 * 0.5) * (1 - lambda_2_3 * 0.5) * (1 - lambda_0_34 * 0.5) * (1 - lambda_1_34 * 0.5) * (1 - lambda_2_34 * 0.5)) * 0 * 7.48246796228363 + -(1 * (1 - lambda_0_71 * 0.5) * (1 - lambda_1_71 * 0.5) * (1 - lambda_2_71 * 0.5) * (1 - lambda_0_44 * 0.5) * (1 - lambda_1_44 * 0.5) * (1 - lambda_2_44 * 0.5) * (1 - lambda_0_19 * 0.5) * (1 - lambda_1_19 * 0.5) * (1 - lambda_2_19 * 0.5) * (1 - lambda_0_60 * 0.5) * (1 - lambda_1_60 * 0.5) * (1 - lambda_2_60 * 0.5) * (1 - lambda_0_73 * 0.5) * (1 - lambda_1_73 * 0.5) * (1 - lambda_2_73 * 0.5) * (1 - lambda_0_3 * 0.5) * (1 - lambda_1_3 * 0.5) * (1 - lambda_2_3 * 0.5) * (1 - lambda_0_34 * 0.5) * (1 - lambda_1_34 * 0.5) * (1 - lambda_2_34 * 0.5)) * 0 * 7.48246796228363 + -(1 * (1 - lambda_0_71 * 0.5) * (1 - lambda_1_71 * 0.5) * (1 - lambda_2_71 * 0.5) * (1 - lambda_0_44 * 0.5) * (1 - lambda_1_44 * 0.5) * (1 - lambda_2_44 * 0.5) * (1 - lambda_0_22 * 0.5) * (1 - lambda_1_22 * 0.5) * (1 - lambda_2_22 * 0.5) * (1 - lambda_0_74 * 0.5) * (1 - lambda_1_74 * 0.5) * (1 - lambda_2_74 * 0.5)) * 0 * 7.48246796228363 + -(1 * (1 - lambda_0_72 * 0.5) * (1 - lambda_1_72 * 0.5) * (1 - lambda_2_72 * 0.5) * (1 - lambda_0_20 * 0.5) * (1 - lambda_1_20 * 0.5) * (1 - lambda_2_20 * 0.5) * (1 - lambda_0_63 * 0.5) * (1 - lambda_1_63 * 0.5) * (1 - lambda_2_63 * 0.5) * (1 - lambda_0_74 * 0.5) * (1 - lambda_1_74 * 0.5) * (1 - lambda_2_74 * 0.5)) * 0 * 7.48246796228363 + -(1 * (1 - lambda_0_72 * 0.5) * (1 - lambda_1_72 * 0.5) * (1 - lambda_2_72 * 0.5) * (1 - lambda_0_20 * 0.5) * (1 - lambda_1_20 * 0.5) * (1 - lambda_2_20 * 0.5) * (1 - lambda_0_63 * 0.5) * (1 - lambda_1_63 * 0.5) * (1 - lambda_2_63 * 0.5) * (1 - lambda_0_76 * 0.5) * (1 - lambda_1_76 * 0.5) * (1 - lambda_2_76 * 0.5) * (1 - lambda_0_25 * 0.5) * (1 - lambda_1_25 * 0.5) * (1 - lambda_2_25 * 0.5)) * 0 * 7.48246796228363 + -(1 * (1 - lambda_0_71 * 0.5) * (1 - lambda_1_71 * 0.5) * (1 - lambda_2_71 * 0.5) * (1 - lambda_0_44 * 0.5) * (1 - lambda_1_44 * 0.5) * (1 - lambda_2_44 * 0.5) * (1 - lambda_0_20 * 0.5) * (1 - lambda_1_20 * 0.5) * (1 - lambda_2_20 * 0.5) * (1 - lambda_0_63 * 0.5) * (1 - lambda_1_63 * 0.5) * (1 - lambda_2_63 * 0.5) * (1 - lambda_0_73 * 0.5) * (1 - lambda_1_73 * 0.5) * (1 - lambda_2_73 * 0.5) * (1 - lambda_0_0 * 0.5) * (1 - lambda_1_0 * 0.5) * (1 - lambda_2_0 * 0.5)) * 1 * 7.48246796228363 + -(1 * (1 - lambda_0_71 * 0.5) * (1 - lambda_1_71 * 0.5) * (1 - lambda_2_71 * 0.5) * (1 - lambda_0_44 * 0.5) * (1 - lambda_1_44 * 0.5) * (1 - lambda_2_44 * 0.5) * (1 - lambda_0_20 * 0.5) * (1 - lambda_1_20 * 0.5) * (1 - lambda_2_20 * 0.5) * (1 - lambda_0_63 * 0.5) * (1 - lambda_1_63 * 0.5) * (1 - lambda_2_63 * 0.5) * (1 - lambda_0_73 * 0.5) * (1 - lambda_1_73 * 0.5) * (1 - lambda_2_73 * 0.5) * (1 - lambda_0_0 * 0.5) * (1 - lambda_1_0 * 0.5) * (1 - lambda_2_0 * 0.5)) * 0 * 7.48246796228363 + -(1 * (1 - lambda_0_72 * 0.5) * (1 - lambda_1_72 * 0.5) * (1 - lambda_2_72 * 0.5) * (1 - lambda_0_19 * 0.5) * (1 - lambda_1_19 * 0.5) * (1 - lambda_2_19 * 0.5) * (1 - lambda_0_60 * 0.5) * (1 - lambda_1_60 * 0.5) * (1 - lambda_2_60 * 0.5) * (1 - lambda_0_74 * 0.5) * (1 - lambda_1_74 * 0.5) * (1 - lambda_2_74 * 0.5)) * 0 * 7.48246796228363 + -(1 * (1 - lambda_0_72 * 0.5) * (1 - lambda_1_72 * 0.5) * (1 - lambda_2_72 * 0.5) * (1 - lambda_0_19 * 0.5) * (1 - lambda_1_19 * 0.5) * (1 - lambda_2_19 * 0.5) * (1 - lambda_0_61 * 0.5) * (1 - lambda_1_61 * 0.5) * (1 - lambda_2_61 * 0.5) * (1 - lambda_0_49 * 0.5) * (1 - lambda_1_49 * 0.5) * (1 - lambda_2_49 * 0.5) * (1 - lambda_0_68 * 0.5) * (1 - lambda_1_68 * 0.5) * (1 - lambda_2_68 * 0.5) * (1 - lambda_0_76 * 0.5) * (1 - lambda_1_76 * 0.5) * (1 - lambda_2_76 * 0.5) * (1 - lambda_0_25 * 0.5) * (1 - lambda_1_25 * 0.5) * (1 - lambda_2_25 * 0.5)) * 0 * 7.48246796228363 + -(1 * (1 - lambda_0_71 * 0.5) * (1 - lambda_1_71 * 0.5) * (1 - lambda_2_71 * 0.5) * (1 - lambda_0_44 * 0.5) * (1 - lambda_1_44 * 0.5) * (1 - lambda_2_44 * 0.5) * (1 - lambda_0_22 * 0.5) * (1 - lambda_1_22 * 0.5) * (1 - lambda_2_22 * 0.5) * (1 - lambda_0_73 * 0.5) * (1 - lambda_1_73 * 0.5) * (1 - lambda_2_73 * 0.5) * (1 - lambda_0_2 * 0.5) * (1 - lambda_1_2 * 0.5) * (1 - lambda_2_2 * 0.5) * (1 - lambda_0_25 * 0.5) * (1 - lambda_1_25 * 0.5) * (1 - lambda_2_25 * 0.5)) * 0 * 7.48246796228363 + -(1 * (1 - lambda_0_71 * 0.5) * (1 - lambda_1_71 * 0.5) * (1 - lambda_2_71 * 0.5) * (1 - lambda_0_44 * 0.5) * (1 - lambda_1_44 * 0.5) * (1 - lambda_2_44 * 0.5) * (1 - lambda_0_22 * 0.5) * (1 - lambda_1_22 * 0.5) * (1 - lambda_2_22 * 0.5) * (1 - lambda_0_73 * 0.5) * (1 - lambda_1_73 * 0.5) * (1 - lambda_2_73 * 0.5) * (1 - lambda_0_2 * 0.5) * (1 - lambda_1_2 * 0.5) * (1 - lambda_2_2 * 0.5) * (1 - lambda_0_25 * 0.5) * (1 - lambda_1_25 * 0.5) * (1 - lambda_2_25 * 0.5)) * 0 * 7.48246796228363 + -(1 * (1 - lambda_0_71 * 0.5) * (1 - lambda_1_71 * 0.5) * (1 - lambda_2_71 * 0.5) * (1 - lambda_0_44 * 0.5) * (1 - lambda_1_44 * 0.5) * (1 - lambda_2_44 * 0.5) * (1 - lambda_0_22 * 0.5) * (1 - lambda_1_22 * 0.5) * (1 - lambda_2_22 * 0.5) * (1 - lambda_0_73 * 0.5) * (1 - lambda_1_73 * 0.5) * (1 - lambda_2_73 * 0.5) * (1 - lambda_0_2 * 0.5) * (1 - lambda_1_2 * 0.5) * (1 - lambda_2_2 * 0.5) * (1 - lambda_0_25 * 0.5) * (1 - lambda_1_25 * 0.5) * (1 - lambda_2_25 * 0.5)) * 0 * 7.48246796228363 + -(1 * (1 - lambda_0_71 * 0.5) * (1 - lambda_1_71 * 0.5) * (1 - lambda_2_71 * 0.5) * (1 - lambda_0_44 * 0.5) * (1 - lambda_1_44 * 0.5) * (1 - lambda_2_44 * 0.5) * (1 - lambda_0_22 * 0.5) * (1 - lambda_1_22 * 0.5) * (1 - lambda_2_22 * 0.5) * (1 - lambda_0_73 * 0.5) * (1 - lambda_1_73 * 0.5) * (1 - lambda_2_73 * 0.5) * (1 - lambda_0_2 * 0.5) * (1 - lambda_1_2 * 0.5) * (1 - lambda_2_2 * 0.5) * (1 - lambda_0_25 * 0.5) * (1 - lambda_1_25 * 0.5) * (1 - lambda_2_25 * 0.5)) * 0 * 7.48246796228363 + -(1 * (1 - lambda_0_71 * 0.5) * (1 - lambda_1_71 * 0.5) * (1 - lambda_2_71 * 0.5) * (1 - lambda_0_44 * 0.5) * (1 - lambda_1_44 * 0.5) * (1 - lambda_2_44 * 0.5) * (1 - lambda_0_22 * 0.5) * (1 - lambda_1_22 * 0.5) * (1 - lambda_2_22 * 0.5) * (1 - lambda_0_73 * 0.5) * (1 - lambda_1_73 * 0.5) * (1 - lambda_2_73 * 0.5) * (1 - lambda_0_2 * 0.5) * (1 - lambda_1_2 * 0.5) * (1 - lambda_2_2 * 0.5) * (1 - lambda_0_25 * 0.5) * (1 - lambda_1_25 * 0.5) * (1 - lambda_2_25 * 0.5)) * 0 * 7.48246796228363 + -(1 * (1 - lambda_0_71 * 0.5) * (1 - lambda_1_71 * 0.5) * (1 - lambda_2_71 * 0.5) * (1 - lambda_0_44 * 0.5) * (1 - lambda_1_44 * 0.5) * (1 - lambda_2_44 * 0.5) * (1 - lambda_0_22 * 0.5) * (1 - lambda_1_22 * 0.5) * (1 - lambda_2_22 * 0.5) * (1 - lambda_0_73 * 0.5) * (1 - lambda_1_73 * 0.5) * (1 - lambda_2_73 * 0.5) * (1 - lambda_0_2 * 0.5) * (1 - lambda_1_2 * 0.5) * (1 - lambda_2_2 * 0.5) * (1 - lambda_0_25 * 0.5) * (1 - lambda_1_25 * 0.5) * (1 - lambda_2_25 * 0.5)) * 0 * 7.48246796228363 + -(1 * (1 - lambda_0_71 * 0.5) * (1 - lambda_1_71 * 0.5) * (1 - lambda_2_71 * 0.5) * (1 - lambda_0_44 * 0.5) * (1 - lambda_1_44 * 0.5) * (1 - lambda_2_44 * 0.5) * (1 - lambda_0_22 * 0.5) * (1 - lambda_1_22 * 0.5) * (1 - lambda_2_22 * 0.5) * (1 - lambda_0_73 * 0.5) * (1 - lambda_1_73 * 0.5) * (1 - lambda_2_73 * 0.5) * (1 - lambda_0_2 * 0.5) * (1 - lambda_1_2 * 0.5) * (1 - lambda_2_2 * 0.5) * (1 - lambda_0_25 * 0.5) * (1 - lambda_1_25 * 0.5) * (1 - lambda_2_25 * 0.5)) * 0 * 7.48246796228363 + -(1 * (1 - lambda_0_71 * 0.5) * (1 - lambda_1_71 * 0.5) * (1 - lambda_2_71 * 0.5) * (1 - lambda_0_44 * 0.5) * (1 - lambda_1_44 * 0.5) * (1 - lambda_2_44 * 0.5) * (1 - lambda_0_22 * 0.5) * (1 - lambda_1_22 * 0.5) * (1 - lambda_2_22 * 0.5) * (1 - lambda_0_73 * 0.5) * (1 - lambda_1_73 * 0.5) * (1 - lambda_2_73 * 0.5) * (1 - lambda_0_2 * 0.5) * (1 - lambda_1_2 * 0.5) * (1 - lambda_2_2 * 0.5) * (1 - lambda_0_25 * 0.5) * (1 - lambda_1_25 * 0.5) * (1 - lambda_2_25 * 0.5)) * 0 * 7.48246796228363 + -(1 * (1 - lambda_0_71 * 0.5) * (1 - lambda_1_71 * 0.5) * (1 - lambda_2_71 * 0.5) * (1 - lambda_0_44 * 0.5) * (1 - lambda_1_44 * 0.5) * (1 - lambda_2_44 * 0.5) * (1 - lambda_0_22 * 0.5) * (1 - lambda_1_22 * 0.5) * (1 - lambda_2_22 * 0.5) * (1 - lambda_0_73 * 0.5) * (1 - lambda_1_73 * 0.5) * (1 - lambda_2_73 * 0.5) * (1 - lambda_0_2 * 0.5) * (1 - lambda_1_2 * 0.5) * (1 - lambda_2_2 * 0.5) * (1 - lambda_0_25 * 0.5) * (1 - lambda_1_25 * 0.5) * (1 - lambda_2_25 * 0.5)) * 0 * 7.48246796228363 + -(1 * (1 - lambda_0_71 * 0.5) * (1 - lambda_1_71 * 0.5) * (1 - lambda_2_71 * 0.5) * (1 - lambda_0_44 * 0.5) * (1 - lambda_1_44 * 0.5) * (1 - lambda_2_44 * 0.5) * (1 - lambda_0_22 * 0.5) * (1 - lambda_1_22 * 0.5) * (1 - lambda_2_22 * 0.5) * (1 - lambda_0_73 * 0.5) * (1 - lambda_1_73 * 0.5) * (1 - lambda_2_73 * 0.5) * (1 - lambda_0_2 * 0.5) * (1 - lambda_1_2 * 0.5) * (1 - lambda_2_2 * 0.5) * (1 - lambda_0_25 * 0.5) * (1 - lambda_1_25 * 0.5) * (1 - lambda_2_25 * 0.5)) * 0 * 7.48246796228363 + -(1 * (1 - lambda_0_71 * 0.5) * (1 - lambda_1_71 * 0.5) * (1 - lambda_2_71 * 0.5) * (1 - lambda_0_44 * 0.5) * (1 - lambda_1_44 * 0.5) * (1 - lambda_2_44 * 0.5) * (1 - lambda_0_22 * 0.5) * (1 - lambda_1_22 * 0.5) * (1 - lambda_2_22 * 0.5) * (1 - lambda_0_73 * 0.5) * (1 - lambda_1_73 * 0.5) * (1 - lambda_2_73 * 0.5) * (1 - lambda_0_2 * 0.5) * (1 - lambda_1_2 * 0.5) * (1 - lambda_2_2 * 0.5) * (1 - lambda_0_25 * 0.5) * (1 - lambda_1_25 * 0.5) * (1 - lambda_2_25 * 0.5)) * 0 * 7.48246796228363 + -(1 * (1 - lambda_0_71 * 0.5) * (1 - lambda_1_71 * 0.5) * (1 - lambda_2_71 * 0.5) * (1 - lambda_0_44 * 0.5) * (1 - lambda_1_44 * 0.5) * (1 - lambda_2_44 * 0.5) * (1 - lambda_0_22 * 0.5) * (1 - lambda_1_22 * 0.5) * (1 - lambda_2_22 * 0.5) * (1 - lambda_0_73 * 0.5) * (1 - lambda_1_73 * 0.5) * (1 - lambda_2_73 * 0.5) * (1 - lambda_0_2 * 0.5) * (1 - lambda_1_2 * 0.5) * (1 - lambda_2_2 * 0.5) * (1 - lambda_0_25 * 0.5) * (1 - lambda_1_25 * 0.5) * (1 - lambda_2_25 * 0.5)) * 0 * 7.48246796228363 + -(1 * (1 - lambda_0_71 * 0.5) * (1 - lambda_1_71 * 0.5) * (1 - lambda_2_71 * 0.5) * (1 - lambda_0_44 * 0.5) * (1 - lambda_1_44 * 0.5) * (1 - lambda_2_44 * 0.5) * (1 - lambda_0_22 * 0.5) * (1 - lambda_1_22 * 0.5) * (1 - lambda_2_22 * 0.5) * (1 - lambda_0_73 * 0.5) * (1 - lambda_1_73 * 0.5) * (1 - lambda_2_73 * 0.5) * (1 - lambda_0_2 * 0.5) * (1 - lambda_1_2 * 0.5) * (1 - lambda_2_2 * 0.5) * (1 - lambda_0_25 * 0.5) * (1 - lambda_1_25 * 0.5) * (1 - lambda_2_25 * 0.5)) * 0 * 7.48246796228363 + -(1 * (1 - lambda_0_71 * 0.5) * (1 - lambda_1_71 * 0.5) * (1 - lambda_2_71 * 0.5) * (1 - lambda_0_44 * 0.5) * (1 - lambda_1_44 * 0.5) * (1 - lambda_2_44 * 0.5) * (1 - lambda_0_22 * 0.5) * (1 - lambda_1_22 * 0.5) * (1 - lambda_2_22 * 0.5) * (1 - lambda_0_73 * 0.5) * (1 - lambda_1_73 * 0.5) * (1 - lambda_2_73 * 0.5) * (1 - lambda_0_2 * 0.5) * (1 - lambda_1_2 * 0.5) * (1 - lambda_2_2 * 0.5) * (1 - lambda_0_25 * 0.5) * (1 - lambda_1_25 * 0.5) * (1 - lambda_2_25 * 0.5)) * 0 * 7.48246796228363 + -(1 * (1 - lambda_0_71 * 0.5) * (1 - lambda_1_71 * 0.5) * (1 - lambda_2_71 * 0.5) * (1 - lambda_0_44 * 0.5) * (1 - lambda_1_44 * 0.5) * (1 - lambda_2_44 * 0.5) * (1 - lambda_0_22 * 0.5) * (1 - lambda_1_22 * 0.5) * (1 - lambda_2_22 * 0.5) * (1 - lambda_0_73 * 0.5) * (1 - lambda_1_73 * 0.5) * (1 - lambda_2_73 * 0.5) * (1 - lambda_0_2 * 0.5) * (1 - lambda_1_2 * 0.5) * (1 - lambda_2_2 * 0.5) * (1 - lambda_0_25 * 0.5) * (1 - lambda_1_25 * 0.5) * (1 - lambda_2_25 * 0.5)) * 0 * 7.48246796228363 + -(1 * (1 - lambda_0_71 * 0.5) * (1 - lambda_1_71 * 0.5) * (1 - lambda_2_71 * 0.5) * (1 - lambda_0_44 * 0.5) * (1 - lambda_1_44 * 0.5) * (1 - lambda_2_44 * 0.5) * (1 - lambda_0_22 * 0.5) * (1 - lambda_1_22 * 0.5) * (1 - lambda_2_22 * 0.5) * (1 - lambda_0_73 * 0.5) * (1 - lambda_1_73 * 0.5) * (1 - lambda_2_73 * 0.5) * (1 - lambda_0_2 * 0.5) * (1 - lambda_1_2 * 0.5) * (1 - lambda_2_2 * 0.5) * (1 - lambda_0_25 * 0.5) * (1 - lambda_1_25 * 0.5) * (1 - lambda_2_25 * 0.5)) * 0 * 7.48246796228363 + -(1 * (1 - lambda_0_71 * 0.5) * (1 - lambda_1_71 * 0.5) * (1 - lambda_2_71 * 0.5) * (1 - lambda_0_44 * 0.5) * (1 - lambda_1_44 * 0.5) * (1 - lambda_2_44 * 0.5) * (1 - lambda_0_22 * 0.5) * (1 - lambda_1_22 * 0.5) * (1 - lambda_2_22 * 0.5) * (1 - lambda_0_73 * 0.5) * (1 - lambda_1_73 * 0.5) * (1 - lambda_2_73 * 0.5) * (1 - lambda_0_2 * 0.5) * (1 - lambda_1_2 * 0.5) * (1 - lambda_2_2 * 0.5) * (1 - lambda_0_25 * 0.5) * (1 - lambda_1_25 * 0.5) * (1 - lambda_2_25 * 0.5)) * 0 * 7.48246796228363 + -(1 * (1 - lambda_0_71 * 0.5) * (1 - lambda_1_71 * 0.5) * (1 - lambda_2_71 * 0.5) * (1 - lambda_0_44 * 0.5) * (1 - lambda_1_44 * 0.5) * (1 - lambda_2_44 * 0.5) * (1 - lambda_0_22 * 0.5) * (1 - lambda_1_22 * 0.5) * (1 - lambda_2_22 * 0.5) * (1 - lambda_0_73 * 0.5) * (1 - lambda_1_73 * 0.5) * (1 - lambda_2_73 * 0.5) * (1 - lambda_0_2 * 0.5) * (1 - lambda_1_2 * 0.5) * (1 - lambda_2_2 * 0.5) * (1 - lambda_0_25 * 0.5) * (1 - lambda_1_25 * 0.5) * (1 - lambda_2_25 * 0.5)) * 0 * 7.48246796228363 + -(1 * (1 - lambda_0_71 * 0.5) * (1 - lambda_1_71 * 0.5) * (1 - lambda_2_71 * 0.5) * (1 - lambda_0_44 * 0.5) * (1 - lambda_1_44 * 0.5) * (1 - lambda_2_44 * 0.5) * (1 - lambda_0_22 * 0.5) * (1 - lambda_1_22 * 0.5) * (1 - lambda_2_22 * 0.5) * (1 - lambda_0_73 * 0.5) * (1 - lambda_1_73 * 0.5) * (1 - lambda_2_73 * 0.5) * (1 - lambda_0_2 * 0.5) * (1 - lambda_1_2 * 0.5) * (1 - lambda_2_2 * 0.5) * (1 - lambda_0_25 * 0.5) * (1 - lambda_1_25 * 0.5) * (1 - lambda_2_25 * 0.5)) * 0 * 7.48246796228363 + -(1 * (1 - lambda_0_71 * 0.5) * (1 - lambda_1_71 * 0.5) * (1 - lambda_2_71 * 0.5) * (1 - lambda_0_44 * 0.5) * (1 - lambda_1_44 * 0.5) * (1 - lambda_2_44 * 0.5) * (1 - lambda_0_22 * 0.5) * (1 - lambda_1_22 * 0.5) * (1 - lambda_2_22 * 0.5) * (1 - lambda_0_73 * 0.5) * (1 - lambda_1_73 * 0.5) * (1 - lambda_2_73 * 0.5) * (1 - lambda_0_2 * 0.5) * (1 - lambda_1_2 * 0.5) * (1 - lambda_2_2 * 0.5) * (1 - lambda_0_25 * 0.5) * (1 - lambda_1_25 * 0.5) * (1 - lambda_2_25 * 0.5)) * 0 * 7.48246796228363 + -(1 * (1 - lambda_0_71 * 0.5) * (1 - lambda_1_71 * 0.5) * (1 - lambda_2_71 * 0.5) * (1 - lambda_0_44 * 0.5) * (1 - lambda_1_44 * 0.5) * (1 - lambda_2_44 * 0.5) * (1 - lambda_0_22 * 0.5) * (1 - lambda_1_22 * 0.5) * (1 - lambda_2_22 * 0.5) * (1 - lambda_0_73 * 0.5) * (1 - lambda_1_73 * 0.5) * (1 - lambda_2_73 * 0.5) * (1 - lambda_0_2 * 0.5) * (1 - lambda_1_2 * 0.5) * (1 - lambda_2_2 * 0.5) * (1 - lambda_0_25 * 0.5) * (1 - lambda_1_25 * 0.5) * (1 - lambda_2_25 * 0.5)) * 0 * 7.48246796228363 + -(1 * (1 - lambda_0_71 * 0.5) * (1 - lambda_1_71 * 0.5) * (1 - lambda_2_71 * 0.5) * (1 - lambda_0_44 * 0.5) * (1 - lambda_1_44 * 0.5) * (1 - lambda_2_44 * 0.5) * (1 - lambda_0_22 * 0.5) * (1 - lambda_1_22 * 0.5) * (1 - lambda_2_22 * 0.5) * (1 - lambda_0_73 * 0.5) * (1 - lambda_1_73 * 0.5) * (1 - lambda_2_73 * 0.5) * (1 - lambda_0_2 * 0.5) * (1 - lambda_1_2 * 0.5) * (1 - lambda_2_2 * 0.5) * (1 - lambda_0_25 * 0.5) * (1 - lambda_1_25 * 0.5) * (1 - lambda_2_25 * 0.5)) * 0 * 7.48246796228363 + -(1 * (1 - lambda_0_71 * 0.5) * (1 - lambda_1_71 * 0.5) * (1 - lambda_2_71 * 0.5) * (1 - lambda_0_44 * 0.5) * (1 - lambda_1_44 * 0.5) * (1 - lambda_2_44 * 0.5) * (1 - lambda_0_22 * 0.5) * (1 - lambda_1_22 * 0.5) * (1 - lambda_2_22 * 0.5) * (1 - lambda_0_73 * 0.5) * (1 - lambda_1_73 * 0.5) * (1 - lambda_2_73 * 0.5) * (1 - lambda_0_2 * 0.5) * (1 - lambda_1_2 * 0.5) * (1 - lambda_2_2 * 0.5) * (1 - lambda_0_25 * 0.5) * (1 - lambda_1_25 * 0.5) * (1 - lambda_2_25 * 0.5)) * 0 * 7.48246796228363 + -(1 * (1 - lambda_0_71 * 0.5) * (1 - lambda_1_71 * 0.5) * (1 - lambda_2_71 * 0.5) * (1 - lambda_0_44 * 0.5) * (1 - lambda_1_44 * 0.5) * (1 - lambda_2_44 * 0.5) * (1 - lambda_0_22 * 0.5) * (1 - lambda_1_22 * 0.5) * (1 - lambda_2_22 * 0.5) * (1 - lambda_0_73 * 0.5) * (1 - lambda_1_73 * 0.5) * (1 - lambda_2_73 * 0.5) * (1 - lambda_0_2 * 0.5) * (1 - lambda_1_2 * 0.5) * (1 - lambda_2_2 * 0.5) * (1 - lambda_0_25 * 0.5) * (1 - lambda_1_25 * 0.5) * (1 - lambda_2_25 * 0.5)) * 0 * 7.48246796228363 + -(1 * (1 - lambda_0_71 * 0.5) * (1 - lambda_1_71 * 0.5) * (1 - lambda_2_71 * 0.5) * (1 - lambda_0_44 * 0.5) * (1 - lambda_1_44 * 0.5) * (1 - lambda_2_44 * 0.5) * (1 - lambda_0_22 * 0.5) * (1 - lambda_1_22 * 0.5) * (1 - lambda_2_22 * 0.5) * (1 - lambda_0_73 * 0.5) * (1 - lambda_1_73 * 0.5) * (1 - lambda_2_73 * 0.5) * (1 - lambda_0_2 * 0.5) * (1 - lambda_1_2 * 0.5) * (1 - lambda_2_2 * 0.5) * (1 - lambda_0_25 * 0.5) * (1 - lambda_1_25 * 0.5) * (1 - lambda_2_25 * 0.5)) * 0 * 7.48246796228363 + -(1 * (1 - lambda_0_71 * 0.5) * (1 - lambda_1_71 * 0.5) * (1 - lambda_2_71 * 0.5) * (1 - lambda_0_44 * 0.5) * (1 - lambda_1_44 * 0.5) * (1 - lambda_2_44 * 0.5) * (1 - lambda_0_22 * 0.5) * (1 - lambda_1_22 * 0.5) * (1 - lambda_2_22 * 0.5) * (1 - lambda_0_73 * 0.5) * (1 - lambda_1_73 * 0.5) * (1 - lambda_2_73 * 0.5) * (1 - lambda_0_2 * 0.5) * (1 - lambda_1_2 * 0.5) * (1 - lambda_2_2 * 0.5) * (1 - lambda_0_25 * 0.5) * (1 - lambda_1_25 * 0.5) * (1 - lambda_2_25 * 0.5)) * 0 * 7.48246796228363 + -(1 * (1 - lambda_0_71 * 0.5) * (1 - lambda_1_71 * 0.5) * (1 - lambda_2_71 * 0.5) * (1 - lambda_0_44 * 0.5) * (1 - lambda_1_44 * 0.5) * (1 - lambda_2_44 * 0.5) * (1 - lambda_0_22 * 0.5) * (1 - lambda_1_22 * 0.5) * (1 - lambda_2_22 * 0.5) * (1 - lambda_0_73 * 0.5) * (1 - lambda_1_73 * 0.5) * (1 - lambda_2_73 * 0.5) * (1 - lambda_0_2 * 0.5) * (1 - lambda_1_2 * 0.5) * (1 - lambda_2_2 * 0.5) * (1 - lambda_0_25 * 0.5) * (1 - lambda_1_25 * 0.5) * (1 - lambda_2_25 * 0.5)) * 0 * 7.48246796228363 + -(1 * (1 - lambda_0_71 * 0.5) * (1 - lambda_1_71 * 0.5) * (1 - lambda_2_71 * 0.5) * (1 - lambda_0_44 * 0.5) * (1 - lambda_1_44 * 0.5) * (1 - lambda_2_44 * 0.5) * (1 - lambda_0_22 * 0.5) * (1 - lambda_1_22 * 0.5) * (1 - lambda_2_22 * 0.5) * (1 - lambda_0_73 * 0.5) * (1 - lambda_1_73 * 0.5) * (1 - lambda_2_73 * 0.5) * (1 - lambda_0_2 * 0.5) * (1 - lambda_1_2 * 0.5) * (1 - lambda_2_2 * 0.5) * (1 - lambda_0_25 * 0.5) * (1 - lambda_1_25 * 0.5) * (1 - lambda_2_25 * 0.5)) * 0 * 7.48246796228363 + -(1 * (1 - lambda_0_71 * 0.5) * (1 - lambda_1_71 * 0.5) * (1 - lambda_2_71 * 0.5) * (1 - lambda_0_44 * 0.5) * (1 - lambda_1_44 * 0.5) * (1 - lambda_2_44 * 0.5) * (1 - lambda_0_22 * 0.5) * (1 - lambda_1_22 * 0.5) * (1 - lambda_2_22 * 0.5) * (1 - lambda_0_73 * 0.5) * (1 - lambda_1_73 * 0.5) * (1 - lambda_2_73 * 0.5) * (1 - lambda_0_2 * 0.5) * (1 - lambda_1_2 * 0.5) * (1 - lambda_2_2 * 0.5) * (1 - lambda_0_25 * 0.5) * (1 - lambda_1_25 * 0.5) * (1 - lambda_2_25 * 0.5)) * 0 * 7.48246796228363 + -(1 * (1 - lambda_0_71 * 0.5) * (1 - lambda_1_71 * 0.5) * (1 - lambda_2_71 * 0.5) * (1 - lambda_0_44 * 0.5) * (1 - lambda_1_44 * 0.5) * (1 - lambda_2_44 * 0.5) * (1 - lambda_0_22 * 0.5) * (1 - lambda_1_22 * 0.5) * (1 - lambda_2_22 * 0.5) * (1 - lambda_0_73 * 0.5) * (1 - lambda_1_73 * 0.5) * (1 - lambda_2_73 * 0.5) * (1 - lambda_0_2 * 0.5) * (1 - lambda_1_2 * 0.5) * (1 - lambda_2_2 * 0.5) * (1 - lambda_0_25 * 0.5) * (1 - lambda_1_25 * 0.5) * (1 - lambda_2_25 * 0.5)) * 0 * 7.48246796228363 + -(1 * (1 - lambda_0_71 * 0.5) * (1 - lambda_1_71 * 0.5) * (1 - lambda_2_71 * 0.5) * (1 - lambda_0_44 * 0.5) * (1 - lambda_1_44 * 0.5) * (1 - lambda_2_44 * 0.5) * (1 - lambda_0_22 * 0.5) * (1 - lambda_1_22 * 0.5) * (1 - lambda_2_22 * 0.5) * (1 - lambda_0_73 * 0.5) * (1 - lambda_1_73 * 0.5) * (1 - lambda_2_73 * 0.5) * (1 - lambda_0_2 * 0.5) * (1 - lambda_1_2 * 0.5) * (1 - lambda_2_2 * 0.5) * (1 - lambda_0_25 * 0.5) * (1 - lambda_1_25 * 0.5) * (1 - lambda_2_25 * 0.5)) * 0 * 7.48246796228363 + -(1 * (1 - lambda_0_71 * 0.5) * (1 - lambda_1_71 * 0.5) * (1 - lambda_2_71 * 0.5) * (1 - lambda_0_44 * 0.5) * (1 - lambda_1_44 * 0.5) * (1 - lambda_2_44 * 0.5) * (1 - lambda_0_22 * 0.5) * (1 - lambda_1_22 * 0.5) * (1 - lambda_2_22 * 0.5) * (1 - lambda_0_73 * 0.5) * (1 - lambda_1_73 * 0.5) * (1 - lambda_2_73 * 0.5) * (1 - lambda_0_2 * 0.5) * (1 - lambda_1_2 * 0.5) * (1 - lambda_2_2 * 0.5) * (1 - lambda_0_25 * 0.5) * (1 - lambda_1_25 * 0.5) * (1 - lambda_2_25 * 0.5)) * 0 * 7.48246796228363 + -(1 * (1 - lambda_0_71 * 0.5) * (1 - lambda_1_71 * 0.5) * (1 - lambda_2_71 * 0.5) * (1 - lambda_0_44 * 0.5) * (1 - lambda_1_44 * 0.5) * (1 - lambda_2_44 * 0.5) * (1 - lambda_0_22 * 0.5) * (1 - lambda_1_22 * 0.5) * (1 - lambda_2_22 * 0.5) * (1 - lambda_0_73 * 0.5) * (1 - lambda_1_73 * 0.5) * (1 - lambda_2_73 * 0.5) * (1 - lambda_0_2 * 0.5) * (1 - lambda_1_2 * 0.5) * (1 - lambda_2_2 * 0.5) * (1 - lambda_0_25 * 0.5) * (1 - lambda_1_25 * 0.5) * (1 - lambda_2_25 * 0.5)) * 0 * 7.48246796228363 + -(1 * (1 - lambda_0_71 * 0.5) * (1 - lambda_1_71 * 0.5) * (1 - lambda_2_71 * 0.5) * (1 - lambda_0_44 * 0.5) * (1 - lambda_1_44 * 0.5) * (1 - lambda_2_44 * 0.5) * (1 - lambda_0_22 * 0.5) * (1 - lambda_1_22 * 0.5) * (1 - lambda_2_22 * 0.5) * (1 - lambda_0_73 * 0.5) * (1 - lambda_1_73 * 0.5) * (1 - lambda_2_73 * 0.5) * (1 - lambda_0_2 * 0.5) * (1 - lambda_1_2 * 0.5) * (1 - lambda_2_2 * 0.5) * (1 - lambda_0_25 * 0.5) * (1 - lambda_1_25 * 0.5) * (1 - lambda_2_25 * 0.5)) * 0 * 7.48246796228363 + -(1 * (1 - lambda_0_71 * 0.5) * (1 - lambda_1_71 * 0.5) * (1 - lambda_2_71 * 0.5) * (1 - lambda_0_44 * 0.5) * (1 - lambda_1_44 * 0.5) * (1 - lambda_2_44 * 0.5) * (1 - lambda_0_22 * 0.5) * (1 - lambda_1_22 * 0.5) * (1 - lambda_2_22 * 0.5) * (1 - lambda_0_73 * 0.5) * (1 - lambda_1_73 * 0.5) * (1 - lambda_2_73 * 0.5) * (1 - lambda_0_2 * 0.5) * (1 - lambda_1_2 * 0.5) * (1 - lambda_2_2 * 0.5) * (1 - lambda_0_25 * 0.5) * (1 - lambda_1_25 * 0.5) * (1 - lambda_2_25 * 0.5)) * 0 * 7.48246796228363 + -(1 * (1 - lambda_0_71 * 0.5) * (1 - lambda_1_71 * 0.5) * (1 - lambda_2_71 * 0.5) * (1 - lambda_0_44 * 0.5) * (1 - lambda_1_44 * 0.5) * (1 - lambda_2_44 * 0.5) * (1 - lambda_0_22 * 0.5) * (1 - lambda_1_22 * 0.5) * (1 - lambda_2_22 * 0.5) * (1 - lambda_0_73 * 0.5) * (1 - lambda_1_73 * 0.5) * (1 - lambda_2_73 * 0.5) * (1 - lambda_0_2 * 0.5) * (1 - lambda_1_2 * 0.5) * (1 - lambda_2_2 * 0.5) * (1 - lambda_0_25 * 0.5) * (1 - lambda_1_25 * 0.5) * (1 - lambda_2_25 * 0.5)) * 0 * 7.48246796228363 + -(1 * (1 - lambda_0_71 * 0.5) * (1 - lambda_1_71 * 0.5) * (1 - lambda_2_71 * 0.5) * (1 - lambda_0_44 * 0.5) * (1 - lambda_1_44 * 0.5) * (1 - lambda_2_44 * 0.5) * (1 - lambda_0_22 * 0.5) * (1 - lambda_1_22 * 0.5) * (1 - lambda_2_22 * 0.5) * (1 - lambda_0_73 * 0.5) * (1 - lambda_1_73 * 0.5) * (1 - lambda_2_73 * 0.5) * (1 - lambda_0_2 * 0.5) * (1 - lambda_1_2 * 0.5) * (1 - lambda_2_2 * 0.5) * (1 - lambda_0_25 * 0.5) * (1 - lambda_1_25 * 0.5) * (1 - lambda_2_25 * 0.5)) * 0 * 7.48246796228363 + -(1 * (1 - lambda_0_71 * 0.5) * (1 - lambda_1_71 * 0.5) * (1 - lambda_2_71 * 0.5) * (1 - lambda_0_44 * 0.5) * (1 - lambda_1_44 * 0.5) * (1 - lambda_2_44 * 0.5) * (1 - lambda_0_22 * 0.5) * (1 - lambda_1_22 * 0.5) * (1 - lambda_2_22 * 0.5) * (1 - lambda_0_73 * 0.5) * (1 - lambda_1_73 * 0.5) * (1 - lambda_2_73 * 0.5) * (1 - lambda_0_2 * 0.5) * (1 - lambda_1_2 * 0.5) * (1 - lambda_2_2 * 0.5) * (1 - lambda_0_25 * 0.5) * (1 - lambda_1_25 * 0.5) * (1 - lambda_2_25 * 0.5)) * 0 * 7.48246796228363 + -(1 * (1 - lambda_0_71 * 0.5) * (1 - lambda_1_71 * 0.5) * (1 - lambda_2_71 * 0.5) * (1 - lambda_0_44 * 0.5) * (1 - lambda_1_44 * 0.5) * (1 - lambda_2_44 * 0.5) * (1 - lambda_0_22 * 0.5) * (1 - lambda_1_22 * 0.5) * (1 - lambda_2_22 * 0.5) * (1 - lambda_0_73 * 0.5) * (1 - lambda_1_73 * 0.5) * (1 - lambda_2_73 * 0.5) * (1 - lambda_0_2 * 0.5) * (1 - lambda_1_2 * 0.5) * (1 - lambda_2_2 * 0.5) * (1 - lambda_0_25 * 0.5) * (1 - lambda_1_25 * 0.5) * (1 - lambda_2_25 * 0.5)) * 0 * 7.48246796228363 + -(1 * (1 - lambda_0_71 * 0.5) * (1 - lambda_1_71 * 0.5) * (1 - lambda_2_71 * 0.5) * (1 - lambda_0_44 * 0.5) * (1 - lambda_1_44 * 0.5) * (1 - lambda_2_44 * 0.5) * (1 - lambda_0_22 * 0.5) * (1 - lambda_1_22 * 0.5) * (1 - lambda_2_22 * 0.5) * (1 - lambda_0_73 * 0.5) * (1 - lambda_1_73 * 0.5) * (1 - lambda_2_73 * 0.5) * (1 - lambda_0_2 * 0.5) * (1 - lambda_1_2 * 0.5) * (1 - lambda_2_2 * 0.5) * (1 - lambda_0_25 * 0.5) * (1 - lambda_1_25 * 0.5) * (1 - lambda_2_25 * 0.5)) * 0 * 7.48246796228363 + -(1 * (1 - lambda_0_71 * 0.5) * (1 - lambda_1_71 * 0.5) * (1 - lambda_2_71 * 0.5) * (1 - lambda_0_44 * 0.5) * (1 - lambda_1_44 * 0.5) * (1 - lambda_2_44 * 0.5) * (1 - lambda_0_22 * 0.5) * (1 - lambda_1_22 * 0.5) * (1 - lambda_2_22 * 0.5) * (1 - lambda_0_73 * 0.5) * (1 - lambda_1_73 * 0.5) * (1 - lambda_2_73 * 0.5) * (1 - lambda_0_2 * 0.5) * (1 - lambda_1_2 * 0.5) * (1 - lambda_2_2 * 0.5) * (1 - lambda_0_25 * 0.5) * (1 - lambda_1_25 * 0.5) * (1 - lambda_2_25 * 0.5)) * 0 * 7.48246796228363 + -(1 * (1 - lambda_0_71 * 0.5) * (1 - lambda_1_71 * 0.5) * (1 - lambda_2_71 * 0.5) * (1 - lambda_0_44 * 0.5) * (1 - lambda_1_44 * 0.5) * (1 - lambda_2_44 * 0.5) * (1 - lambda_0_22 * 0.5) * (1 - lambda_1_22 * 0.5) * (1 - lambda_2_22 * 0.5) * (1 - lambda_0_73 * 0.5) * (1 - lambda_1_73 * 0.5) * (1 - lambda_2_73 * 0.5) * (1 - lambda_0_2 * 0.5) * (1 - lambda_1_2 * 0.5) * (1 - lambda_2_2 * 0.5) * (1 - lambda_0_25 * 0.5) * (1 - lambda_1_25 * 0.5) * (1 - lambda_2_25 * 0.5)) * 0 * 7.48246796228363 + -(1 * (1 - lambda_0_71 * 0.5) * (1 - lambda_1_71 * 0.5) * (1 - lambda_2_71 * 0.5) * (1 - lambda_0_44 * 0.5) * (1 - lambda_1_44 * 0.5) * (1 - lambda_2_44 * 0.5) * (1 - lambda_0_22 * 0.5) * (1 - lambda_1_22 * 0.5) * (1 - lambda_2_22 * 0.5) * (1 - lambda_0_73 * 0.5) * (1 - lambda_1_73 * 0.5) * (1 - lambda_2_73 * 0.5) * (1 - lambda_0_2 * 0.5) * (1 - lambda_1_2 * 0.5) * (1 - lambda_2_2 * 0.5) * (1 - lambda_0_25 * 0.5) * (1 - lambda_1_25 * 0.5) * (1 - lambda_2_25 * 0.5)) * 0 * 7.48246796228363 + -(1 * (1 - lambda_0_71 * 0.5) * (1 - lambda_1_71 * 0.5) * (1 - lambda_2_71 * 0.5) * (1 - lambda_0_44 * 0.5) * (1 - lambda_1_44 * 0.5) * (1 - lambda_2_44 * 0.5) * (1 - lambda_0_22 * 0.5) * (1 - lambda_1_22 * 0.5) * (1 - lambda_2_22 * 0.5) * (1 - lambda_0_73 * 0.5) * (1 - lambda_1_73 * 0.5) * (1 - lambda_2_73 * 0.5) * (1 - lambda_0_2 * 0.5) * (1 - lambda_1_2 * 0.5) * (1 - lambda_2_2 * 0.5) * (1 - lambda_0_25 * 0.5) * (1 - lambda_1_25 * 0.5) * (1 - lambda_2_25 * 0.5)) * 0 * 7.48246796228363 + -(1 * (1 - lambda_0_71 * 0.5) * (1 - lambda_1_71 * 0.5) * (1 - lambda_2_71 * 0.5) * (1 - lambda_0_44 * 0.5) * (1 - lambda_1_44 * 0.5) * (1 - lambda_2_44 * 0.5) * (1 - lambda_0_22 * 0.5) * (1 - lambda_1_22 * 0.5) * (1 - lambda_2_22 * 0.5) * (1 - lambda_0_73 * 0.5) * (1 - lambda_1_73 * 0.5) * (1 - lambda_2_73 * 0.5) * (1 - lambda_0_2 * 0.5) * (1 - lambda_1_2 * 0.5) * (1 - lambda_2_2 * 0.5) * (1 - lambda_0_25 * 0.5) * (1 - lambda_1_25 * 0.5) * (1 - lambda_2_25 * 0.5)) * 0 * 7.48246796228363 + -(1 * (1 - lambda_0_71 * 0.5) * (1 - lambda_1_71 * 0.5) * (1 - lambda_2_71 * 0.5) * (1 - lambda_0_44 * 0.5) * (1 - lambda_1_44 * 0.5) * (1 - lambda_2_44 * 0.5) * (1 - lambda_0_22 * 0.5) * (1 - lambda_1_22 * 0.5) * (1 - lambda_2_22 * 0.5) * (1 - lambda_0_73 * 0.5) * (1 - lambda_1_73 * 0.5) * (1 - lambda_2_73 * 0.5) * (1 - lambda_0_2 * 0.5) * (1 - lambda_1_2 * 0.5) * (1 - lambda_2_2 * 0.5) * (1 - lambda_0_25 * 0.5) * (1 - lambda_1_25 * 0.5) * (1 - lambda_2_25 * 0.5)) * 0 * 7.48246796228363 + -(1 * (1 - lambda_0_71 * 0.5) * (1 - lambda_1_71 * 0.5) * (1 - lambda_2_71 * 0.5) * (1 - lambda_0_44 * 0.5) * (1 - lambda_1_44 * 0.5) * (1 - lambda_2_44 * 0.5) * (1 - lambda_0_22 * 0.5) * (1 - lambda_1_22 * 0.5) * (1 - lambda_2_22 * 0.5) * (1 - lambda_0_73 * 0.5) * (1 - lambda_1_73 * 0.5) * (1 - lambda_2_73 * 0.5) * (1 - lambda_0_2 * 0.5) * (1 - lambda_1_2 * 0.5) * (1 - lambda_2_2 * 0.5) * (1 - lambda_0_25 * 0.5) * (1 - lambda_1_25 * 0.5) * (1 - lambda_2_25 * 0.5)) * 0 * 7.48246796228363 + -(1 * (1 - lambda_0_71 * 0.5) * (1 - lambda_1_71 * 0.5) * (1 - lambda_2_71 * 0.5) * (1 - lambda_0_44 * 0.5) * (1 - lambda_1_44 * 0.5) * (1 - lambda_2_44 * 0.5) * (1 - lambda_0_22 * 0.5) * (1 - lambda_1_22 * 0.5) * (1 - lambda_2_22 * 0.5) * (1 - lambda_0_73 * 0.5) * (1 - lambda_1_73 * 0.5) * (1 - lambda_2_73 * 0.5) * (1 - lambda_0_2 * 0.5) * (1 - lambda_1_2 * 0.5) * (1 - lambda_2_2 * 0.5) * (1 - lambda_0_25 * 0.5) * (1 - lambda_1_25 * 0.5) * (1 - lambda_2_25 * 0.5)) * 0 * 7.48246796228363 + -(1 * (1 - lambda_0_71 * 0.5) * (1 - lambda_1_71 * 0.5) * (1 - lambda_2_71 * 0.5) * (1 - lambda_0_44 * 0.5) * (1 - lambda_1_44 * 0.5) * (1 - lambda_2_44 * 0.5) * (1 - lambda_0_22 * 0.5) * (1 - lambda_1_22 * 0.5) * (1 - lambda_2_22 * 0.5) * (1 - lambda_0_73 * 0.5) * (1 - lambda_1_73 * 0.5) * (1 - lambda_2_73 * 0.5) * (1 - lambda_0_2 * 0.5) * (1 - lambda_1_2 * 0.5) * (1 - lambda_2_2 * 0.5) * (1 - lambda_0_25 * 0.5) * (1 - lambda_1_25 * 0.5) * (1 - lambda_2_25 * 0.5)) * 0 * 7.48246796228363 + -(1 * (1 - lambda_0_71 * 0.5) * (1 - lambda_1_71 * 0.5) * (1 - lambda_2_71 * 0.5) * (1 - lambda_0_44 * 0.5) * (1 - lambda_1_44 * 0.5) * (1 - lambda_2_44 * 0.5) * (1 - lambda_0_22 * 0.5) * (1 - lambda_1_22 * 0.5) * (1 - lambda_2_22 * 0.5) * (1 - lambda_0_73 * 0.5) * (1 - lambda_1_73 * 0.5) * (1 - lambda_2_73 * 0.5) * (1 - lambda_0_2 * 0.5) * (1 - lambda_1_2 * 0.5) * (1 - lambda_2_2 * 0.5) * (1 - lambda_0_25 * 0.5) * (1 - lambda_1_25 * 0.5) * (1 - lambda_2_25 * 0.5)) * 0 * 7.48246796228363 + -(1 * (1 - lambda_0_71 * 0.5) * (1 - lambda_1_71 * 0.5) * (1 - lambda_2_71 * 0.5) * (1 - lambda_0_44 * 0.5) * (1 - lambda_1_44 * 0.5) * (1 - lambda_2_44 * 0.5) * (1 - lambda_0_22 * 0.5) * (1 - lambda_1_22 * 0.5) * (1 - lambda_2_22 * 0.5) * (1 - lambda_0_73 * 0.5) * (1 - lambda_1_73 * 0.5) * (1 - lambda_2_73 * 0.5) * (1 - lambda_0_2 * 0.5) * (1 - lambda_1_2 * 0.5) * (1 - lambda_2_2 * 0.5) * (1 - lambda_0_25 * 0.5) * (1 - lambda_1_25 * 0.5) * (1 - lambda_2_25 * 0.5)) * 0 * 7.48246796228363 + -(1 * (1 - lambda_0_71 * 0.5) * (1 - lambda_1_71 * 0.5) * (1 - lambda_2_71 * 0.5) * (1 - lambda_0_44 * 0.5) * (1 - lambda_1_44 * 0.5) * (1 - lambda_2_44 * 0.5) * (1 - lambda_0_22 * 0.5) * (1 - lambda_1_22 * 0.5) * (1 - lambda_2_22 * 0.5) * (1 - lambda_0_73 * 0.5) * (1 - lambda_1_73 * 0.5) * (1 - lambda_2_73 * 0.5) * (1 - lambda_0_2 * 0.5) * (1 - lambda_1_2 * 0.5) * (1 - lambda_2_2 * 0.5) * (1 - lambda_0_25 * 0.5) * (1 - lambda_1_25 * 0.5) * (1 - lambda_2_25 * 0.5)) * 0 * 7.48246796228363 + -(1 * (1 - lambda_0_71 * 0.5) * (1 - lambda_1_71 * 0.5) * (1 - lambda_2_71 * 0.5) * (1 - lambda_0_44 * 0.5) * (1 - lambda_1_44 * 0.5) * (1 - lambda_2_44 * 0.5) * (1 - lambda_0_22 * 0.5) * (1 - lambda_1_22 * 0.5) * (1 - lambda_2_22 * 0.5) * (1 - lambda_0_73 * 0.5) * (1 - lambda_1_73 * 0.5) * (1 - lambda_2_73 * 0.5) * (1 - lambda_0_2 * 0.5) * (1 - lambda_1_2 * 0.5) * (1 - lambda_2_2 * 0.5) * (1 - lambda_0_25 * 0.5) * (1 - lambda_1_25 * 0.5) * (1 - lambda_2_25 * 0.5)) * 0 * 7.48246796228363 + -(1 * (1 - lambda_0_71 * 0.5) * (1 - lambda_1_71 * 0.5) * (1 - lambda_2_71 * 0.5) * (1 - lambda_0_44 * 0.5) * (1 - lambda_1_44 * 0.5) * (1 - lambda_2_44 * 0.5) * (1 - lambda_0_22 * 0.5) * (1 - lambda_1_22 * 0.5) * (1 - lambda_2_22 * 0.5) * (1 - lambda_0_73 * 0.5) * (1 - lambda_1_73 * 0.5) * (1 - lambda_2_73 * 0.5) * (1 - lambda_0_2 * 0.5) * (1 - lambda_1_2 * 0.5) * (1 - lambda_2_2 * 0.5) * (1 - lambda_0_25 * 0.5) * (1 - lambda_1_25 * 0.5) * (1 - lambda_2_25 * 0.5)) * 0 * 7.48246796228363 + -(1 * (1 - lambda_0_71 * 0.5) * (1 - lambda_1_71 * 0.5) * (1 - lambda_2_71 * 0.5) * (1 - lambda_0_44 * 0.5) * (1 - lambda_1_44 * 0.5) * (1 - lambda_2_44 * 0.5) * (1 - lambda_0_22 * 0.5) * (1 - lambda_1_22 * 0.5) * (1 - lambda_2_22 * 0.5) * (1 - lambda_0_73 * 0.5) * (1 - lambda_1_73 * 0.5) * (1 - lambda_2_73 * 0.5) * (1 - lambda_0_2 * 0.5) * (1 - lambda_1_2 * 0.5) * (1 - lambda_2_2 * 0.5) * (1 - lambda_0_25 * 0.5) * (1 - lambda_1_25 * 0.5) * (1 - lambda_2_25 * 0.5)) * 0 * 7.48246796228363 + -(1 * (1 - lambda_0_71 * 0.5) * (1 - lambda_1_71 * 0.5) * (1 - lambda_2_71 * 0.5) * (1 - lambda_0_44 * 0.5) * (1 - lambda_1_44 * 0.5) * (1 - lambda_2_44 * 0.5) * (1 - lambda_0_22 * 0.5) * (1 - lambda_1_22 * 0.5) * (1 - lambda_2_22 * 0.5) * (1 - lambda_0_73 * 0.5) * (1 - lambda_1_73 * 0.5) * (1 - lambda_2_73 * 0.5) * (1 - lambda_0_2 * 0.5) * (1 - lambda_1_2 * 0.5) * (1 - lambda_2_2 * 0.5) * (1 - lambda_0_25 * 0.5) * (1 - lambda_1_25 * 0.5) * (1 - lambda_2_25 * 0.5)) * 0 * 7.48246796228363 + -(1 * (1 - lambda_0_71 * 0.5) * (1 - lambda_1_71 * 0.5) * (1 - lambda_2_71 * 0.5) * (1 - lambda_0_44 * 0.5) * (1 - lambda_1_44 * 0.5) * (1 - lambda_2_44 * 0.5) * (1 - lambda_0_22 * 0.5) * (1 - lambda_1_22 * 0.5) * (1 - lambda_2_22 * 0.5) * (1 - lambda_0_73 * 0.5) * (1 - lambda_1_73 * 0.5) * (1 - lambda_2_73 * 0.5) * (1 - lambda_0_2 * 0.5) * (1 - lambda_1_2 * 0.5) * (1 - lambda_2_2 * 0.5) * (1 - lambda_0_25 * 0.5) * (1 - lambda_1_25 * 0.5) * (1 - lambda_2_25 * 0.5)) * 0 * 7.48246796228363 + -(1 * (1 - lambda_0_71 * 0.5) * (1 - lambda_1_71 * 0.5) * (1 - lambda_2_71 * 0.5) * (1 - lambda_0_44 * 0.5) * (1 - lambda_1_44 * 0.5) * (1 - lambda_2_44 * 0.5) * (1 - lambda_0_22 * 0.5) * (1 - lambda_1_22 * 0.5) * (1 - lambda_2_22 * 0.5) * (1 - lambda_0_73 * 0.5) * (1 - lambda_1_73 * 0.5) * (1 - lambda_2_73 * 0.5) * (1 - lambda_0_2 * 0.5) * (1 - lambda_1_2 * 0.5) * (1 - lambda_2_2 * 0.5) * (1 - lambda_0_25 * 0.5) * (1 - lambda_1_25 * 0.5) * (1 - lambda_2_25 * 0.5)) * 0 * 7.48246796228363 + -(1 * (1 - lambda_0_71 * 0.5) * (1 - lambda_1_71 * 0.5) * (1 - lambda_2_71 * 0.5) * (1 - lambda_0_44 * 0.5) * (1 - lambda_1_44 * 0.5) * (1 - lambda_2_44 * 0.5) * (1 - lambda_0_22 * 0.5) * (1 - lambda_1_22 * 0.5) * (1 - lambda_2_22 * 0.5) * (1 - lambda_0_73 * 0.5) * (1 - lambda_1_73 * 0.5) * (1 - lambda_2_73 * 0.5) * (1 - lambda_0_2 * 0.5) * (1 - lambda_1_2 * 0.5) * (1 - lambda_2_2 * 0.5) * (1 - lambda_0_25 * 0.5) * (1 - lambda_1_25 * 0.5) * (1 - lambda_2_25 * 0.5)) * 0 * 7.48246796228363 + -(1 * (1 - lambda_0_71 * 0.5) * (1 - lambda_1_71 * 0.5) * (1 - lambda_2_71 * 0.5) * (1 - lambda_0_44 * 0.5) * (1 - lambda_1_44 * 0.5) * (1 - lambda_2_44 * 0.5) * (1 - lambda_0_22 * 0.5) * (1 - lambda_1_22 * 0.5) * (1 - lambda_2_22 * 0.5) * (1 - lambda_0_73 * 0.5) * (1 - lambda_1_73 * 0.5) * (1 - lambda_2_73 * 0.5) * (1 - lambda_0_2 * 0.5) * (1 - lambda_1_2 * 0.5) * (1 - lambda_2_2 * 0.5) * (1 - lambda_0_25 * 0.5) * (1 - lambda_1_25 * 0.5) * (1 - lambda_2_25 * 0.5)) * 0 * 7.48246796228363 + -(1 * (1 - lambda_0_71 * 0.5) * (1 - lambda_1_71 * 0.5) * (1 - lambda_2_71 * 0.5) * (1 - lambda_0_44 * 0.5) * (1 - lambda_1_44 * 0.5) * (1 - lambda_2_44 * 0.5) * (1 - lambda_0_22 * 0.5) * (1 - lambda_1_22 * 0.5) * (1 - lambda_2_22 * 0.5) * (1 - lambda_0_73 * 0.5) * (1 - lambda_1_73 * 0.5) * (1 - lambda_2_73 * 0.5) * (1 - lambda_0_2 * 0.5) * (1 - lambda_1_2 * 0.5) * (1 - lambda_2_2 * 0.5) * (1 - lambda_0_25 * 0.5) * (1 - lambda_1_25 * 0.5) * (1 - lambda_2_25 * 0.5)) * 0 * 7.48246796228363 + -(1 * (1 - lambda_0_71 * 0.5) * (1 - lambda_1_71 * 0.5) * (1 - lambda_2_71 * 0.5) * (1 - lambda_0_44 * 0.5) * (1 - lambda_1_44 * 0.5) * (1 - lambda_2_44 * 0.5) * (1 - lambda_0_22 * 0.5) * (1 - lambda_1_22 * 0.5) * (1 - lambda_2_22 * 0.5) * (1 - lambda_0_73 * 0.5) * (1 - lambda_1_73 * 0.5) * (1 - lambda_2_73 * 0.5) * (1 - lambda_0_2 * 0.5) * (1 - lambda_1_2 * 0.5) * (1 - lambda_2_2 * 0.5) * (1 - lambda_0_25 * 0.5) * (1 - lambda_1_25 * 0.5) * (1 - lambda_2_25 * 0.5)) * 0 * 7.48246796228363 + -(1 * (1 - lambda_0_71 * 0.5) * (1 - lambda_1_71 * 0.5) * (1 - lambda_2_71 * 0.5) * (1 - lambda_0_44 * 0.5) * (1 - lambda_1_44 * 0.5) * (1 - lambda_2_44 * 0.5) * (1 - lambda_0_22 * 0.5) * (1 - lambda_1_22 * 0.5) * (1 - lambda_2_22 * 0.5) * (1 - lambda_0_73 * 0.5) * (1 - lambda_1_73 * 0.5) * (1 - lambda_2_73 * 0.5) * (1 - lambda_0_2 * 0.5) * (1 - lambda_1_2 * 0.5) * (1 - lambda_2_2 * 0.5) * (1 - lambda_0_25 * 0.5) * (1 - lambda_1_25 * 0.5) * (1 - lambda_2_25 * 0.5)) * 0 * 7.48246796228363 + -(1 * (1 - lambda_0_71 * 0.5) * (1 - lambda_1_71 * 0.5) * (1 - lambda_2_71 * 0.5) * (1 - lambda_0_44 * 0.5) * (1 - lambda_1_44 * 0.5) * (1 - lambda_2_44 * 0.5) * (1 - lambda_0_22 * 0.5) * (1 - lambda_1_22 * 0.5) * (1 - lambda_2_22 * 0.5) * (1 - lambda_0_73 * 0.5) * (1 - lambda_1_73 * 0.5) * (1 - lambda_2_73 * 0.5) * (1 - lambda_0_2 * 0.5) * (1 - lambda_1_2 * 0.5) * (1 - lambda_2_2 * 0.5) * (1 - lambda_0_25 * 0.5) * (1 - lambda_1_25 * 0.5) * (1 - lambda_2_25 * 0.5)) * 0 * 7.48246796228363 + -(1 * (1 - lambda_0_71 * 0.5) * (1 - lambda_1_71 * 0.5) * (1 - lambda_2_71 * 0.5) * (1 - lambda_0_44 * 0.5) * (1 - lambda_1_44 * 0.5) * (1 - lambda_2_44 * 0.5) * (1 - lambda_0_22 * 0.5) * (1 - lambda_1_22 * 0.5) * (1 - lambda_2_22 * 0.5) * (1 - lambda_0_73 * 0.5) * (1 - lambda_1_73 * 0.5) * (1 - lambda_2_73 * 0.5) * (1 - lambda_0_2 * 0.5) * (1 - lambda_1_2 * 0.5) * (1 - lambda_2_2 * 0.5) * (1 - lambda_0_25 * 0.5) * (1 - lambda_1_25 * 0.5) * (1 - lambda_2_25 * 0.5)) * 0 * 7.48246796228363 + -(1 * (1 - lambda_0_71 * 0.5) * (1 - lambda_1_71 * 0.5) * (1 - lambda_2_71 * 0.5) * (1 - lambda_0_44 * 0.5) * (1 - lambda_1_44 * 0.5) * (1 - lambda_2_44 * 0.5) * (1 - lambda_0_22 * 0.5) * (1 - lambda_1_22 * 0.5) * (1 - lambda_2_22 * 0.5) * (1 - lambda_0_73 * 0.5) * (1 - lambda_1_73 * 0.5) * (1 - lambda_2_73 * 0.5) * (1 - lambda_0_2 * 0.5) * (1 - lambda_1_2 * 0.5) * (1 - lambda_2_2 * 0.5) * (1 - lambda_0_25 * 0.5) * (1 - lambda_1_25 * 0.5) * (1 - lambda_2_25 * 0.5)) * 0 * 7.48246796228363 + -(1 * (1 - lambda_0_71 * 0.5) * (1 - lambda_1_71 * 0.5) * (1 - lambda_2_71 * 0.5) * (1 - lambda_0_44 * 0.5) * (1 - lambda_1_44 * 0.5) * (1 - lambda_2_44 * 0.5) * (1 - lambda_0_22 * 0.5) * (1 - lambda_1_22 * 0.5) * (1 - lambda_2_22 * 0.5) * (1 - lambda_0_73 * 0.5) * (1 - lambda_1_73 * 0.5) * (1 - lambda_2_73 * 0.5) * (1 - lambda_0_2 * 0.5) * (1 - lambda_1_2 * 0.5) * (1 - lambda_2_2 * 0.5) * (1 - lambda_0_25 * 0.5) * (1 - lambda_1_25 * 0.5) * (1 - lambda_2_25 * 0.5)) * 0 * 7.48246796228363 + -(1 * (1 - lambda_0_71 * 0.5) * (1 - lambda_1_71 * 0.5) * (1 - lambda_2_71 * 0.5) * (1 - lambda_0_44 * 0.5) * (1 - lambda_1_44 * 0.5) * (1 - lambda_2_44 * 0.5) * (1 - lambda_0_22 * 0.5) * (1 - lambda_1_22 * 0.5) * (1 - lambda_2_22 * 0.5) * (1 - lambda_0_73 * 0.5) * (1 - lambda_1_73 * 0.5) * (1 - lambda_2_73 * 0.5) * (1 - lambda_0_2 * 0.5) * (1 - lambda_1_2 * 0.5) * (1 - lambda_2_2 * 0.5) * (1 - lambda_0_25 * 0.5) * (1 - lambda_1_25 * 0.5) * (1 - lambda_2_25 * 0.5)) * 0 * 7.48246796228363 + -(1 * (1 - lambda_0_71 * 0.5) * (1 - lambda_1_71 * 0.5) * (1 - lambda_2_71 * 0.5) * (1 - lambda_0_44 * 0.5) * (1 - lambda_1_44 * 0.5) * (1 - lambda_2_44 * 0.5) * (1 - lambda_0_22 * 0.5) * (1 - lambda_1_22 * 0.5) * (1 - lambda_2_22 * 0.5) * (1 - lambda_0_73 * 0.5) * (1 - lambda_1_73 * 0.5) * (1 - lambda_2_73 * 0.5) * (1 - lambda_0_2 * 0.5) * (1 - lambda_1_2 * 0.5) * (1 - lambda_2_2 * 0.5) * (1 - lambda_0_25 * 0.5) * (1 - lambda_1_25 * 0.5) * (1 - lambda_2_25 * 0.5)) * 0 * 7.48246796228363 + -(1 * (1 - lambda_0_71 * 0.5) * (1 - lambda_1_71 * 0.5) * (1 - lambda_2_71 * 0.5) * (1 - lambda_0_44 * 0.5) * (1 - lambda_1_44 * 0.5) * (1 - lambda_2_44 * 0.5) * (1 - lambda_0_22 * 0.5) * (1 - lambda_1_22 * 0.5) * (1 - lambda_2_22 * 0.5) * (1 - lambda_0_73 * 0.5) * (1 - lambda_1_73 * 0.5) * (1 - lambda_2_73 * 0.5) * (1 - lambda_0_2 * 0.5) * (1 - lambda_1_2 * 0.5) * (1 - lambda_2_2 * 0.5) * (1 - lambda_0_25 * 0.5) * (1 - lambda_1_25 * 0.5) * (1 - lambda_2_25 * 0.5)) * 0 * 7.48246796228363 + -(1 * (1 - lambda_0_71 * 0.5) * (1 - lambda_1_71 * 0.5) * (1 - lambda_2_71 * 0.5) * (1 - lambda_0_44 * 0.5) * (1 - lambda_1_44 * 0.5) * (1 - lambda_2_44 * 0.5) * (1 - lambda_0_22 * 0.5) * (1 - lambda_1_22 * 0.5) * (1 - lambda_2_22 * 0.5) * (1 - lambda_0_73 * 0.5) * (1 - lambda_1_73 * 0.5) * (1 - lambda_2_73 * 0.5) * (1 - lambda_0_2 * 0.5) * (1 - lambda_1_2 * 0.5) * (1 - lambda_2_2 * 0.5) * (1 - lambda_0_25 * 0.5) * (1 - lambda_1_25 * 0.5) * (1 - lambda_2_25 * 0.5)) * 0 * 7.48246796228363 + -(1 * (1 - lambda_0_71 * 0.5) * (1 - lambda_1_71 * 0.5) * (1 - lambda_2_71 * 0.5) * (1 - lambda_0_44 * 0.5) * (1 - lambda_1_44 * 0.5) * (1 - lambda_2_44 * 0.5) * (1 - lambda_0_22 * 0.5) * (1 - lambda_1_22 * 0.5) * (1 - lambda_2_22 * 0.5) * (1 - lambda_0_73 * 0.5) * (1 - lambda_1_73 * 0.5) * (1 - lambda_2_73 * 0.5) * (1 - lambda_0_2 * 0.5) * (1 - lambda_1_2 * 0.5) * (1 - lambda_2_2 * 0.5) * (1 - lambda_0_25 * 0.5) * (1 - lambda_1_25 * 0.5) * (1 - lambda_2_25 * 0.5)) * 0 * 7.48246796228363 + -(1 * (1 - lambda_0_71 * 0.5) * (1 - lambda_1_71 * 0.5) * (1 - lambda_2_71 * 0.5) * (1 - lambda_0_44 * 0.5) * (1 - lambda_1_44 * 0.5) * (1 - lambda_2_44 * 0.5) * (1 - lambda_0_22 * 0.5) * (1 - lambda_1_22 * 0.5) * (1 - lambda_2_22 * 0.5) * (1 - lambda_0_73 * 0.5) * (1 - lambda_1_73 * 0.5) * (1 - lambda_2_73 * 0.5) * (1 - lambda_0_2 * 0.5) * (1 - lambda_1_2 * 0.5) * (1 - lambda_2_2 * 0.5) * (1 - lambda_0_25 * 0.5) * (1 - lambda_1_25 * 0.5) * (1 - lambda_2_25 * 0.5)) * 0 * 7.48246796228363 + -(1 * (1 - lambda_0_71 * 0.5) * (1 - lambda_1_71 * 0.5) * (1 - lambda_2_71 * 0.5) * (1 - lambda_0_44 * 0.5) * (1 - lambda_1_44 * 0.5) * (1 - lambda_2_44 * 0.5) * (1 - lambda_0_22 * 0.5) * (1 - lambda_1_22 * 0.5) * (1 - lambda_2_22 * 0.5) * (1 - lambda_0_73 * 0.5) * (1 - lambda_1_73 * 0.5) * (1 - lambda_2_73 * 0.5) * (1 - lambda_0_2 * 0.5) * (1 - lambda_1_2 * 0.5) * (1 - lambda_2_2 * 0.5) * (1 - lambda_0_25 * 0.5) * (1 - lambda_1_25 * 0.5) * (1 - lambda_2_25 * 0.5)) * 0 * 7.48246796228363 + -(1 * (1 - lambda_0_71 * 0.5) * (1 - lambda_1_71 * 0.5) * (1 - lambda_2_71 * 0.5) * (1 - lambda_0_44 * 0.5) * (1 - lambda_1_44 * 0.5) * (1 - lambda_2_44 * 0.5) * (1 - lambda_0_22 * 0.5) * (1 - lambda_1_22 * 0.5) * (1 - lambda_2_22 * 0.5) * (1 - lambda_0_73 * 0.5) * (1 - lambda_1_73 * 0.5) * (1 - lambda_2_73 * 0.5) * (1 - lambda_0_2 * 0.5) * (1 - lambda_1_2 * 0.5) * (1 - lambda_2_2 * 0.5) * (1 - lambda_0_25 * 0.5) * (1 - lambda_1_25 * 0.5) * (1 - lambda_2_25 * 0.5)) * 0 * 7.48246796228363 + -(1 * (1 - lambda_0_71 * 0.5) * (1 - lambda_1_71 * 0.5) * (1 - lambda_2_71 * 0.5) * (1 - lambda_0_44 * 0.5) * (1 - lambda_1_44 * 0.5) * (1 - lambda_2_44 * 0.5) * (1 - lambda_0_22 * 0.5) * (1 - lambda_1_22 * 0.5) * (1 - lambda_2_22 * 0.5) * (1 - lambda_0_73 * 0.5) * (1 - lambda_1_73 * 0.5) * (1 - lambda_2_73 * 0.5) * (1 - lambda_0_2 * 0.5) * (1 - lambda_1_2 * 0.5) * (1 - lambda_2_2 * 0.5) * (1 - lambda_0_25 * 0.5) * (1 - lambda_1_25 * 0.5) * (1 - lambda_2_25 * 0.5)) * 0 * 7.48246796228363 + -(1 * (1 - lambda_0_71 * 0.5) * (1 - lambda_1_71 * 0.5) * (1 - lambda_2_71 * 0.5) * (1 - lambda_0_44 * 0.5) * (1 - lambda_1_44 * 0.5) * (1 - lambda_2_44 * 0.5) * (1 - lambda_0_22 * 0.5) * (1 - lambda_1_22 * 0.5) * (1 - lambda_2_22 * 0.5) * (1 - lambda_0_73 * 0.5) * (1 - lambda_1_73 * 0.5) * (1 - lambda_2_73 * 0.5) * (1 - lambda_0_2 * 0.5) * (1 - lambda_1_2 * 0.5) * (1 - lambda_2_2 * 0.5) * (1 - lambda_0_25 * 0.5) * (1 - lambda_1_25 * 0.5) * (1 - lambda_2_25 * 0.5)) * 0 * 7.48246796228363 + -(1 * (1 - lambda_0_71 * 0.5) * (1 - lambda_1_71 * 0.5) * (1 - lambda_2_71 * 0.5) * (1 - lambda_0_44 * 0.5) * (1 - lambda_1_44 * 0.5) * (1 - lambda_2_44 * 0.5) * (1 - lambda_0_22 * 0.5) * (1 - lambda_1_22 * 0.5) * (1 - lambda_2_22 * 0.5) * (1 - lambda_0_73 * 0.5) * (1 - lambda_1_73 * 0.5) * (1 - lambda_2_73 * 0.5) * (1 - lambda_0_2 * 0.5) * (1 - lambda_1_2 * 0.5) * (1 - lambda_2_2 * 0.5) * (1 - lambda_0_25 * 0.5) * (1 - lambda_1_25 * 0.5) * (1 - lambda_2_25 * 0.5)) * 0 * 7.48246796228363 + -(1 * (1 - lambda_0_71 * 0.5) * (1 - lambda_1_71 * 0.5) * (1 - lambda_2_71 * 0.5) * (1 - lambda_0_44 * 0.5) * (1 - lambda_1_44 * 0.5) * (1 - lambda_2_44 * 0.5) * (1 - lambda_0_22 * 0.5) * (1 - lambda_1_22 * 0.5) * (1 - lambda_2_22 * 0.5) * (1 - lambda_0_73 * 0.5) * (1 - lambda_1_73 * 0.5) * (1 - lambda_2_73 * 0.5) * (1 - lambda_0_2 * 0.5) * (1 - lambda_1_2 * 0.5) * (1 - lambda_2_2 * 0.5) * (1 - lambda_0_25 * 0.5) * (1 - lambda_1_25 * 0.5) * (1 - lambda_2_25 * 0.5)) * 0 * 7.48246796228363 + -(1 * (1 - lambda_0_71 * 0.5) * (1 - lambda_1_71 * 0.5) * (1 - lambda_2_71 * 0.5) * (1 - lambda_0_44 * 0.5) * (1 - lambda_1_44 * 0.5) * (1 - lambda_2_44 * 0.5) * (1 - lambda_0_22 * 0.5) * (1 - lambda_1_22 * 0.5) * (1 - lambda_2_22 * 0.5) * (1 - lambda_0_73 * 0.5) * (1 - lambda_1_73 * 0.5) * (1 - lambda_2_73 * 0.5) * (1 - lambda_0_2 * 0.5) * (1 - lambda_1_2 * 0.5) * (1 - lambda_2_2 * 0.5) * (1 - lambda_0_25 * 0.5) * (1 - lambda_1_25 * 0.5) * (1 - lambda_2_25 * 0.5)) * 0 * 7.48246796228363 + -(1 * (1 - lambda_0_71 * 0.5) * (1 - lambda_1_71 * 0.5) * (1 - lambda_2_71 * 0.5) * (1 - lambda_0_44 * 0.5) * (1 - lambda_1_44 * 0.5) * (1 - lambda_2_44 * 0.5) * (1 - lambda_0_22 * 0.5) * (1 - lambda_1_22 * 0.5) * (1 - lambda_2_22 * 0.5) * (1 - lambda_0_73 * 0.5) * (1 - lambda_1_73 * 0.5) * (1 - lambda_2_73 * 0.5) * (1 - lambda_0_2 * 0.5) * (1 - lambda_1_2 * 0.5) * (1 - lambda_2_2 * 0.5) * (1 - lambda_0_25 * 0.5) * (1 - lambda_1_25 * 0.5) * (1 - lambda_2_25 * 0.5)) * 0 * 7.48246796228363 + -(1 * (1 - lambda_0_71 * 0.5) * (1 - lambda_1_71 * 0.5) * (1 - lambda_2_71 * 0.5) * (1 - lambda_0_44 * 0.5) * (1 - lambda_1_44 * 0.5) * (1 - lambda_2_44 * 0.5) * (1 - lambda_0_22 * 0.5) * (1 - lambda_1_22 * 0.5) * (1 - lambda_2_22 * 0.5) * (1 - lambda_0_73 * 0.5) * (1 - lambda_1_73 * 0.5) * (1 - lambda_2_73 * 0.5) * (1 - lambda_0_2 * 0.5) * (1 - lambda_1_2 * 0.5) * (1 - lambda_2_2 * 0.5) * (1 - lambda_0_25 * 0.5) * (1 - lambda_1_25 * 0.5) * (1 - lambda_2_25 * 0.5)) * 0 * 7.48246796228363 + -(1 * (1 - lambda_0_71 * 0.5) * (1 - lambda_1_71 * 0.5) * (1 - lambda_2_71 * 0.5) * (1 - lambda_0_44 * 0.5) * (1 - lambda_1_44 * 0.5) * (1 - lambda_2_44 * 0.5) * (1 - lambda_0_22 * 0.5) * (1 - lambda_1_22 * 0.5) * (1 - lambda_2_22 * 0.5) * (1 - lambda_0_73 * 0.5) * (1 - lambda_1_73 * 0.5) * (1 - lambda_2_73 * 0.5) * (1 - lambda_0_2 * 0.5) * (1 - lambda_1_2 * 0.5) * (1 - lambda_2_2 * 0.5) * (1 - lambda_0_25 * 0.5) * (1 - lambda_1_25 * 0.5) * (1 - lambda_2_25 * 0.5)) * 0 * 7.48246796228363 + -(1 * (1 - lambda_0_71 * 0.5) * (1 - lambda_1_71 * 0.5) * (1 - lambda_2_71 * 0.5) * (1 - lambda_0_44 * 0.5) * (1 - lambda_1_44 * 0.5) * (1 - lambda_2_44 * 0.5) * (1 - lambda_0_22 * 0.5) * (1 - lambda_1_22 * 0.5) * (1 - lambda_2_22 * 0.5) * (1 - lambda_0_73 * 0.5) * (1 - lambda_1_73 * 0.5) * (1 - lambda_2_73 * 0.5) * (1 - lambda_0_2 * 0.5) * (1 - lambda_1_2 * 0.5) * (1 - lambda_2_2 * 0.5) * (1 - lambda_0_25 * 0.5) * (1 - lambda_1_25 * 0.5) * (1 - lambda_2_25 * 0.5)) * 0 * 7.48246796228363 + -(1 * (1 - lambda_0_71 * 0.5) * (1 - lambda_1_71 * 0.5) * (1 - lambda_2_71 * 0.5) * (1 - lambda_0_44 * 0.5) * (1 - lambda_1_44 * 0.5) * (1 - lambda_2_44 * 0.5) * (1 - lambda_0_22 * 0.5) * (1 - lambda_1_22 * 0.5) * (1 - lambda_2_22 * 0.5) * (1 - lambda_0_73 * 0.5) * (1 - lambda_1_73 * 0.5) * (1 - lambda_2_73 * 0.5) * (1 - lambda_0_2 * 0.5) * (1 - lambda_1_2 * 0.5) * (1 - lambda_2_2 * 0.5) * (1 - lambda_0_25 * 0.5) * (1 - lambda_1_25 * 0.5) * (1 - lambda_2_25 * 0.5)) * 0 * 7.48246796228363 + -(1 * (1 - lambda_0_71 * 0.5) * (1 - lambda_1_71 * 0.5) * (1 - lambda_2_71 * 0.5) * (1 - lambda_0_44 * 0.5) * (1 - lambda_1_44 * 0.5) * (1 - lambda_2_44 * 0.5) * (1 - lambda_0_22 * 0.5) * (1 - lambda_1_22 * 0.5) * (1 - lambda_2_22 * 0.5) * (1 - lambda_0_73 * 0.5) * (1 - lambda_1_73 * 0.5) * (1 - lambda_2_73 * 0.5) * (1 - lambda_0_2 * 0.5) * (1 - lambda_1_2 * 0.5) * (1 - lambda_2_2 * 0.5) * (1 - lambda_0_25 * 0.5) * (1 - lambda_1_25 * 0.5) * (1 - lambda_2_25 * 0.5)) * 0 * 7.48246796228363 + -(1 * (1 - lambda_0_71 * 0.5) * (1 - lambda_1_71 * 0.5) * (1 - lambda_2_71 * 0.5) * (1 - lambda_0_44 * 0.5) * (1 - lambda_1_44 * 0.5) * (1 - lambda_2_44 * 0.5) * (1 - lambda_0_22 * 0.5) * (1 - lambda_1_22 * 0.5) * (1 - lambda_2_22 * 0.5) * (1 - lambda_0_73 * 0.5) * (1 - lambda_1_73 * 0.5) * (1 - lambda_2_73 * 0.5) * (1 - lambda_0_2 * 0.5) * (1 - lambda_1_2 * 0.5) * (1 - lambda_2_2 * 0.5) * (1 - lambda_0_25 * 0.5) * (1 - lambda_1_25 * 0.5) * (1 - lambda_2_25 * 0.5)) * 0 * 7.48246796228363 + -(1 * (1 - lambda_0_71 * 0.5) * (1 - lambda_1_71 * 0.5) * (1 - lambda_2_71 * 0.5) * (1 - lambda_0_44 * 0.5) * (1 - lambda_1_44 * 0.5) * (1 - lambda_2_44 * 0.5) * (1 - lambda_0_22 * 0.5) * (1 - lambda_1_22 * 0.5) * (1 - lambda_2_22 * 0.5) * (1 - lambda_0_73 * 0.5) * (1 - lambda_1_73 * 0.5) * (1 - lambda_2_73 * 0.5) * (1 - lambda_0_2 * 0.5) * (1 - lambda_1_2 * 0.5) * (1 - lambda_2_2 * 0.5) * (1 - lambda_0_25 * 0.5) * (1 - lambda_1_25 * 0.5) * (1 - lambda_2_25 * 0.5)) * 0 * 7.48246796228363 + -(1 * (1 - lambda_0_71 * 0.5) * (1 - lambda_1_71 * 0.5) * (1 - lambda_2_71 * 0.5) * (1 - lambda_0_44 * 0.5) * (1 - lambda_1_44 * 0.5) * (1 - lambda_2_44 * 0.5) * (1 - lambda_0_22 * 0.5) * (1 - lambda_1_22 * 0.5) * (1 - lambda_2_22 * 0.5) * (1 - lambda_0_73 * 0.5) * (1 - lambda_1_73 * 0.5) * (1 - lambda_2_73 * 0.5) * (1 - lambda_0_2 * 0.5) * (1 - lambda_1_2 * 0.5) * (1 - lambda_2_2 * 0.5) * (1 - lambda_0_25 * 0.5) * (1 - lambda_1_25 * 0.5) * (1 - lambda_2_25 * 0.5)) * 0 * 7.48246796228363);
+
+//--- Parameters ---
+#line off
+parameters {
+   LogVerbosity = Quiet;
+}

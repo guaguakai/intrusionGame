@@ -9,5 +9,5 @@ jgrapht-1.2.0
 **/*.pyc
 *.lp
 **/*.lp
-
+.idea
 

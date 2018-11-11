@@ -1,6 +1,8 @@
 import cplex
 import numpy as np
 
+numerical_error = 1e-6
+
 def CoreLP(gameModel):
     payoff_matrix = gameModel.payoff_matrix
     (d_size, a_size) = payoff_matrix.shape # defender strategy size and attacker strategy size
@@ -30,7 +32,9 @@ def CoreLP(gameModel):
     variables = cpx.solution.get_values()
 
     def_prob = np.array(variables[:d_size])
-    att_prob = -np.array(cpx.solution.get_dual_values(["c{0}".format(j) for j in range(a_size)])) # the inequality direction is reverse, so we need a negation
-    att_prob /= sum(att_prob)
-    return def_prob, att_prob, obj
+    attacker_utilities = np.dot(def_prob, payoff_matrix)
+    # att_prob = (attacker_utilities < obj + numerical_error).astype('f')
 
+    att_prob = -np.array(cpx.solution.get_dual_values(["c{0}".format(j) for j in range(a_size)])) # the inequality direction is reverse, so we need a negation
+    # att_prob /= sum(att_prob)
+    return def_prob, att_prob, obj

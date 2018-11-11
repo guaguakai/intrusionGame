@@ -23,8 +23,8 @@ if __name__ == "__main__":
         def_prob, att_prob, obj = CoreLP(gameModel)
 
         print("iteration: {0}, objective value: {1}".format(count, obj))
-        print("defender probability:", def_prob)
-        print("attacker probability:", att_prob)
+        # print("defender probability:", def_prob)
+        # print("attacker probability:", att_prob)
 
         gameModel.updateProbability(def_prob, att_prob)
 
