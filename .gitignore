@@ -10,4 +10,5 @@ jgrapht-1.2.0
 *.lp
 **/*.lp
 .idea
+*.cpo
 
