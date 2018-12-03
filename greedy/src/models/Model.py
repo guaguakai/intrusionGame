@@ -63,18 +63,25 @@ class DefenderMixedStrategy:
         self.length = len(prob)
 
 class GameModel:
-    def __init__(self, n=200, p=0.3, T=3, S=1, R=3, G=None, resource_list=None, source_list=None, terminal_list=None, terminal_payoff=None):
+    def __init__(self, n=200, p=0.5, T=3, S=1, R=3, G=None, resource_list=None, source_list=None, terminal_list=None, terminal_payoff=None, directed=True):
         self.n = n
         self.p = p
         if G:
             self.G = G
+            self.n = len(G.nodes())
+            self.edges = list(self.G.edges())
+            self.edges_size = len(self.edges)
         else:
-            self.G = nx.random_geometric_graph(self.n, self.p).to_directed()
+            self.G = nx.random_geometric_graph(self.n, self.p)
+            if directed:
+                self.G = self.G.to_directed()
+            self.edges = list(self.G.edges())
+            self.edges_size = len(self.edges)
         self.T = T
         assert(S == 1) # currently not allow S > 1
         self.S = S
         self.R = R
-        self.m = len(self.G.edges)
+        self.m = len(self.G.edges())
 
         random_targets = np.random.choice(self.n, self.T + self.S, replace=False)
         if terminal_list:
@@ -101,7 +108,7 @@ class GameModel:
         # for i in range(len(self.terminal_list)):
         #     self.node2terminalId[self.terminal_list[i]] = i
         self.edge2index = {}
-        edges = list(self.G.edges)
+        edges = list(self.G.edges())
         for i in range(self.m):
             self.edge2index[edges[i]] = i
 
@@ -116,8 +123,12 @@ class GameModel:
         # self.defender_mixed_strategy = DefenderMixedStrategy(self.defender_strategy_set, prob=[1])
         
         # self.attacker_strategy_set = [self.randomAttackerStrategy()]
-        self.attacker_strategy_size = self.T
-        self.attacker_strategy_set = [self.shortestPathAttackerStrategy(self.source_list[0], self.terminal_list[j]) for j in range(self.T)] # Testing... TODO
+        self.attacker_strategy_set = []
+        for j in range(self.T):
+            tmp_attacker_strategy = self.shortestPathAttackerStrategy(self.source_list[0], self.terminal_list[j])
+            if tmp_attacker_strategy:
+                self.attacker_strategy_set.append(tmp_attacker_strategy)
+        self.attacker_strategy_size = len(self.attacker_strategy_set)
         # self.attacker_mixed_strategy = AttackerMixedStrategy(self.attacker_strategy_set, prob=[1]) # Testing... TODO
 
         self.payoff_matrix = self.computePayoffMatrix(self.defender_strategy_set, self.attacker_strategy_set)
@@ -168,19 +179,22 @@ class GameModel:
     def randomDefenderStrategy(self):
         coverage = {}
         for i in range(len(self.resource_list)):
-            n1 = np.random.randint(self.n)
-            out_edge = list(self.G.out_edges(n1))[np.random.randint(len(self.G.out_edges(n1)))]
-            if out_edge in coverage:
-                coverage[out_edge] |= {i}
+            random_edge = self.edges[np.random.randint(self.edges_size)]
+            if random_edge in coverage:
+                coverage[random_edge] |= {i}
             else:
-                coverage[out_edge] = {i}
+                coverage[random_edge] = {i}
 
         return DefenderStrategy(coverage, self.R)
         print("TODO...")
         # TODO...
 
     def shortestPathAttackerStrategy(self, source, terminal):
-        return AttackerStrategy(path=nx.shortest_path(self.G, source, terminal))
+        try:
+            tmp_path = nx.shortest_path(self.G, source, terminal)
+            return AttackerStrategy(path=tmp_path)
+        except:
+            return None
 
     def updateDefenderStrategy(self, d):
         self.defender_strategy_set.append(d)

@@ -3,7 +3,7 @@ import numpy as np
 
 def BRDefenderP(gameModel):
     cpo = CpoModel()
-    # cpo.add_parameters(LogVerbosity="Quiet")
+    cpo.add_parameters(LogVerbosity="Quiet")
 
     edges = list(gameModel.G.edges())
 

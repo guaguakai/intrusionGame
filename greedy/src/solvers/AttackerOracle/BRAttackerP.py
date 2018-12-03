@@ -20,7 +20,7 @@ def BRAttackerP(gameModel):
         # ---------------- tarminal j ------------------
         target = gameModel.terminal_list[j]
         cpo = CpoModel()
-        # cpo.add_parameters(LogVerbosity="Quiet")
+        cpo.add_parameters(LogVerbosity="Quiet")
 
         edge_variables = cpo.binary_var_list(gameModel.m, "gamma")
         cpo.add(sum([edge_variables[edge2index[source_out]] for source_out in gameModel.G.out_edges(source)]) - sum([edge_variables[edge2index[source_in]] for source_in in gameModel.G.in_edges(source)]) == 1)
