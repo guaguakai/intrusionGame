@@ -1,9 +1,10 @@
 import numpy as np
+import torch
 
 LargeConst = 1e5
 Epsilon = 1e-5
 
-def NNDefenderP(gameModel, embedding_list, nn_model):
+def NNDefenderP(gameModel, embedding_list, nn_model, update_embedding=False):
     replay_memory = []
 
     edges = list(gameModel.G.edges())
@@ -38,6 +39,7 @@ def NNDefenderP(gameModel, embedding_list, nn_model):
         # resource_reward_list = - LargeConst * np.ones(R)
         resource_reward_list = []
         feasible_action_list = []
+        feature_list = []
         for r in range(R):
             G_copy = G.copy()
             if len(resource_usage[r]) == 0:
@@ -45,6 +47,7 @@ def NNDefenderP(gameModel, embedding_list, nn_model):
             elif len(resource_usage[r]) >= resource_list[r].size:
                 resource_reward_list.append(None)
                 feasible_action_list.append(None) # WARNING: might have error
+                feature_list.append(None)
                 continue
             else:
                 feasible_actions = set()
@@ -87,23 +90,28 @@ def NNDefenderP(gameModel, embedding_list, nn_model):
             embedding_vector_list = np.array(embedding_vector_list)
 
             features = np.concatenate((repeated_graph_vec, embedding_vector_list, feasible_actions_immediate_reward), axis=1)
-            predicted_reward = nn_model.predict(features) # feed forward, prediction
+            # print "feature shape:", features.shape
+            predicted_reward = nn_model.predict(features).detach().numpy() # feed forward, prediction
             # predicted_reward = nn_model(features) # feed forward, prediction
 
             tmp_max_index = np.argmax(predicted_reward)
             tmp_max_action = feasible_actions[tmp_max_index]
+            tmp_max_feature = features[tmp_max_index]
             feasible_action_list.append(tmp_max_action)
             resource_reward_list.append(predicted_reward[tmp_max_index])
+            feature_list.append(tmp_max_feature)
+
 
         # print "resource reward list", resource_reward_list
         max_resource = np.argmax(resource_reward_list)
         max_reward = resource_reward_list[max_resource]
         max_action = feasible_action_list[max_resource]
+        max_feature = feature_list[max_resource]
         if max_action is None: # all resource are used => terminate
-            print("--------------- terminate! ----------------")
+            # print("--------------- terminate! ----------------")
             break
         else:
-            replay_memory.append((max_resource, max_action, dict(defender_coverage)))
+            replay_memory.append((max_resource, max_action, max_feature, dict(defender_coverage)))
             if max_action in defender_coverage:
                 defender_coverage[max_action] |= {max_resource}
             else:

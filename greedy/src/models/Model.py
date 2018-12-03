@@ -22,9 +22,13 @@ class Resource:
 class AttackerStrategy:
     def __init__(self, path):
         self.path = path # a list of edges, or in other words, it needs to be a path initiated from source to one of the terminals
+        self.edge_set = set([(self.path[i], self.path[i+1]) for i in range(len(self.path)-1)])
 
     def getEdges(self):
         return [(self.path[i], self.path[i+1]) for i in range(len(self.path)-1)]
+
+    def getEdgeSet(self):
+        return self.edge_set
 
     def getTarget(self):
         return self.path[-1]

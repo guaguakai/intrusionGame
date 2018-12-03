@@ -81,7 +81,7 @@ def BRAttackerP(gameModel):
     best_cpo.export_model("attacker.cpo")
     new_obj = best_solution[0]
     new_G = nx.DiGraph(best_solution[1])
-    print("edges:", new_G.edges)
+    # print("edges:", new_G.edges)
     new_path = nx.shortest_path(new_G, source, best_target)
     return new_obj, new_path
 
