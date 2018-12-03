@@ -4,7 +4,7 @@ from solvers.DefenderOracle.BRDefenderP import BRDefenderP
 from solvers.AttackerOracle.BRAttackerP import BRAttackerP
 
 if __name__ == "__main__":
-    gameModel = GameModel(n=20)
+    gameModel = GameModel(n=20, directed=True)
     print(gameModel.attacker_strategy_set[0].path)
     print(gameModel.defender_strategy_set[0].coverage)
     print(gameModel.terminal_payoff)

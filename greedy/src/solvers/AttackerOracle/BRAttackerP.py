@@ -22,14 +22,29 @@ def BRAttackerP(gameModel):
         cpo = CpoModel()
         cpo.add_parameters(LogVerbosity="Quiet")
 
-        edge_variables = cpo.binary_var_list(gameModel.m, "gamma")
-        cpo.add(sum([edge_variables[edge2index[source_out]] for source_out in gameModel.G.out_edges(source)]) - sum([edge_variables[edge2index[source_in]] for source_in in gameModel.G.in_edges(source)]) == 1)
-        cpo.add(sum([edge_variables[edge2index[target_out]] for target_out in gameModel.G.out_edges(target)]) - sum([edge_variables[edge2index[target_in]] for target_in in gameModel.G.in_edges(target)]) == -1)
-        for node in nodes:
-            if node == source or node == target:
-                continue
-            else:
-                cpo.add(sum([edge_variables[edge2index[in_edge]] for in_edge in gameModel.G.in_edges(node)]) == sum([edge_variables[edge2index[out_edge]] for out_edge in gameModel.G.out_edges(node)])) # incoming flow == outgoing flow
+        if gameModel.directed:
+            edge_variables = cpo.binary_var_list(gameModel.m, "gamma")
+            cpo.add(sum([edge_variables[edge2index[source_out]] for source_out in gameModel.G.out_edges(source)]) - sum([edge_variables[edge2index[source_in]] for source_in in gameModel.G.in_edges(source)]) == 1)
+            cpo.add(sum([edge_variables[edge2index[target_out]] for target_out in gameModel.G.out_edges(target)]) - sum([edge_variables[edge2index[target_in]] for target_in in gameModel.G.in_edges(target)]) == -1)
+            for node in nodes:
+                if node == source or node == target:
+                    continue
+                else:
+                    cpo.add(sum([edge_variables[edge2index[in_edge]] for in_edge in gameModel.G.in_edges(node)]) == sum([edge_variables[edge2index[out_edge]] for out_edge in gameModel.G.out_edges(node)])) # incoming flow == outgoing flow
+
+        else: # undirected # TODO
+            edge_variables = cpo.binary_var_list(gameModel.m * 2, "gamma")
+            cpo.add(sum([edge_variables[edge2index[(source, neighbor)]] for neighbor in gameModel.G.neighbors(source)]) == 1)
+            cpo.add(sum([edge_variables[edge2index[(neighbor, target)]] for neighbor in gameModel.G.neighbors(target)]) == 1)
+            for edge in edges:
+                cpo.add(edge_variables[edge2index[edge]] + edge_variables[edge2index[edge] + gameModel.m] <= 1)
+                (u, v) = edge
+                if u == source or u == target or v == source or v == target:
+                    continue
+                else:
+                    print(edge)
+                    cpo.add(sum([edge_variables[edge2index[(neighbor, u)] + gameModel.m] for neighbor in gameModel.G.neighbors(u)]) == sum([edge_variables[edge2index[(v, neighbor)]] for neighbor in gameModel.G.neighbors(v)])) # incoming flow == outgoing flow
+            
 
         # -------------- computing the objective value -------------
         objective_value = 0
@@ -40,13 +55,20 @@ def BRAttackerP(gameModel):
                 # print defender_coverage[i].resource_usage
                 for e_i in range(len(defender_coverage[i].resource_usage[r])):
                     e = defender_coverage[i].resource_usage[r][e_i]
-                    success_prob *= (1 - edge_variables[edge2index[e]] * covering_prob)
+                    if gameModel.directed:
+                        success_prob *= (1 - edge_variables[edge2index[e]] * covering_prob)
+                    else:
+                        success_prob *= (1 - (edge_variables[edge2index[e]] + edge_variables[edge2index[e] + gameModel.m]) * covering_prob)
             objective_value += success_prob * defender_prob[i] * gameModel.terminal_payoff[j]
 
         cpo.add(cpo.maximize(objective_value))
+        cpo.export_model("attacker.cpo")
         cpo_solution = cpo.solve()
         if cpo_solution:
-            edge_usage = [edges[i] for i in range(gameModel.m) if cpo_solution[edge_variables[i]] == 1]
+            if gameModel.directed:
+                edge_usage = [edges[i] for i in range(gameModel.m) if cpo_solution[edge_variables[i]] != 0]
+            else:
+                edge_usage = [edges[i] for i in range(gameModel.m) if cpo_solution[edge_variables[i]] != cpo_solution[edge_variables[i+gameModel.m]]]
             obj = cpo_solution.get_objective_values()
 
             solution_list.append((obj, edge_usage, target, cpo))

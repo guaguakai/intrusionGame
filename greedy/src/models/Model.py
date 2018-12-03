@@ -26,6 +26,9 @@ class AttackerStrategy:
     def getEdges(self):
         return [(self.path[i], self.path[i+1]) for i in range(len(self.path)-1)]
 
+    def getTarget(self):
+        return self.path[-1]
+
 class AttackerMixedStrategy:
     def __init__(self, attacker_strategy_list, prob):
         # attacker_strategy_list is a list of AttackerStrategy
@@ -66,17 +69,21 @@ class GameModel:
     def __init__(self, n=200, p=0.5, T=3, S=1, R=3, G=None, resource_list=None, source_list=None, terminal_list=None, terminal_payoff=None, directed=True):
         self.n = n
         self.p = p
+        self.directed = directed
         if G:
             self.G = G
+            if self.directed:
+                self.G = self.G.to_directed()
             self.n = len(G.nodes())
             self.edges = list(self.G.edges())
             self.edges_size = len(self.edges)
         else:
             self.G = nx.random_geometric_graph(self.n, self.p)
-            if directed:
+            if self.directed:
                 self.G = self.G.to_directed()
             self.edges = list(self.G.edges())
             self.edges_size = len(self.edges)
+        self.line_G = nx.line_graph(self.G)
         self.T = T
         assert(S == 1) # currently not allow S > 1
         self.S = S
@@ -110,7 +117,13 @@ class GameModel:
         self.edge2index = {}
         edges = list(self.G.edges())
         for i in range(self.m):
-            self.edge2index[edges[i]] = i
+            (u, v) = edges[i]
+            if self.directed:
+                self.edge2index[(u, v)] = i
+            else:
+                self.edge2index[(u, v)] = i
+                self.edge2index[(v, u)] = i
+
 
         # ==================== initialization ========================
         if resource_list is not None:
@@ -142,13 +155,16 @@ class GameModel:
 
     def pureStrategyPayoff(self, d, a):
         resource_coverage = set()
+        success_prob = 1 # probability of successfully attacking
         for e in a.getEdges():
             if e in d.coverage:
-                resource_coverage |= d.coverage[e]
+                # resource_coverage |= d.coverage[e]
+                for j in d.coverage[e]:
+                    success_prob *= (1 - self.resource_list[j].prob)
 
-        success_prob = 1 # probability of successfully attacking
-        for i in resource_coverage:
-            success_prob *= (1 - self.resource_list[i].prob)
+        # success_prob = 1 # probability of successfully attacking
+        # for i in resource_coverage:
+        #     success_prob *= (1 - self.resource_list[i].prob)
 
         payoff_value = - success_prob * self.reward_list[a.path[-1]]
         return payoff_value

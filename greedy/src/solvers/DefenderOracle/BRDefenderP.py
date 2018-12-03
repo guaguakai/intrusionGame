@@ -28,9 +28,14 @@ def BRDefenderP(gameModel):
             (ns, nt) = edges[e]
 
             if gameModel.resource_list[i].size > 1: # only need connectivity constraints when the resource coverage size is more than 1
-                ns_incoming_sum = cpo.sum([edge_variables[i][edge2index[in_edge]] for in_edge in gameModel.G.in_edges(ns)])
-                nt_outgoing_sum = cpo.sum([edge_variables[i][edge2index[out_edge]] for out_edge in gameModel.G.out_edges(nt)])
-                cpo.add(edge_variables[i][e] <= ns_incoming_sum + nt_outgoing_sum)
+                if gameModel.directed:
+                    ns_incoming_sum = cpo.sum([edge_variables[i][edge2index[(neighbor, ns)]] for neighbor in gameModel.G.predecessors(ns)])
+                    nt_outgoing_sum = cpo.sum([edge_variables[i][edge2index[(nt, neighbor)]] for neighbor in gameModel.G.successors(nt)])
+                    cpo.add(edge_variables[i][e] <= ns_incoming_sum + nt_outgoing_sum)
+                else:
+                    ns_incoming_sum = cpo.sum([edge_variables[i][edge2index[(neighbor, ns)]] for neighbor in gameModel.G.neighbors(ns)])
+                    nt_outgoing_sum = cpo.sum([edge_variables[i][edge2index[(nt, neighbor)]] for neighbor in gameModel.G.neighbors(nt)])
+                    cpo.add(3 * edge_variables[i][e] <= ns_incoming_sum + nt_outgoing_sum) # RHS repeatedly compute the weight of e twice
 
             # --------------------- node constraint ---------------------
             cpo.add(edge_variables[i][e] <= node_variables[i][ns])

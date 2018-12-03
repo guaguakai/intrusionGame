@@ -9,12 +9,12 @@ def CoreLP(gameModel):
 
     cpx = cplex.Cplex()
 
-    # cpx.parameters.mip.limits.treememory.set(8192)
-    # cpx.parameters.mip.strategy.file.set(3)
-    # cpx.set_log_stream(None)
-    # cpx.set_error_stream(None)
-    # cpx.set_warning_stream(None)
-    # cpx.set_results_stream(None)
+    cpx.parameters.mip.limits.treememory.set(8192)
+    cpx.parameters.mip.strategy.file.set(3)
+    cpx.set_log_stream(None)
+    cpx.set_error_stream(None)
+    cpx.set_warning_stream(None)
+    cpx.set_results_stream(None)
 
     cpx.objective.set_sense(cpx.objective.sense.maximize) # maximizing defender utility
     objective_coef = [0] * d_size + [1]
