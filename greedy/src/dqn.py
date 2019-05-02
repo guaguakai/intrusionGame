@@ -1,9 +1,11 @@
 from models.Model import *
 from solvers.CoreLP import CoreLP
 from solvers.DefenderOracle.BRDefenderP import BRDefenderP
-from solvers.DefenderOracle.NNDefenderP import NNDefenderP
+from solvers.DefenderOracle.GCNDefenderP import GCNDefenderP
+# from solvers.DefenderOracle.NNDefenderP import NNDefenderP
 from solvers.AttackerOracle.BRAttackerP import BRAttackerP
-from solvers.Embedding.n2v_embedding import GraphEmbedding
+from solvers.Embedding.gcn import GCN
+# from solvers.Embedding.n2v_embedding import GraphEmbedding
 
 import networkx as nx
 import numpy as np
@@ -29,9 +31,9 @@ class NNModel(torch.nn.Module): # dummy nn model
     def __init__(self):
         super(NNModel, self).__init__()
         print("initialize nn model")
-        self.linear1 = nn.Linear(20 * 2 + 1, 32)
-        self.linear2 = nn.Linear(32, 16)
-        self.linear3 = nn.Linear(16, 1)
+        self.linear1 = nn.Linear(5, 16)
+        self.linear2 = nn.Linear(16, 10)
+        self.linear3 = nn.Linear(10, 1)
         self.batch_size = 10
 
     def forward(self, x):
@@ -40,8 +42,8 @@ class NNModel(torch.nn.Module): # dummy nn model
         y_pred = self.linear3(h_relu2)
         return y_pred
 
-    def predict(self, features):
-        return self.forward(torch.tensor(features).float())
+    # def predict(self, features):
+    #     return self.forward(torch.tensor(features).float())
 
 def processMemory(gameModel, raw_replay_memory):
     # =================== processing memory and adding rewards ==================
@@ -74,10 +76,10 @@ def processMemory(gameModel, raw_replay_memory):
         processed_replay_X.append(feature)
         processed_replay_y.append(marginal_reward)
 
-    return processed_replay_memory, processed_replay_X, np.reshape(processed_replay_y, (len(processed_replay_y), 1))
+    return processed_replay_memory, torch.stack(processed_replay_X), torch.reshape(torch.Tensor(processed_replay_y), (len(processed_replay_y), 1))
 
 
-def playGame(n, p, R, resource_list, G, nn_model, loss_fn, embedding_list, entire_replay_memory, total_count=50):
+def playGame(n, p, R, resource_list, G, nn_model, loss_fn, embedding_model, optimizer, entire_replay_memory, total_count=50):
     gameModel = GameModel(n=n, p=p, G=G, R=R, resource_list=resource_list)
     def_prob, att_prob, obj = CoreLP(gameModel)
     gameModel.updateProbability(def_prob, att_prob)
@@ -87,7 +89,9 @@ def playGame(n, p, R, resource_list, G, nn_model, loss_fn, embedding_list, entir
         # print("defender probability:", def_prob)
         # print("attacker probability:", att_prob)
 
-        cp_def_obj, cp_def_coverage, raw_replay_memory = NNDefenderP(gameModel, embedding_list, nn_model)
+        cp_def_obj, cp_def_coverage, raw_replay_memory = GCNDefenderP(gameModel, embedding_model, nn_model)
+        # cp_def_obj, cp_def_coverage, raw_replay_memory = NNDefenderP(gameModel, embedding_list, nn_model)
+
         # br_cp_def_obj, br_cp_def_coverage = BRDefenderP(gameModel)
         # print("greedy defender obj: {0}".format(cp_def_obj))
         # print("best response defender obj: {0}".format(br_cp_def_obj))
@@ -104,36 +108,38 @@ def playGame(n, p, R, resource_list, G, nn_model, loss_fn, embedding_list, entir
         processed_replay_memory, processed_replay_X, processed_replay_y = processMemory(gameModel, raw_replay_memory)
         entire_replay_memory += processed_replay_memory
 
-        processed_replay_X = torch.tensor(processed_replay_X).float()
-        processed_replay_y = torch.tensor(processed_replay_y).float()
+        processed_replay_X = torch.Tensor(processed_replay_X).float()
+        processed_replay_y = torch.Tensor(processed_replay_y).float()
 
         y_pred = nn_model(processed_replay_X)
         loss = loss_fn(y_pred, processed_replay_y)
         loss.backward()
-        if count % 10 == 9:
+        optimizer.step()
+        optimizer.zero_grad()
+
+        if count % 1 == 0:
             print("iteration: {0}, objective value: {1}, def obj: {2}, att obj: {3}, loss: {4}".format(count, obj, cp_def_obj, cp_att_obj, loss))
         
 
 if __name__ == "__main__":
     iterations = 1000
     learning_rate = 1e-4
-    n = 100
+    n = 20
     p = 0.3
     R = 3
     resource_list = [Resource(8,0.3), Resource(6,0.5), Resource(4,0.7)]
     G = nx.random_geometric_graph(n, p).to_directed()
 
-    embedding_list = [GraphEmbedding(G) for i in range(R)]
+    # embedding_list = [GraphEmbedding(G) for i in range(R)]
     entire_replay_memory = []
 
     nn_model = NNModel()
+    embedding_model = GCN()
     loss_fn = torch.nn.MSELoss(reduction='sum')
-    optimizer = torch.optim.Adam(nn_model.parameters(), lr=learning_rate)
+    optimizer = torch.optim.Adam(list(nn_model.parameters()) + list(embedding_model.parameters()), lr=learning_rate)
 
     for i in range(iterations):
-        playGame(n, p, R, resource_list, G, nn_model, loss_fn, embedding_list, entire_replay_memory)
-        if iterations % 1 == 0:
-            optimizer.step()
-            optimizer.zero_grad()
+        playGame(n, p, R, resource_list, G, nn_model, loss_fn, embedding_model, optimizer, entire_replay_memory)
+        # playGame(n, p, R, resource_list, G, nn_model, embedding_model, loss_fn, embedding_list, entire_replay_memory)
 
 

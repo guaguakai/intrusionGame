@@ -1,5 +1,5 @@
 ///////////////////////////////////////////////////////////////////////////////
-// CPO file generated at 2018.12.03-06:48:42 for model: BRDefenderP
+// CPO file generated at 2019.04.24-00:44:52 for model: BRDefenderP
 // Source file: /home/kai/Dropbox/USC/publication/intrusion/greedy/src/solvers/DefenderOracle/BRDefenderP.py
 ///////////////////////////////////////////////////////////////////////////////
 
@@ -11,7 +11,7 @@ internals {
 //--- Constants ---
 
 //--- Variables ---
-#line 34 "/home/kai/Dropbox/USC/publication/intrusion/greedy/src/solvers/DefenderOracle/BRDefenderP.py"
+#line 41 "/home/kai/Dropbox/USC/publication/intrusion/greedy/src/solvers/DefenderOracle/BRDefenderP.py"
 lambda_0_0 = intVar(0..1);
 lambda_0_1 = intVar(0..1);
 lambda_0_2 = intVar(0..1);
@@ -19,77 +19,6 @@ lambda_0_3 = intVar(0..1);
 lambda_0_4 = intVar(0..1);
 lambda_0_5 = intVar(0..1);
 lambda_0_6 = intVar(0..1);
-lambda_0_7 = intVar(0..1);
-lambda_0_8 = intVar(0..1);
-lambda_0_9 = intVar(0..1);
-lambda_0_10 = intVar(0..1);
-lambda_0_11 = intVar(0..1);
-lambda_0_12 = intVar(0..1);
-lambda_0_13 = intVar(0..1);
-lambda_0_14 = intVar(0..1);
-lambda_0_15 = intVar(0..1);
-lambda_0_16 = intVar(0..1);
-lambda_0_17 = intVar(0..1);
-lambda_0_18 = intVar(0..1);
-lambda_0_19 = intVar(0..1);
-lambda_0_20 = intVar(0..1);
-lambda_0_21 = intVar(0..1);
-lambda_0_22 = intVar(0..1);
-lambda_0_23 = intVar(0..1);
-lambda_0_24 = intVar(0..1);
-lambda_0_25 = intVar(0..1);
-lambda_0_26 = intVar(0..1);
-lambda_0_27 = intVar(0..1);
-lambda_0_28 = intVar(0..1);
-lambda_0_29 = intVar(0..1);
-lambda_0_30 = intVar(0..1);
-lambda_0_31 = intVar(0..1);
-lambda_0_32 = intVar(0..1);
-lambda_0_33 = intVar(0..1);
-lambda_0_34 = intVar(0..1);
-lambda_0_35 = intVar(0..1);
-lambda_0_36 = intVar(0..1);
-lambda_0_37 = intVar(0..1);
-lambda_0_38 = intVar(0..1);
-lambda_0_39 = intVar(0..1);
-lambda_0_40 = intVar(0..1);
-lambda_0_41 = intVar(0..1);
-lambda_0_42 = intVar(0..1);
-lambda_0_43 = intVar(0..1);
-lambda_0_44 = intVar(0..1);
-lambda_0_45 = intVar(0..1);
-lambda_0_46 = intVar(0..1);
-lambda_0_47 = intVar(0..1);
-lambda_0_48 = intVar(0..1);
-lambda_0_49 = intVar(0..1);
-lambda_0_50 = intVar(0..1);
-lambda_0_51 = intVar(0..1);
-lambda_0_52 = intVar(0..1);
-lambda_0_53 = intVar(0..1);
-lambda_0_54 = intVar(0..1);
-lambda_0_55 = intVar(0..1);
-lambda_0_56 = intVar(0..1);
-lambda_0_57 = intVar(0..1);
-lambda_0_58 = intVar(0..1);
-lambda_0_59 = intVar(0..1);
-lambda_0_60 = intVar(0..1);
-lambda_0_61 = intVar(0..1);
-lambda_0_62 = intVar(0..1);
-lambda_0_63 = intVar(0..1);
-lambda_0_64 = intVar(0..1);
-lambda_0_65 = intVar(0..1);
-lambda_0_66 = intVar(0..1);
-lambda_0_67 = intVar(0..1);
-lambda_0_68 = intVar(0..1);
-lambda_0_69 = intVar(0..1);
-lambda_0_70 = intVar(0..1);
-lambda_0_71 = intVar(0..1);
-lambda_0_72 = intVar(0..1);
-lambda_0_73 = intVar(0..1);
-lambda_0_74 = intVar(0..1);
-lambda_0_75 = intVar(0..1);
-lambda_0_76 = intVar(0..1);
-lambda_0_77 = intVar(0..1);
 lambda_1_0 = intVar(0..1);
 lambda_1_1 = intVar(0..1);
 lambda_1_2 = intVar(0..1);
@@ -97,118 +26,92 @@ lambda_1_3 = intVar(0..1);
 lambda_1_4 = intVar(0..1);
 lambda_1_5 = intVar(0..1);
 lambda_1_6 = intVar(0..1);
-lambda_1_7 = intVar(0..1);
-lambda_1_8 = intVar(0..1);
-lambda_1_9 = intVar(0..1);
-lambda_1_10 = intVar(0..1);
-lambda_1_11 = intVar(0..1);
-lambda_1_12 = intVar(0..1);
-lambda_1_13 = intVar(0..1);
-lambda_1_14 = intVar(0..1);
-lambda_1_15 = intVar(0..1);
-lambda_1_16 = intVar(0..1);
-lambda_1_17 = intVar(0..1);
-lambda_1_18 = intVar(0..1);
-lambda_1_19 = intVar(0..1);
-lambda_1_20 = intVar(0..1);
-lambda_1_21 = intVar(0..1);
-lambda_1_22 = intVar(0..1);
-lambda_1_23 = intVar(0..1);
-lambda_1_24 = intVar(0..1);
-lambda_1_25 = intVar(0..1);
-lambda_1_26 = intVar(0..1);
-lambda_1_27 = intVar(0..1);
-lambda_1_28 = intVar(0..1);
-lambda_1_29 = intVar(0..1);
-lambda_1_30 = intVar(0..1);
-lambda_1_31 = intVar(0..1);
-lambda_1_32 = intVar(0..1);
-lambda_1_33 = intVar(0..1);
-lambda_1_34 = intVar(0..1);
-lambda_1_35 = intVar(0..1);
-lambda_1_36 = intVar(0..1);
-lambda_1_37 = intVar(0..1);
-lambda_1_38 = intVar(0..1);
-lambda_1_39 = intVar(0..1);
-lambda_1_40 = intVar(0..1);
-lambda_1_41 = intVar(0..1);
-lambda_1_42 = intVar(0..1);
-lambda_1_43 = intVar(0..1);
-lambda_1_44 = intVar(0..1);
-lambda_1_45 = intVar(0..1);
-lambda_1_46 = intVar(0..1);
-lambda_1_47 = intVar(0..1);
-lambda_1_48 = intVar(0..1);
-lambda_1_49 = intVar(0..1);
-lambda_1_50 = intVar(0..1);
-lambda_1_51 = intVar(0..1);
-lambda_1_52 = intVar(0..1);
-lambda_1_53 = intVar(0..1);
-lambda_1_54 = intVar(0..1);
-lambda_1_55 = intVar(0..1);
-lambda_1_56 = intVar(0..1);
-lambda_1_57 = intVar(0..1);
-lambda_1_58 = intVar(0..1);
-lambda_1_59 = intVar(0..1);
-lambda_1_60 = intVar(0..1);
-lambda_1_61 = intVar(0..1);
-lambda_1_62 = intVar(0..1);
-lambda_1_63 = intVar(0..1);
-lambda_1_64 = intVar(0..1);
-lambda_1_65 = intVar(0..1);
-lambda_1_66 = intVar(0..1);
-lambda_1_67 = intVar(0..1);
-lambda_1_68 = intVar(0..1);
-lambda_1_69 = intVar(0..1);
-lambda_1_70 = intVar(0..1);
-lambda_1_71 = intVar(0..1);
-lambda_1_72 = intVar(0..1);
-lambda_1_73 = intVar(0..1);
-lambda_1_74 = intVar(0..1);
-lambda_1_75 = intVar(0..1);
-lambda_1_76 = intVar(0..1);
-lambda_1_77 = intVar(0..1);
-lambda_2_0 = intVar(0..1);
-lambda_2_1 = intVar(0..1);
-lambda_2_2 = intVar(0..1);
-lambda_2_3 = intVar(0..1);
-lambda_2_4 = intVar(0..1);
-lambda_2_5 = intVar(0..1);
-lambda_2_6 = intVar(0..1);
-lambda_2_7 = intVar(0..1);
-lambda_2_8 = intVar(0..1);
-lambda_2_9 = intVar(0..1);
-lambda_2_10 = intVar(0..1);
-lambda_2_11 = intVar(0..1);
-lambda_2_12 = intVar(0..1);
-lambda_2_13 = intVar(0..1);
-lambda_2_14 = intVar(0..1);
-lambda_2_15 = intVar(0..1);
-lambda_2_16 = intVar(0..1);
-lambda_2_17 = intVar(0..1);
-lambda_2_18 = intVar(0..1);
-lambda_2_19 = intVar(0..1);
-lambda_2_20 = intVar(0..1);
-lambda_2_21 = intVar(0..1);
-lambda_2_22 = intVar(0..1);
-lambda_2_23 = intVar(0..1);
-lambda_2_24 = intVar(0..1);
-lambda_2_25 = intVar(0..1);
-lambda_2_26 = intVar(0..1);
-lambda_2_27 = intVar(0..1);
-lambda_2_28 = intVar(0..1);
-lambda_2_29 = intVar(0..1);
-lambda_2_30 = intVar(0..1);
-lambda_2_31 = intVar(0..1);
-lambda_2_32 = intVar(0..1);
-lambda_2_33 = intVar(0..1);
-lambda_2_34 = intVar(0..1);
-lambda_2_35 = intVar(0..1);
-lambda_2_36 = intVar(0..1);
-lambda_2_37 = intVar(0..1);
-lambda_2_38 = intVar(0..1);
-lambda_2_39 = intVar(0..1);
-lambda_2_40 = intVar(0..1);
-lambda_2_41 = intVar(0..1);
-lambda_2_42 = intVar(0..1);
-lambda_2_43 = intVar(0..1);
+lambda_node_0_0 = intVar(0..1);
+#line 42
+lambda_node_0_1 = intVar(0..1);
+lambda_node_0_2 = intVar(0..1);
+lambda_node_0_3 = intVar(0..1);
+lambda_node_0_4 = intVar(0..1);
+lambda_node_0_5 = intVar(0..1);
+#line 41
+lambda_node_1_0 = intVar(0..1);
+#line 42
+lambda_node_1_1 = intVar(0..1);
+lambda_node_1_2 = intVar(0..1);
+lambda_node_1_3 = intVar(0..1);
+lambda_node_1_4 = intVar(0..1);
+lambda_node_1_5 = intVar(0..1);
+
+//--- Expressions ---
+#line 41 "/home/kai/Dropbox/USC/publication/intrusion/greedy/src/solvers/DefenderOracle/BRDefenderP.py"
+lambda_0_0 <= lambda_node_0_0;
+#line 42
+lambda_0_0 <= lambda_node_0_1;
+#line 41
+lambda_0_1 <= lambda_node_0_0;
+#line 42
+lambda_0_1 <= lambda_node_0_2;
+#line 41
+lambda_0_2 <= lambda_node_0_0;
+#line 42
+lambda_0_2 <= lambda_node_0_3;
+#line 41
+lambda_0_3 <= lambda_node_0_1;
+#line 42
+lambda_0_3 <= lambda_node_0_4;
+#line 41
+lambda_0_4 <= lambda_node_0_2;
+#line 42
+lambda_0_4 <= lambda_node_0_4;
+#line 41
+lambda_0_5 <= lambda_node_0_3;
+#line 42
+lambda_0_5 <= lambda_node_0_4;
+#line 41
+lambda_0_6 <= lambda_node_0_4;
+#line 42
+lambda_0_6 <= lambda_node_0_5;
+#line 44
+0 + lambda_0_0 + lambda_0_1 + lambda_0_2 + lambda_0_3 + lambda_0_4 + lambda_0_5 + lambda_0_6 == 1;
+#line 45
+0 + lambda_node_0_0 + lambda_node_0_1 + lambda_node_0_2 + lambda_node_0_3 + lambda_node_0_4 + lambda_node_0_5 == 2;
+#line 41
+lambda_1_0 <= lambda_node_1_0;
+#line 42
+lambda_1_0 <= lambda_node_1_1;
+#line 41
+lambda_1_1 <= lambda_node_1_0;
+#line 42
+lambda_1_1 <= lambda_node_1_2;
+#line 41
+lambda_1_2 <= lambda_node_1_0;
+#line 42
+lambda_1_2 <= lambda_node_1_3;
+#line 41
+lambda_1_3 <= lambda_node_1_1;
+#line 42
+lambda_1_3 <= lambda_node_1_4;
+#line 41
+lambda_1_4 <= lambda_node_1_2;
+#line 42
+lambda_1_4 <= lambda_node_1_4;
+#line 41
+lambda_1_5 <= lambda_node_1_3;
+#line 42
+lambda_1_5 <= lambda_node_1_4;
+#line 41
+lambda_1_6 <= lambda_node_1_4;
+#line 42
+lambda_1_6 <= lambda_node_1_5;
+#line 44
+0 + lambda_1_0 + lambda_1_1 + lambda_1_2 + lambda_1_3 + lambda_1_4 + lambda_1_5 + lambda_1_6 == 1;
+#line 45
+0 + lambda_node_1_0 + lambda_node_1_1 + lambda_node_1_2 + lambda_node_1_3 + lambda_node_1_4 + lambda_node_1_5 == 2;
+#line 58
+maximize(0 + -(1 * (1 - lambda_0_0 * 1) * (1 - lambda_1_0 * 1) * (1 - lambda_0_3 * 1) * (1 - lambda_1_3 * 1)) * 0 * 1 + -(1 * (1 - lambda_0_0 * 1) * (1 - lambda_1_0 * 1) * (1 - lambda_0_3 * 1) * (1 - lambda_1_3 * 1) * (1 - lambda_0_6 * 1) * (1 - lambda_1_6 * 1)) * 0.1111111111111111 * 2.0 + -(1 * (1 - lambda_0_1 * 1) * (1 - lambda_1_1 * 1) * (1 - lambda_0_4 * 1) * (1 - lambda_1_4 * 1)) * 0 * 1 + -(1 * (1 - lambda_0_2 * 1) * (1 - lambda_1_2 * 1) * (1 - lambda_0_5 * 1) * (1 - lambda_1_5 * 1) * (1 - lambda_0_6 * 1) * (1 - lambda_1_6 * 1)) * 0.1111111111111111 * 2.0 + -(1 * (1 - lambda_0_2 * 1) * (1 - lambda_1_2 * 1) * (1 - lambda_0_5 * 1) * (1 - lambda_1_5 * 1)) * 0.2222222222222222 * 1 + -(1 * (1 - lambda_0_1 * 1) * (1 - lambda_1_1 * 1) * (1 - lambda_0_4 * 1) * (1 - lambda_1_4 * 1) * (1 - lambda_0_6 * 1) * (1 - lambda_1_6 * 1)) * 0.1111111111111111 * 2.0 + -(1 * (1 - lambda_0_1 * 1) * (1 - lambda_1_1 * 1) * (1 - lambda_0_4 * 1) * (1 - lambda_1_4 * 1)) * 0.2222222222222222 * 1 + -(1 * (1 - lambda_0_0 * 1) * (1 - lambda_1_0 * 1) * (1 - lambda_0_3 * 1) * (1 - lambda_1_3 * 1)) * 0 * 1 + -(1 * (1 - lambda_0_0 * 1) * (1 - lambda_1_0 * 1) * (1 - lambda_0_3 * 1) * (1 - lambda_1_3 * 1)) * 0 * 1 + -(1 * (1 - lambda_0_0 * 1) * (1 - lambda_1_0 * 1) * (1 - lambda_0_3 * 1) * (1 - lambda_1_3 * 1)) * 0 * 1 + -(1 * (1 - lambda_0_0 * 1) * (1 - lambda_1_0 * 1) * (1 - lambda_0_3 * 1) * (1 - lambda_1_3 * 1)) * 0 * 1 + -(1 * (1 - lambda_0_0 * 1) * (1 - lambda_1_0 * 1) * (1 - lambda_0_3 * 1) * (1 - lambda_1_3 * 1)) * 0 * 1 + -(1 * (1 - lambda_0_0 * 1) * (1 - lambda_1_0 * 1) * (1 - lambda_0_3 * 1) * (1 - lambda_1_3 * 1)) * 0 * 1 + -(1 * (1 - lambda_0_0 * 1) * (1 - lambda_1_0 * 1) * (1 - lambda_0_3 * 1) * (1 - lambda_1_3 * 1)) * 0 * 1 + -(1 * (1 - lambda_0_0 * 1) * (1 - lambda_1_0 * 1) * (1 - lambda_0_3 * 1) * (1 - lambda_1_3 * 1)) * 0 * 1 + -(1 * (1 - lambda_0_0 * 1) * (1 - lambda_1_0 * 1) * (1 - lambda_0_3 * 1) * (1 - lambda_1_3 * 1)) * 0.2222222222222222 * 1);
+
+//--- Parameters ---
+#line off
+parameters {
+   LogVerbosity = Quiet;
+}

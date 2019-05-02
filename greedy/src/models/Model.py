@@ -58,6 +58,9 @@ class DefenderStrategy:
         self.resource_usage = resource_usage
         # a list of edges that this resource covers
 
+    def getEdges(self):
+        return self.coverage.keys()
+
 class DefenderMixedStrategy:
     def __init__(self, defender_strategy_list, prob):
         # defender_strategy_list is a list of DefenderStrategy
@@ -87,7 +90,8 @@ class GameModel:
                 self.G = self.G.to_directed()
             self.edges = list(self.G.edges())
             self.edges_size = len(self.edges)
-        self.line_G = nx.line_graph(self.G)
+
+        # ----------- parameters ------------
         self.T = T
         assert(S == 1) # currently not allow S > 1
         self.S = S
@@ -128,7 +132,10 @@ class GameModel:
                 self.edge2index[(u, v)] = i
                 self.edge2index[(v, u)] = i
 
-
+        # ================== create line graph =======================
+        self.line_G = nx.line_graph(self.G)
+        self.line_G = nx.relabel_nodes(self.line_G, self.edge2index)
+        
         # ==================== initialization ========================
         if resource_list is not None:
             self.resource_list = resource_list
